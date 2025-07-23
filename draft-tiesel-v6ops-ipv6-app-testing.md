@@ -112,7 +112,9 @@ These include Dual-Stack clients combined with IPv4-only and a True IPv6-only se
 We also include then cases with Dual-Stack Server and Single-Stack clients, to test whether a single address family at client side works as anticipated and look at the transition case using NAT64.
 It is also advisable to consider the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64 (marked as IPv6-only-DC in {{scn_combinations}}).
 
-The other combinations are unlikely to exhibit additional problems and therefore are marked as unlikely in {{scn_combinations}}).
+The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in {{scn_combinations}}).
+For peer-to-peer applications and applications with complex connection handling like using STUN {{?RFC5389}}or TURN {{?RFC5766}}, skipping these scenarios is strongly discouraged.
+In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.
 
 | Client               | Server               | Verdict      |
 | :---                 | :---                 | :---:        |
@@ -122,10 +124,10 @@ The other combinations are unlikely to exhibit additional problems and therefore
 | IPv6-only with NAT64 | IPv4-only            | base         |
 | True IPv6-only       | Dual-Stack           | base         |
 | IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC |
-| Dual-Stack           | Dual-Stack           | unlikely     |
-| IPv4-only            | IPv4-only            | unlikely     |
-| IPv6-only with NAT64 | True IPv6-only       | unlikely     |
-| True IPv6-only       | True IPv6-only       | unlikely     |
+| Dual-Stack           | Dual-Stack           | extended     |
+| IPv4-only            | IPv4-only            | extended     |
+| IPv6-only with NAT64 | True IPv6-only       | extended     |
+| True IPv6-only       | True IPv6-only       | extended     |
 {: #scn_combinations title="Scenario combinations to consider for IPv6 testing"}
 
 
