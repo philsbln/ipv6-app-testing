@@ -23,6 +23,7 @@ normative:
 
 informative:
   I-D.draft-winters-v6ops-rfc7084bis:
+  I-D.draft-ietf-v6ops-6mops:
   RFC8405:
   M-21-07:
     target: https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf
@@ -110,7 +111,9 @@ Note, while the involved parties are listed here as "client" and "server" to ref
 The first five scenarios marked as *base* should cover all major code paths and fallback conditions.
 These include Dual-Stack clients combined with IPv4-only and a True IPv6-only server, to test wither the additional address family confused the client.
 We also include then cases with Dual-Stack Server and Single-Stack clients, to test whether a single address family at client side works as anticipated and look at the transition case using NAT64.
-It is also advisable to consider the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64 (marked as IPv6-only-DC in {{scn_combinations}}).
+We have no special scenarios for 464XLAT {{?RFC6877}} and IPv6-Mostly {{I-D.draft-ietf-v6ops-6mops}}, as these architectures are from then client side indistinguishable from the Dual-Stack (464XLAT or IPv6-Mostly with CLAT) or IPv6-only with NAT64 (IPv6-Mostly without CLAT).
+
+For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64, it is also advisable to consider the case marked as IPv6-only-DC in {{scn_combinations}}).
 
 The other combinations are unlikely to exhibit additional problems and therefore are marked as unlikely in {{scn_combinations}}).
 
