@@ -4,8 +4,8 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                      22 July 2025
-Expires: 23 January 2026
+Intended status: Best Current Practice                      24 July 2025
+Expires: 25 January 2026
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 January 2026.
+   This Internet-Draft will expire on 25 January 2026.
 
 Copyright Notice
 
@@ -318,9 +318,12 @@ Table of Contents
 
    In both cases, it has to be ensured that there is no way to access
    IPv4-only resources.  In particular, fallback to NAT64 must be
-   prevented by making sure DNS resolution does not perform DNS64
-   address synthesis [RFC6147] and the well-known NAT64 prefix [RFC6052]
-   is blocked for these clients.
+   prevented by disabling CLAT [CLAT], making sure DNS resolution does
+   not perform DNS64 address synthesis [RFC6147] and blocking the well-
+   known NAT64 prefix [RFC6052] for these clients.  In addition, VPN
+   services including privacy services like [iCloud-Private-Relay] need
+   to be disabled as they can provide connectivity towards the IPv4
+   Internet.
 
    A note on the applicability of disabling IPv4: Before disabling IPv4
    make sure the environment supports IPv6-only operation.  Many desktop
@@ -543,13 +546,23 @@ Table of Contents
    [C-ARES]   "C-ARES - a modern DNS (stub) resolver library, written in
               C", n.d., <https://c-ares.org/>.
 
+   [CLAT]     Linkova, J. and T. Jensen, "464XLAT Customer-side
+              Translator (CLAT): Node Recommendations", Work in
+              Progress, Internet-Draft, draft-ietf-v6ops-claton-05, 6
+              July 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-v6ops-claton-05>.
+
    [I-D.draft-winters-v6ops-rfc7084bis]
-              Lencse, G., Martinez, J. P., Patton, and T. Winters,
+              Lencse, G., Martinez, J. P., Patton, B., and T. Winters,
               "Basic Requirements for IPv6 Customer Edge Routers", Work
               in Progress, Internet-Draft, draft-winters-v6ops-
               rfc7084bis-03, 8 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-winters-
               v6ops-rfc7084bis-03>.
+
+   [iCloud-Private-Relay]
+              "Apple iCLoud Private Relay (WWDC2021)", n.d.,
+              <https://developer.apple.com/videos/play/wwdc2021/10096/>.
 
    [IPvFoo]   Marks, P., "IPvFoo - a Chrome/Firefox extension that adds
               an icon to indicate whether the current page was fetched
