@@ -23,6 +23,7 @@ normative:
 
 informative:
   I-D.draft-winters-v6ops-rfc7084bis:
+  CLAT: I-D.draft-ietf-v6ops-claton
   RFC8405:
   M-21-07:
     target: https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf
@@ -30,6 +31,9 @@ informative:
     seriesinfo:
       United States of America Office of Management and Budget: Memorandum for Heads of Executive Departments and Agencies
     date: 2020-11-19
+  iCloud-Private-Relay:
+    target: https://developer.apple.com/videos/play/wwdc2021/10096/
+    title: Apple iCLoud Private Relay (WWDC2021)
   IPvFoo:
     target: https://github.com/pmarks-net/ipvfoo
     title: IPvFoo - a Chrome/Firefox extension that adds an icon to indicate whether the current page was fetched using IPv4 or IPv6.
@@ -181,8 +185,10 @@ While most desktop operating systems allow disabling IPv4, mobile operating syst
 For mobiles operating systems, a True IPv6-only environment is needed.
 
 In both cases, it has to be ensured that there is no way to access IPv4-only resources.
-In particular, fallback to NAT64 must be prevented by making sure DNS resolution does not perform DNS64 address synthesis {{?RFC6147}}
-and the well-known NAT64 prefix {{?RFC6052}} is blocked for these clients.
+In particular, fallback to NAT64 must be prevented by disabling CLAT {{CLAT}},
+making sure DNS resolution does not perform DNS64 address synthesis {{?RFC6147}}
+and blocking the well-known NAT64 prefix {{?RFC6052}} for these clients.
+In addition, VPN services including privacy services like {{iCloud-Private-Relay}} need to be disabled as they can provide connectivity towards the IPv4 Internet.
 
 A note on the applicability of disabling IPv4:
 Before disabling IPv4 make sure the environment supports IPv6-only operation.
