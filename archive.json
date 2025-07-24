@@ -1,0 +1,259 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2025-07-24T01:10:31.883247+00:00",
+  "repo": "philsbln/ipv6-app-testing",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOPQtDQ87CDuvu",
+      "title": "Do we want to differentiate DNS64 vs local synthesis cases?",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/1",
+      "state": "OPEN",
+      "author": "furry13",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I think it might be useful to test with RFC8781 w/o DNS64 as a primary case and maybe have a separate case (?) for DNS64 presence?\nIt would be desirable to ensure that there are no dependencies on DNS64?",
+      "createdAt": "2025-07-23T10:10:15Z",
+      "updatedAt": "2025-07-23T17:22:52Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "body": "As part of a section on name resolution issues to look for, that makes very much sense.\n\n@furry13 ideas who may want to contribute a section on that?",
+          "createdAt": "2025-07-23T17:22:52Z",
+          "updatedAt": "2025-07-23T17:22:52Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOPQtDQ87CDwpk",
+      "title": "CLAT case needs to be mentioned explicitly?",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/2",
+      "state": "OPEN",
+      "author": "furry13",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "When \"IPv6-only + NAT64\" client is tested, do we want to ensure that the OS doesn't have CLAT enabled, so I guess it's worth mentioning explicitly",
+      "createdAt": "2025-07-23T10:12:27Z",
+      "updatedAt": "2025-07-23T15:38:51Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "mstojens",
+          "authorAssociation": "NONE",
+          "body": "I think so. If the terms are split, fine. If not, I suggest renaming this term \"IPv6-mostly\" rather than mention NAT64 specifically in the term itself (the definition of course is fine).",
+          "createdAt": "2025-07-23T10:32:08Z",
+          "updatedAt": "2025-07-23T10:32:08Z"
+        },
+        {
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "body": "Makes sense to clarify that we want no CLAT for testing as it is covered in Dual-Stack or IPv4 only.\n\nI also thought about mentioning IPv6-mostly initially, but in the end, IPv6-mostly is from a client perspective either dual-stack (464XLAT, no option 108 so native v4) or IPv6-only (with IPv6 or IPv4 behind NAT64). So I focus on NAT64 as everything else is covered in Dual-Stack or IPv4-only.",
+          "createdAt": "2025-07-23T15:36:46Z",
+          "updatedAt": "2025-07-23T15:38:51Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOPQtDQ87CDzgo",
+      "title": "Rename \"unlikely\" category",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/3",
+      "state": "OPEN",
+      "author": "furry13",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current text says:\n\n\"The other combinations are unlikely to exhibit additional problems and therefore are marked as unlikely\"\n\nIMHO it's. bit optimistic, and might send a wrong message that it needs to be tested.\n I'd rather move them to 'basic' category (or maybe renaming all cstegories)",
+      "createdAt": "2025-07-23T10:16:16Z",
+      "updatedAt": "2025-07-23T15:01:13Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "body": "This is definitely a trade-off. I am happy to rename it to _extended_ and make it sound a little less optional, but having a too large basic set will reduce probability testing is done at all. For our Zoo, I have not seen a single application that had a Problem on in these scenarios. Mayme it makes sense to batch that with STUN/TURN and mention that these cases definitely need checking the extended set. ",
+          "createdAt": "2025-07-23T15:01:13Z",
+          "updatedAt": "2025-07-23T15:01:13Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOPQtDQ87CD1ZR",
+      "title": "Explicitly mention MTU/fragmentation testing",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/4",
+      "state": "OPEN",
+      "author": "furry13",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "as IPv4/IPv6/NAT64 networks might exhibit different behaviours, it would be nice to mention it ",
+      "createdAt": "2025-07-23T10:18:13Z",
+      "updatedAt": "2025-07-23T10:18:13Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOPQtDQ87CD2Ck",
+      "title": "STUN/TURN cases",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/5",
+      "state": "OPEN",
+      "author": "furry13",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "IF STUN/TURN is involved, it might be needed to test more cases (all combinations with clients + all combinations of servers)",
+      "createdAt": "2025-07-23T10:19:10Z",
+      "updatedAt": "2025-07-23T10:19:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOPQtDQ87CD3aF",
+      "title": "Definition: \"IPv[46] Connectivity",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/6",
+      "state": "OPEN",
+      "author": "furry13",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "As it was discussed at v6ops during Ondrej presentation, we might want to have a standard definition of \"connectivity\".\n\nDefault gateway? non-link-local IPs?",
+      "createdAt": "2025-07-23T10:21:07Z",
+      "updatedAt": "2025-07-23T17:15:59Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "body": "That's a hard one\u2026 for this document, I'm quite tempted to explicitly define that as out-of-scope.\nIt gets really confusing to get that one right if you can have partial IPv6 and Partial IPv4 connectivity over multiple links/VPNs and each resource may or may not be available over random subsets of these either for address family, routing, and policy reason.",
+          "createdAt": "2025-07-23T17:15:59Z",
+          "updatedAt": "2025-07-23T17:15:59Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOPQtDQ87CLCet",
+      "title": "Warn against VPNs like Apple Private Relay",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/9",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Explain how this can screw IPv6 only testing",
+      "createdAt": "2025-07-23T20:47:31Z",
+      "updatedAt": "2025-07-23T20:47:31Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 7,
+      "id": "PR_kwDOPQtDQ86gTMXx",
+      "title": "Rename category 'unlikely' to 'extended' and mention STUN/TURN",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/7",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "closing #3\r\nclosing #5",
+      "createdAt": "2025-07-23T16:09:48Z",
+      "updatedAt": "2025-07-23T16:09:48Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "748689f98154dcd08d83714dbdf5b1111012dff3",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "philsbln-handle-unlikely-turn",
+      "headRefOid": "a59530cba1b17568fa2886e0e3191f66c6c9cf86",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOPQtDQ86gTdNX",
+      "title": "Explain relation to IPv6-Mostly, 464XLAT and CLAT",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/8",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "closing #2 ",
+      "createdAt": "2025-07-23T16:39:54Z",
+      "updatedAt": "2025-07-23T16:39:54Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "748689f98154dcd08d83714dbdf5b1111012dff3",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "philsbln-explain-6mops-clat-464xlat",
+      "headRefOid": "aa02d239dd095e6894fb6aaf233ad04a655bcee3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
