@@ -24,6 +24,7 @@ normative:
 informative:
   I-D.draft-winters-v6ops-rfc7084bis:
   I-D.draft-ietf-v6ops-6mops:
+  CLAT: I-D.draft-ietf-v6ops-claton
   RFC8405:
   M-21-07:
     target: https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf
@@ -31,6 +32,9 @@ informative:
     seriesinfo:
       United States of America Office of Management and Budget: Memorandum for Heads of Executive Departments and Agencies
     date: 2020-11-19
+  iCloud-Private-Relay:
+    target: https://developer.apple.com/videos/play/wwdc2021/10096/
+    title: Apple iCLoud Private Relay (WWDC2021)
   IPvFoo:
     target: https://github.com/pmarks-net/ipvfoo
     title: IPvFoo - a Chrome/Firefox extension that adds an icon to indicate whether the current page was fetched using IPv4 or IPv6.
@@ -115,7 +119,9 @@ We have no special scenarios for 464XLAT {{?RFC6877}} and IPv6-Mostly {{I-D.draf
 
 For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64, it is also advisable to consider the case marked as IPv6-only-DC in {{scn_combinations}}).
 
-The other combinations are unlikely to exhibit additional problems and therefore are marked as unlikely in {{scn_combinations}}).
+The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in {{scn_combinations}}).
+For peer-to-peer applications and applications with complex connection handling like using STUN {{?RFC5389}}or TURN {{?RFC5766}}, skipping these scenarios is strongly discouraged.
+In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.
 
 | Client               | Server               | Verdict      |
 | :---                 | :---                 | :---:        |
@@ -125,10 +131,10 @@ The other combinations are unlikely to exhibit additional problems and therefore
 | IPv6-only with NAT64 | IPv4-only            | base         |
 | True IPv6-only       | Dual-Stack           | base         |
 | IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC |
-| Dual-Stack           | Dual-Stack           | unlikely     |
-| IPv4-only            | IPv4-only            | unlikely     |
-| IPv6-only with NAT64 | True IPv6-only       | unlikely     |
-| True IPv6-only       | True IPv6-only       | unlikely     |
+| Dual-Stack           | Dual-Stack           | extended     |
+| IPv4-only            | IPv4-only            | extended     |
+| IPv6-only with NAT64 | True IPv6-only       | extended     |
+| True IPv6-only       | True IPv6-only       | extended     |
 {: #scn_combinations title="Scenario combinations to consider for IPv6 testing"}
 
 
@@ -184,8 +190,10 @@ While most desktop operating systems allow disabling IPv4, mobile operating syst
 For mobiles operating systems, a True IPv6-only environment is needed.
 
 In both cases, it has to be ensured that there is no way to access IPv4-only resources.
-In particular, fallback to NAT64 must be prevented by making sure DNS resolution does not perform DNS64 address synthesis {{?RFC6147}}
-and the well-known NAT64 prefix {{?RFC6052}} is blocked for these clients.
+In particular, fallback to NAT64 must be prevented by disabling CLAT {{CLAT}},
+making sure DNS resolution does not perform DNS64 address synthesis {{?RFC6147}}
+and blocking the well-known NAT64 prefix {{?RFC6052}} for these clients.
+In addition, VPN services including privacy services like {{iCloud-Private-Relay}} need to be disabled as they can provide connectivity towards the IPv4 Internet.
 
 A note on the applicability of disabling IPv4:
 Before disabling IPv4 make sure the environment supports IPv6-only operation.
