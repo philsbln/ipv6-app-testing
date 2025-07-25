@@ -4,8 +4,8 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                      23 July 2025
-Expires: 24 January 2026
+Intended status: Best Current Practice                      25 July 2025
+Expires: 26 January 2026
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 January 2026.
+   This Internet-Draft will expire on 26 January 2026.
 
 Copyright Notice
 
@@ -209,7 +209,12 @@ Table of Contents
    the case marked as IPv6-only-DC in Table 1).
 
    The other combinations are unlikely to exhibit additional problems
-   and therefore are marked as unlikely in Table 1).
+   for client-server-based applications and therefore are marked as
+   extended in Table 1).  For peer-to-peer applications and applications
+   with complex connection handling like using STUN [RFC5389]or TURN
+   [RFC5766], skipping these scenarios is strongly discouraged.  In case
+   of TURN, it is also recommended to test with and without TURN relay
+   in the path, essentially doubling the number or scenarios.
 
       +======================+======================+==============+
       | Client               | Server               |   Verdict    |
@@ -226,13 +231,13 @@ Table of Contents
       +----------------------+----------------------+--------------+
       | IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC |
       +----------------------+----------------------+--------------+
-      | Dual-Stack           | Dual-Stack           |   unlikely   |
+      | Dual-Stack           | Dual-Stack           |   extended   |
       +----------------------+----------------------+--------------+
-      | IPv4-only            | IPv4-only            |   unlikely   |
+      | IPv4-only            | IPv4-only            |   extended   |
       +----------------------+----------------------+--------------+
-      | IPv6-only with NAT64 | True IPv6-only       |   unlikely   |
+      | IPv6-only with NAT64 | True IPv6-only       |   extended   |
       +----------------------+----------------------+--------------+
-      | True IPv6-only       | True IPv6-only       |   unlikely   |
+      | True IPv6-only       | True IPv6-only       |   extended   |
       +----------------------+----------------------+--------------+
 
        Table 1: Scenario combinations to consider for IPv6 testing
@@ -324,9 +329,12 @@ Table of Contents
 
    In both cases, it has to be ensured that there is no way to access
    IPv4-only resources.  In particular, fallback to NAT64 must be
-   prevented by making sure DNS resolution does not perform DNS64
-   address synthesis [RFC6147] and the well-known NAT64 prefix [RFC6052]
-   is blocked for these clients.
+   prevented by disabling CLAT [CLAT], making sure DNS resolution does
+   not perform DNS64 address synthesis [RFC6147] and blocking the well-
+   known NAT64 prefix [RFC6052] for these clients.  In addition, VPN
+   services including privacy services like [iCloud-Private-Relay] need
+   to be disabled as they can provide connectivity towards the IPv4
+   Internet.
 
    A note on the applicability of disabling IPv4: Before disabling IPv4
    make sure the environment supports IPv6-only operation.  Many desktop
@@ -549,6 +557,12 @@ Table of Contents
    [C-ARES]   "C-ARES - a modern DNS (stub) resolver library, written in
               C", n.d., <https://c-ares.org/>.
 
+   [CLAT]     Linkova, J. and T. Jensen, "464XLAT Customer-side
+              Translator (CLAT): Node Recommendations", Work in
+              Progress, Internet-Draft, draft-ietf-v6ops-claton-05, 6
+              July 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-v6ops-claton-05>.
+
    [I-D.draft-ietf-v6ops-6mops]
               Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
               Networks: Deployment and Operations Considerations", Work
@@ -564,6 +578,10 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-winters-
               v6ops-rfc7084bis-03>.
 
+   [iCloud-Private-Relay]
+              "Apple iCLoud Private Relay (WWDC2021)", n.d.,
+              <https://developer.apple.com/videos/play/wwdc2021/10096/>.
+
    [IPvFoo]   Marks, P., "IPvFoo - a Chrome/Firefox extension that adds
               an icon to indicate whether the current page was fetched
               using IPv4 or IPv6.", n.d.,
@@ -575,6 +593,17 @@ Table of Contents
               Departments and Agencies, 19 November 2020,
               <https://www.whitehouse.gov/wp-content/uploads/2020/11/
               M-21-07.pdf>.
+
+   [RFC5389]  Rosenberg, J., Mahy, R., Matthews, P., and D. Wing,
+              "Session Traversal Utilities for NAT (STUN)", RFC 5389,
+              DOI 10.17487/RFC5389, October 2008,
+              <https://www.rfc-editor.org/rfc/rfc5389>.
+
+   [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
+              Relays around NAT (TURN): Relay Extensions to Session
+              Traversal Utilities for NAT (STUN)", RFC 5766,
+              DOI 10.17487/RFC5766, April 2010,
+              <https://www.rfc-editor.org/rfc/rfc5766>.
 
    [RFC6052]  Bao, C., Huitema, C., Bagnulo, M., Boucadair, M., and X.
               Li, "IPv6 Addressing of IPv4/IPv6 Translators", RFC 6052,

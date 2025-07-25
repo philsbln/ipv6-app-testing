@@ -1050,7 +1050,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tiesel</td>
-<td class="center">Expires 24 January 2026</td>
+<td class="center">Expires 26 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tiesel-v6ops-ipv6-app-testing-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-23" class="published">23 July 2025</time>
+<time datetime="2025-07-25" class="published">25 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-24">24 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-01-26">26 January 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1115,7 +1115,7 @@ and explains common regressions to avoid when deploying IPv6 support.<a href="#s
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1338,7 +1338,9 @@ These include Dual-Stack clients combined with IPv4-only and a True IPv6-only se
 We also include then cases with Dual-Stack Server and Single-Stack clients, to test whether a single address family at client side works as anticipated and look at the transition case using NAT64.
 We have no special scenarios for 464XLAT <span>[<a href="#RFC6877" class="cite xref">RFC6877</a>]</span> and IPv6-Mostly <span>[<a href="#I-D.draft-ietf-v6ops-6mops" class="cite xref">I-D.draft-ietf-v6ops-6mops</a>]</span>, as these architectures are from then client side indistinguishable from the Dual-Stack (464XLAT or IPv6-Mostly with CLAT) or IPv6-only with NAT64 (IPv6-Mostly without CLAT).<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 <p id="section-3.1-3">For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64, it is also advisable to consider the case marked as IPv6-only-DC in <a href="#scn_combinations" class="auto internal xref">Table 1</a>).<a href="#section-3.1-3" class="pilcrow">¶</a></p>
-<p id="section-3.1-4">The other combinations are unlikely to exhibit additional problems and therefore are marked as unlikely in <a href="#scn_combinations" class="auto internal xref">Table 1</a>).<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in <a href="#scn_combinations" class="auto internal xref">Table 1</a>).
+For peer-to-peer applications and applications with complex connection handling like using STUN <span>[<a href="#RFC5389" class="cite xref">RFC5389</a>]</span>or TURN <span>[<a href="#RFC5766" class="cite xref">RFC5766</a>]</span>, skipping these scenarios is strongly discouraged.
+In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <span id="name-scenario-combinations-to-co"></span><div id="scn_combinations">
 <table class="center" id="table-1">
           <caption>
@@ -1386,22 +1388,22 @@ We have no special scenarios for 464XLAT <span>[<a href="#RFC6877" class="cite x
             <tr>
               <td class="text-left" rowspan="1" colspan="1">Dual-Stack</td>
               <td class="text-left" rowspan="1" colspan="1">Dual-Stack</td>
-              <td class="text-center" rowspan="1" colspan="1">unlikely</td>
+              <td class="text-center" rowspan="1" colspan="1">extended</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">IPv4-only</td>
               <td class="text-left" rowspan="1" colspan="1">IPv4-only</td>
-              <td class="text-center" rowspan="1" colspan="1">unlikely</td>
+              <td class="text-center" rowspan="1" colspan="1">extended</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">IPv6-only with NAT64</td>
               <td class="text-left" rowspan="1" colspan="1">True IPv6-only</td>
-              <td class="text-center" rowspan="1" colspan="1">unlikely</td>
+              <td class="text-center" rowspan="1" colspan="1">extended</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">True IPv6-only</td>
               <td class="text-left" rowspan="1" colspan="1">True IPv6-only</td>
-              <td class="text-center" rowspan="1" colspan="1">unlikely</td>
+              <td class="text-center" rowspan="1" colspan="1">extended</td>
             </tr>
           </tbody>
         </table>
@@ -1469,8 +1471,10 @@ The client device is either placed in a network without IPv4 connectivity or the
 While most desktop operating systems allow disabling IPv4, mobile operating systems, such as Android and iOS, do not.
 For mobiles operating systems, a True IPv6-only environment is needed.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.1-2">In both cases, it has to be ensured that there is no way to access IPv4-only resources.
-In particular, fallback to NAT64 must be prevented by making sure DNS resolution does not perform DNS64 address synthesis <span>[<a href="#RFC6147" class="cite xref">RFC6147</a>]</span>
-and the well-known NAT64 prefix <span>[<a href="#RFC6052" class="cite xref">RFC6052</a>]</span> is blocked for these clients.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+In particular, fallback to NAT64 must be prevented by disabling CLAT <span>[<a href="#CLAT" class="cite xref">CLAT</a>]</span>,
+making sure DNS resolution does not perform DNS64 address synthesis <span>[<a href="#RFC6147" class="cite xref">RFC6147</a>]</span>
+and blocking the well-known NAT64 prefix <span>[<a href="#RFC6052" class="cite xref">RFC6052</a>]</span> for these clients.
+In addition, VPN services including privacy services like <span>[<a href="#iCloud-Private-Relay" class="cite xref">iCloud-Private-Relay</a>]</span> need to be disabled as they can provide connectivity towards the IPv4 Internet.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1-3">A note on the applicability of disabling IPv4:
 Before disabling IPv4 make sure the environment supports IPv6-only operation.
 Many desktop virtualization environments become unusable because IPv4 is needed to access and manage the virtual machines.
@@ -1700,6 +1704,10 @@ Be prepared for this and plan extra time or budget for updating or replacing the
         <dd>
 <span class="refTitle">"C-ARES - a modern DNS (stub) resolver library, written in C"</span>, <span>n.d.</span>, <span>&lt;<a href="https://c-ares.org/">https://c-ares.org/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="CLAT">[CLAT]</dt>
+        <dd>
+<span class="refAuthor">Linkova, J.</span> and <span class="refAuthor">T. Jensen</span>, <span class="refTitle">"464XLAT Customer-side Translator (CLAT): Node Recommendations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-claton-05</span>, <time datetime="2025-07-06" class="refDate">6 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-05">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-05</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.draft-ietf-v6ops-6mops">[I-D.draft-ietf-v6ops-6mops]</dt>
         <dd>
 <span class="refAuthor">Buraglio, N.</span>, <span class="refAuthor">Caletka, O.</span>, and <span class="refAuthor">J. Linkova</span>, <span class="refTitle">"IPv6-Mostly Networks: Deployment and Operations Considerations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-6mops-01</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-01">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-01</a>&gt;</span>. </dd>
@@ -1708,6 +1716,10 @@ Be prepared for this and plan extra time or budget for updating or replacing the
         <dd>
 <span class="refAuthor">Lencse, G.</span>, <span class="refAuthor">Martinez, J. P.</span>, <span class="refAuthor">Patton, B.</span>, and <span class="refAuthor">T. Winters</span>, <span class="refTitle">"Basic Requirements for IPv6 Customer Edge Routers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-winters-v6ops-rfc7084bis-03</span>, <time datetime="2024-07-08" class="refDate">8 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-winters-v6ops-rfc7084bis-03">https://datatracker.ietf.org/doc/html/draft-winters-v6ops-rfc7084bis-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="iCloud-Private-Relay">[iCloud-Private-Relay]</dt>
+        <dd>
+<span class="refTitle">"Apple iCLoud Private Relay (WWDC2021)"</span>, <span>n.d.</span>, <span>&lt;<a href="https://developer.apple.com/videos/play/wwdc2021/10096/">https://developer.apple.com/videos/play/wwdc2021/10096/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="IPvFoo">[IPvFoo]</dt>
         <dd>
 <span class="refAuthor">Marks, P.</span>, <span class="refTitle">"IPvFoo - a Chrome/Firefox extension that adds an icon to indicate whether the current page was fetched using IPv4 or IPv6."</span>, <span>n.d.</span>, <span>&lt;<a href="https://github.com/pmarks-net/ipvfoo">https://github.com/pmarks-net/ipvfoo</a>&gt;</span>. </dd>
@@ -1715,6 +1727,14 @@ Be prepared for this and plan extra time or budget for updating or replacing the
 <dt id="M-21-07">[M-21-07]</dt>
         <dd>
 <span class="refTitle">"M-21-07 – Completing the Transition to Internet Protocol Version 6 (IPv6)"</span>, <span class="seriesInfo">United States of America Office of Management and Budget Memorandum for Heads of Executive Departments and Agencies</span>, <time datetime="2020-11-19" class="refDate">19 November 2020</time>, <span>&lt;<a href="https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf">https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5389">[RFC5389]</dt>
+        <dd>
+<span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Mahy, R.</span>, <span class="refAuthor">Matthews, P.</span>, and <span class="refAuthor">D. Wing</span>, <span class="refTitle">"Session Traversal Utilities for NAT (STUN)"</span>, <span class="seriesInfo">RFC 5389</span>, <span class="seriesInfo">DOI 10.17487/RFC5389</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5389">https://www.rfc-editor.org/rfc/rfc5389</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5766">[RFC5766]</dt>
+        <dd>
+<span class="refAuthor">Mahy, R.</span>, <span class="refAuthor">Matthews, P.</span>, and <span class="refAuthor">J. Rosenberg</span>, <span class="refTitle">"Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)"</span>, <span class="seriesInfo">RFC 5766</span>, <span class="seriesInfo">DOI 10.17487/RFC5766</span>, <time datetime="2010-04" class="refDate">April 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5766">https://www.rfc-editor.org/rfc/rfc5766</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6052">[RFC6052]</dt>
         <dd>
