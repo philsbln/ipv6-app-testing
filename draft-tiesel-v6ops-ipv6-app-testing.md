@@ -117,10 +117,10 @@ These include Dual-Stack clients combined with IPv4-only and a True IPv6-only se
 We also include then cases with Dual-Stack Server and Single-Stack clients, to test whether a single address family at client side works as anticipated and look at the transition case using NAT64.
 We have no special scenarios for 464XLAT {{?RFC6877}} and IPv6-Mostly {{I-D.draft-ietf-v6ops-6mops}}, as these architectures are from then client side indistinguishable from the Dual-Stack (464XLAT or IPv6-Mostly with CLAT) or IPv6-only with NAT64 (IPv6-Mostly without CLAT).
 
-For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64, it is also advisable to consider the case marked as IPv6-only-DC in {{scn_combinations}}).
+For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64, it is also advisable to consider the case marked as IPv6-only-DC in {{scn_combinations}}.
 
-The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in {{scn_combinations}}).
-For peer-to-peer applications and applications with complex connection handling like using STUN {{?RFC5389}}or TURN {{?RFC5766}}, skipping these scenarios is strongly discouraged.
+The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in {{scn_combinations}}.
+For peer-to-peer applications and applications with complex connection handling like using STUN {{?RFC5389}} or TURN {{?RFC5766}}, skipping these scenarios is strongly discouraged.
 In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.
 
 | Client               | Server               | Verdict      |
