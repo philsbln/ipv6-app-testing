@@ -197,10 +197,16 @@ Table of Contents
    the additional address family confused the client.  We also include
    then cases with Dual-Stack Server and Single-Stack clients, to test
    whether a single address family at client side works as anticipated
-   and look at the transition case using NAT64.  It is also advisable to
-   consider the IPv6-only datacenter case, where servers may be exposed
-   to the IPv4-only Internet using NAT64 (marked as IPv6-only-DC in
-   Table 1).
+   and look at the transition case using NAT64.  We have no special
+   scenarios for 464XLAT [RFC6877] and IPv6-Mostly
+   [I-D.draft-ietf-v6ops-6mops], as these architectures are from then
+   client side indistinguishable from the Dual-Stack (464XLAT or
+   IPv6-Mostly with CLAT) or IPv6-only with NAT64 (IPv6-Mostly without
+   CLAT).
+
+   For the IPv6-only datacenter case, where servers may be exposed to
+   the IPv4-only Internet using NAT64, it is also advisable to consider
+   the case marked as IPv6-only-DC in Table 1).
 
    The other combinations are unlikely to exhibit additional problems
    for client-server-based applications and therefore are marked as
@@ -557,6 +563,13 @@ Table of Contents
               July 2025, <https://datatracker.ietf.org/doc/html/draft-
               ietf-v6ops-claton-05>.
 
+   [I-D.draft-ietf-v6ops-6mops]
+              Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
+              Networks: Deployment and Operations Considerations", Work
+              in Progress, Internet-Draft, draft-ietf-v6ops-6mops-01, 3
+              March 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-v6ops-6mops-01>.
+
    [I-D.draft-winters-v6ops-rfc7084bis]
               Lencse, G., Martinez, J. P., Patton, B., and T. Winters,
               "Basic Requirements for IPv6 Customer Edge Routers", Work
@@ -602,6 +615,11 @@ Table of Contents
               Translation from IPv6 Clients to IPv4 Servers", RFC 6147,
               DOI 10.17487/RFC6147, April 2011,
               <https://www.rfc-editor.org/rfc/rfc6147>.
+
+   [RFC6877]  Mawatari, M., Kawashima, M., and C. Byrne, "464XLAT:
+              Combination of Stateful and Stateless Translation",
+              RFC 6877, DOI 10.17487/RFC6877, April 2013,
+              <https://www.rfc-editor.org/rfc/rfc6877>.
 
    [RFC8305]  Schinazi, D. and T. Pauly, "Happy Eyeballs Version 2:
               Better Connectivity Using Concurrency", RFC 8305,

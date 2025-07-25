@@ -1336,10 +1336,11 @@ Note, while the involved parties are listed here as "client" and "server" to ref
 <p id="section-3.1-2">The first five scenarios marked as <em>base</em> should cover all major code paths and fallback conditions.
 These include Dual-Stack clients combined with IPv4-only and a True IPv6-only server, to test wither the additional address family confused the client.
 We also include then cases with Dual-Stack Server and Single-Stack clients, to test whether a single address family at client side works as anticipated and look at the transition case using NAT64.
-It is also advisable to consider the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64 (marked as IPv6-only-DC in <a href="#scn_combinations" class="auto internal xref">Table 1</a>).<a href="#section-3.1-2" class="pilcrow">¶</a></p>
-<p id="section-3.1-3">The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in <a href="#scn_combinations" class="auto internal xref">Table 1</a>).
+We have no special scenarios for 464XLAT <span>[<a href="#RFC6877" class="cite xref">RFC6877</a>]</span> and IPv6-Mostly <span>[<a href="#I-D.draft-ietf-v6ops-6mops" class="cite xref">I-D.draft-ietf-v6ops-6mops</a>]</span>, as these architectures are from then client side indistinguishable from the Dual-Stack (464XLAT or IPv6-Mostly with CLAT) or IPv6-only with NAT64 (IPv6-Mostly without CLAT).<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1-3">For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only Internet using NAT64, it is also advisable to consider the case marked as IPv6-only-DC in <a href="#scn_combinations" class="auto internal xref">Table 1</a>).<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in <a href="#scn_combinations" class="auto internal xref">Table 1</a>).
 For peer-to-peer applications and applications with complex connection handling like using STUN <span>[<a href="#RFC5389" class="cite xref">RFC5389</a>]</span>or TURN <span>[<a href="#RFC5766" class="cite xref">RFC5766</a>]</span>, skipping these scenarios is strongly discouraged.
-In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <span id="name-scenario-combinations-to-co"></span><div id="scn_combinations">
 <table class="center" id="table-1">
           <caption>
@@ -1707,6 +1708,10 @@ Be prepared for this and plan extra time or budget for updating or replacing the
         <dd>
 <span class="refAuthor">Linkova, J.</span> and <span class="refAuthor">T. Jensen</span>, <span class="refTitle">"464XLAT Customer-side Translator (CLAT): Node Recommendations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-claton-05</span>, <time datetime="2025-07-06" class="refDate">6 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-05">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.draft-ietf-v6ops-6mops">[I-D.draft-ietf-v6ops-6mops]</dt>
+        <dd>
+<span class="refAuthor">Buraglio, N.</span>, <span class="refAuthor">Caletka, O.</span>, and <span class="refAuthor">J. Linkova</span>, <span class="refTitle">"IPv6-Mostly Networks: Deployment and Operations Considerations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-6mops-01</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-01">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.draft-winters-v6ops-rfc7084bis">[I-D.draft-winters-v6ops-rfc7084bis]</dt>
         <dd>
 <span class="refAuthor">Lencse, G.</span>, <span class="refAuthor">Martinez, J. P.</span>, <span class="refAuthor">Patton, B.</span>, and <span class="refAuthor">T. Winters</span>, <span class="refTitle">"Basic Requirements for IPv6 Customer Edge Routers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-winters-v6ops-rfc7084bis-03</span>, <time datetime="2024-07-08" class="refDate">8 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-winters-v6ops-rfc7084bis-03">https://datatracker.ietf.org/doc/html/draft-winters-v6ops-rfc7084bis-03</a>&gt;</span>. </dd>
@@ -1738,6 +1743,10 @@ Be prepared for this and plan extra time or budget for updating or replacing the
 <dt id="RFC6147">[RFC6147]</dt>
         <dd>
 <span class="refAuthor">Bagnulo, M.</span>, <span class="refAuthor">Sullivan, A.</span>, <span class="refAuthor">Matthews, P.</span>, and <span class="refAuthor">I. van Beijnum</span>, <span class="refTitle">"DNS64: DNS Extensions for Network Address Translation from IPv6 Clients to IPv4 Servers"</span>, <span class="seriesInfo">RFC 6147</span>, <span class="seriesInfo">DOI 10.17487/RFC6147</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6147">https://www.rfc-editor.org/rfc/rfc6147</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6877">[RFC6877]</dt>
+        <dd>
+<span class="refAuthor">Mawatari, M.</span>, <span class="refAuthor">Kawashima, M.</span>, and <span class="refAuthor">C. Byrne</span>, <span class="refTitle">"464XLAT: Combination of Stateful and Stateless Translation"</span>, <span class="seriesInfo">RFC 6877</span>, <span class="seriesInfo">DOI 10.17487/RFC6877</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6877">https://www.rfc-editor.org/rfc/rfc6877</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8305">[RFC8305]</dt>
         <dd>
