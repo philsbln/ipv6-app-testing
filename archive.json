@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-24T01:10:31.883247+00:00",
+  "timestamp": "2025-07-27T01:17:01.588566+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -57,12 +57,14 @@
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/1",
       "state": "OPEN",
       "author": "furry13",
-      "authorAssociation": "NONE",
-      "assignees": [],
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "furry13"
+      ],
       "labels": [],
       "body": "I think it might be useful to test with RFC8781 w/o DNS64 as a primary case and maybe have a separate case (?) for DNS64 presence?\nIt would be desirable to ensure that there are no dependencies on DNS64?",
       "createdAt": "2025-07-23T10:10:15Z",
-      "updatedAt": "2025-07-23T17:22:52Z",
+      "updatedAt": "2025-07-25T09:35:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -71,6 +73,13 @@
           "body": "As part of a section on name resolution issues to look for, that makes very much sense.\n\n@furry13 ideas who may want to contribute a section on that?",
           "createdAt": "2025-07-23T17:22:52Z",
           "updatedAt": "2025-07-23T17:22:52Z"
+        },
+        {
+          "author": "furry13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We might want to have a 'network topologies' section",
+          "createdAt": "2025-07-25T09:35:44Z",
+          "updatedAt": "2025-07-25T09:35:44Z"
         }
       ]
     },
@@ -79,15 +88,15 @@
       "id": "I_kwDOPQtDQ87CDwpk",
       "title": "CLAT case needs to be mentioned explicitly?",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/2",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "furry13",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "When \"IPv6-only + NAT64\" client is tested, do we want to ensure that the OS doesn't have CLAT enabled, so I guess it's worth mentioning explicitly",
       "createdAt": "2025-07-23T10:12:27Z",
-      "updatedAt": "2025-07-23T15:38:51Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-25T09:44:44Z",
+      "closedAt": "2025-07-25T09:44:44Z",
       "comments": [
         {
           "author": "mstojens",
@@ -110,15 +119,15 @@
       "id": "I_kwDOPQtDQ87CDzgo",
       "title": "Rename \"unlikely\" category",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/3",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "furry13",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "The current text says:\n\n\"The other combinations are unlikely to exhibit additional problems and therefore are marked as unlikely\"\n\nIMHO it's. bit optimistic, and might send a wrong message that it needs to be tested.\n I'd rather move them to 'basic' category (or maybe renaming all cstegories)",
       "createdAt": "2025-07-23T10:16:16Z",
-      "updatedAt": "2025-07-23T15:01:13Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-25T09:38:39Z",
+      "closedAt": "2025-07-25T09:38:39Z",
       "comments": [
         {
           "author": "philsbln",
@@ -136,29 +145,39 @@
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/4",
       "state": "OPEN",
       "author": "furry13",
-      "authorAssociation": "NONE",
-      "assignees": [],
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "philsbln"
+      ],
       "labels": [],
       "body": "as IPv4/IPv6/NAT64 networks might exhibit different behaviours, it would be nice to mention it ",
       "createdAt": "2025-07-23T10:18:13Z",
-      "updatedAt": "2025-07-23T10:18:13Z",
+      "updatedAt": "2025-07-25T13:18:34Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "furry13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Cases:\n\n1. MTU in RA == 1280\n2. Router uplink with MTU=1280 and MTU in RA == 1500",
+          "createdAt": "2025-07-25T09:16:34Z",
+          "updatedAt": "2025-07-25T09:16:34Z"
+        }
+      ]
     },
     {
       "number": 5,
       "id": "I_kwDOPQtDQ87CD2Ck",
       "title": "STUN/TURN cases",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/5",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "furry13",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "IF STUN/TURN is involved, it might be needed to test more cases (all combinations with clients + all combinations of servers)",
       "createdAt": "2025-07-23T10:19:10Z",
-      "updatedAt": "2025-07-23T10:19:10Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-25T09:38:39Z",
+      "closedAt": "2025-07-25T09:38:39Z",
       "comments": []
     },
     {
@@ -168,12 +187,14 @@
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/6",
       "state": "OPEN",
       "author": "furry13",
-      "authorAssociation": "NONE",
-      "assignees": [],
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "philsbln"
+      ],
       "labels": [],
       "body": "As it was discussed at v6ops during Ondrej presentation, we might want to have a standard definition of \"connectivity\".\n\nDefault gateway? non-link-local IPs?",
       "createdAt": "2025-07-23T10:21:07Z",
-      "updatedAt": "2025-07-23T17:15:59Z",
+      "updatedAt": "2025-07-25T13:19:10Z",
       "closedAt": null,
       "comments": [
         {
@@ -182,6 +203,13 @@
           "body": "That's a hard one\u2026 for this document, I'm quite tempted to explicitly define that as out-of-scope.\nIt gets really confusing to get that one right if you can have partial IPv6 and Partial IPv4 connectivity over multiple links/VPNs and each resource may or may not be available over random subsets of these either for address family, routing, and policy reason.",
           "createdAt": "2025-07-23T17:15:59Z",
           "updatedAt": "2025-07-23T17:15:59Z"
+        },
+        {
+          "author": "furry13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We can say sm th like 'in the vast majority of cases it is sufficient to have a default route\". However some apps might require testing more specific routes.\n\n?? Do we want to consider CLAT as 'IPV4 connectivity'?",
+          "createdAt": "2025-07-25T09:13:08Z",
+          "updatedAt": "2025-07-25T09:13:08Z"
         }
       ]
     },
@@ -190,15 +218,15 @@
       "id": "I_kwDOPQtDQ87CLCet",
       "title": "Warn against VPNs like Apple Private Relay",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/9",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Explain how this can screw IPv6 only testing",
       "createdAt": "2025-07-23T20:47:31Z",
-      "updatedAt": "2025-07-23T20:47:31Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-24T14:32:37Z",
+      "closedAt": "2025-07-24T14:32:37Z",
       "comments": []
     }
   ],
@@ -208,50 +236,104 @@
       "id": "PR_kwDOPQtDQ86gTMXx",
       "title": "Rename category 'unlikely' to 'extended' and mention STUN/TURN",
       "url": "https://github.com/philsbln/ipv6-app-testing/pull/7",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "closing #3\r\nclosing #5",
       "createdAt": "2025-07-23T16:09:48Z",
-      "updatedAt": "2025-07-23T16:09:48Z",
+      "updatedAt": "2025-07-25T09:38:38Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "748689f98154dcd08d83714dbdf5b1111012dff3",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-handle-unlikely-turn",
       "headRefOid": "a59530cba1b17568fa2886e0e3191f66c6c9cf86",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-25T09:38:38Z",
+      "mergedAt": "2025-07-25T09:38:38Z",
+      "mergedBy": "furry13",
+      "mergeCommit": {
+        "oid": "39d6c4c5cac17bc09bc908895619f8f1130e7009"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ862FDWf",
+          "commit": {
+            "abbreviatedOid": "a59530c"
+          },
+          "author": "furry13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-25T09:38:33Z",
+          "updatedAt": "2025-07-25T09:38:33Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 8,
       "id": "PR_kwDOPQtDQ86gTdNX",
       "title": "Explain relation to IPv6-Mostly, 464XLAT and CLAT",
       "url": "https://github.com/philsbln/ipv6-app-testing/pull/8",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "closing #2 ",
       "createdAt": "2025-07-23T16:39:54Z",
-      "updatedAt": "2025-07-23T16:39:54Z",
+      "updatedAt": "2025-07-25T09:44:43Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "39d6c4c5cac17bc09bc908895619f8f1130e7009",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "philsbln-explain-6mops-clat-464xlat",
+      "headRefOid": "3d739debcf6d76125a73d5dc4acf62ffdd14af71",
+      "closedAt": "2025-07-25T09:44:43Z",
+      "mergedAt": "2025-07-25T09:44:43Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "20fa3741a8031bbd57fa82bb06e60fddec499d94"
+      },
+      "comments": [
+        {
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "body": "Discussed with @furry13, LGTM",
+          "createdAt": "2025-07-25T09:42:41Z",
+          "updatedAt": "2025-07-25T09:42:41Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOPQtDQ86gd9ox",
+      "title": "Update IPv6-Only Client section hints",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/10",
+      "state": "MERGED",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "- Disable CLAT\r\n- Disable stuff like iCloud Private Relay\r\n\r\nclosing #9",
+      "createdAt": "2025-07-24T14:31:44Z",
+      "updatedAt": "2025-07-24T14:32:44Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "748689f98154dcd08d83714dbdf5b1111012dff3",
       "headRepository": "philsbln/ipv6-app-testing",
-      "headRefName": "philsbln-explain-6mops-clat-464xlat",
-      "headRefOid": "aa02d239dd095e6894fb6aaf233ad04a655bcee3",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefName": "philsbln-clat-apr-disable",
+      "headRefOid": "d1572b8d201b4c6da68553912612af40d06bcc40",
+      "closedAt": "2025-07-24T14:32:36Z",
+      "mergedAt": "2025-07-24T14:32:36Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "017c6cd5a57ce9629f5589dfc8a033c89bbb2ba0"
+      },
       "comments": [],
       "reviews": []
     }
