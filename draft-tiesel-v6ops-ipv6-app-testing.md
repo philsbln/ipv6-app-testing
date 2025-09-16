@@ -110,7 +110,7 @@ The following sections provide guidance on which connectivity scenarios to inclu
 ## Connectivity Scenarios {#scenarios}
 
 {{scn_combinations}} lists the combinations of connectivity scenarios that application testing should generally consider.
-Note, while the involved parties are listed here as "client" and "server" to reflect the most common case, the combinations can be used the same way when considering peer-to-peer applications, while NAT64 becomes replaceable with other network functions like TURN offering translation capabilities.
+Note, while the involved parties are listed here as "client" and "server" to reflect the most common case, the combinations can be used the same way when considering peer-to-peer applications – with "client" representing the initiating or first acting party.
 
 The first five scenarios marked as *base* should cover all major code paths and fallback conditions.
 These include Dual-Stack clients combined with IPv4-only and a True IPv6-only server, to test wither the additional address family confused the client.
@@ -121,22 +121,44 @@ For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only
 
 The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in {{scn_combinations}}.
 For peer-to-peer applications and applications with complex connection handling like using STUN {{?RFC5389}} or TURN {{?RFC5766}}, skipping these scenarios is strongly discouraged.
-In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.
 
-| Client               | Server               | Verdict      |
-| :---                 | :---                 | :---:        |
-| Dual-Stack           | IPv4-only            | base         |
-| Dual-Stack           | True IPv6-only       | base         |
-| IPv4-only            | Dual-Stack           | base         |
-| IPv6-only with NAT64 | IPv4-only            | base         |
-| True IPv6-only       | Dual-Stack           | base         |
-| IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC |
-| Dual-Stack           | Dual-Stack           | extended     |
-| IPv4-only            | IPv4-only            | extended     |
-| IPv6-only with NAT64 | True IPv6-only       | extended     |
-| True IPv6-only       | True IPv6-only       | extended     |
+| Client               | Server               | Classification |
+| :---                 | :---                 | :---:          |
+| Dual-Stack           | IPv4-only            | base           |
+| Dual-Stack           | True IPv6-only       | base           |
+| IPv4-only            | Dual-Stack           | base           |
+| IPv6-only with NAT64 | IPv4-only            | base           |
+| True IPv6-only       | Dual-Stack           | base           |
+| IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC   |
+| Dual-Stack           | Dual-Stack           | extended       |
+| IPv4-only            | IPv4-only            | extended       |
+| IPv6-only with NAT64 | True IPv6-only       | extended       |
+| True IPv6-only       | True IPv6-only       | extended       |
 {: #scn_combinations title="Scenario combinations to consider for IPv6 testing"}
 
+## Testing with intermediaries (e.g., proxies)  {#intermediaries}
+
+Many application protocols support communicating across intermediates, most commonly HTTP, HTTP-Connect, SOCKS or MASQ proxies.
+Peer-to-peer applications often support TURN {{?RFC5766}} as intermediary to traverse NAT and provide connectivity between IPv4-only and IPv6-only hosts.
+When testing connectivity scenarios for an application, additional test cases including a proxy are recommended;
+As a proxy can convert between address families, all combinations shown in {{scn_proxy}},
+consisting of of base scenarios towards the proxy and (assuming the same scenarios on both sides of the proxy) the respective base scenarios from the proxy to the server,
+should be considered for testing.
+
+| Client               | Proxy                | Server         |
+| :---                 | :---                 | :---:          |
+| Dual-Stack           | IPv4-only            | Dual-Stack     |
+| Dual-Stack           | True IPv6-only       | Dual-Stack     |
+| IPv4-only            | Dual-Stack           | IPv4-only      |
+| IPv4-only            | Dual-Stack           | True IPv6-only |
+| IPv6-only with NAT64 | IPv4-only            | Dual-Stack     |
+| True IPv6-only       | Dual-Stack           | IPv4-only      |
+| True IPv6-only       | Dual-Stack           | True IPv6-only |
+{: #scn_proxy title="Base scenario combinations including a proxy to consider for IPv6 testing"}
+
+## Testing with partially broken connectivity
+
+TODO: text
 
 ## Testing Complex Cloud Applications and Applying Test Cases
 
