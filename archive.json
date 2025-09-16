@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-04T00:57:55.319886+00:00",
+  "timestamp": "2025-09-16T00:58:41.411888+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -285,11 +285,13 @@
       "state": "OPEN",
       "author": "philsbln",
       "authorAssociation": "OWNER",
-      "assignees": [],
+      "assignees": [
+        "philsbln"
+      ],
       "labels": [],
       "body": "From Michael Richardson's early review on -00:\n> if prune the A RR is a method, then they\nmay also need to insert phony/broken AAAA RRs, and then one has to worry\nabout permutting the order of RR returned.\n\nThis can also happen through mis-configured DNS servers, \"DNS security appliances\u201d or miscommunication between DNS and LB teams\u2026 Maybe add as scenario for Section 5 ",
       "createdAt": "2025-09-03T15:44:23Z",
-      "updatedAt": "2025-09-03T15:44:23Z",
+      "updatedAt": "2025-09-15T11:44:58Z",
       "closedAt": null,
       "comments": []
     },
@@ -306,6 +308,24 @@
       "body": "From Michael Richardson's early review on -00:\n> Maybe there are a few new sections needed for:\n> 1. residential IoT\n> 2. on-premise services and appliances.\n> 2b.  a subset of this would include Enterprise IoT.\n> 2c.  I think of routing/switching infrastructure as being the original IoT,\n    or, maybe, \"Things of Internet\"... because how does your XYZ vendor\n    routing platform call v4-home to validate licenses or update firmware\n    when there is no v4?\n> 3. Among the v6-only, but-not-v6-global, would include SNAC.\n  Right now, this mechanism is focused on low-speed, challenged STUB\n  Networks.   However, one interesting way to deploy a cluster of systems\n  (could even be entirely virtual) to an Enterprise would be with a v6-only\n  STUB network.",
       "createdAt": "2025-09-03T15:47:41Z",
       "updatedAt": "2025-09-03T15:47:41Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOPQtDQ87LtE05",
+      "title": "Add Subsection on testing broken connectivity scenarios (DS with broken v4/v6, DNS filtering,\u2026)",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/16",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "philsbln"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-09-15T11:44:25Z",
+      "updatedAt": "2025-09-15T11:44:47Z",
       "closedAt": null,
       "comments": []
     }
@@ -414,6 +434,32 @@
       "mergeCommit": {
         "oid": "017c6cd5a57ce9629f5589dfc8a033c89bbb2ba0"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOPQtDQ86oqYTl",
+      "title": "Define Base Connectivity Scenarios in a less Internet-centric way",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/17",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "this clairifies what \"connectivity\" means and closes #6",
+      "createdAt": "2025-09-15T15:17:53Z",
+      "updatedAt": "2025-09-15T15:18:16Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "philsbln-fix-basecon-defs",
+      "headRefOid": "f636cc017f74bd78186e71af257ca82a913e730c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
