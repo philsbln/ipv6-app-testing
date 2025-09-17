@@ -4,8 +4,8 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                 16 September 2025
-Expires: 20 March 2026
+Intended status: Best Current Practice                 17 September 2025
+Expires: 21 March 2026
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 March 2026.
+   This Internet-Draft will expire on 21 March 2026.
 
 Copyright Notice
 
@@ -71,8 +71,10 @@ Table of Contents
      2.2.  Base Scenarios
    3.  Testing Objectives
      3.1.  Connectivity Scenarios
-     3.2.  Testing with intermediaries (e.g., proxies)
-     3.3.  Testing with partially broken connectivity
+     3.2.  Testing with Intermediaries (e.g., Proxies)
+     3.3.  Testing with Partially Broken Connectivity
+       3.3.1.  Missing DNS Records
+       3.3.2.  Partial Blackholing, MTU, and Fragmentation Issues
      3.4.  Testing Complex Cloud Applications and Applying Test Cases
      3.5.  Special considerations for Web-based Applications
    4.  Testing Strategies
@@ -241,7 +243,7 @@ Table of Contents
 
        Table 1: Scenario combinations to consider for IPv6 testing
 
-3.2.  Testing with intermediaries (e.g., proxies)
+3.2.  Testing with Intermediaries (e.g., Proxies)
 
    Many application protocols support communicating across
    intermediates, most commonly HTTP, HTTP-Connect, SOCKS or MASQ
@@ -276,9 +278,57 @@ Table of Contents
           Table 2: Base scenario combinations including a proxy
                        to consider for IPv6 testing
 
-3.3.  Testing with partially broken connectivity
+3.3.  Testing with Partially Broken Connectivity
 
-   TODO: text
+   When deploying multiple address families, i.e, IPv4 and IPv6, in
+   parallel, situations arise where communication is partially broken
+   for one or more address families.  This can mean that some
+   communication endpoints that are expected to be reachable using both
+   address families, some may only be reachable by one while others are
+   only reachable by the other.  Testing applications also against these
+   scenarios can become a key enabler for users' acceptance of IPv6,
+   especially during a transition phase where partially broken
+   connectivity is expected more frequently.  This section gives a short
+   overview of a few common scenarios.
+
+3.3.1.  Missing DNS Records
+
+   While a server endpoint is intended to support dual-stack
+   connectivity, the A or AAAA DNS records for the endpoint may be
+   missing, e.g, though mis-configuration or broken tooling, or does not
+   reach the client endpoint, e.g., because it got filtered out by a
+   middle box or local resolver.
+
+   While deployment and integration testing should try to test for this
+   kind of broken connectivity, this scenario is for an application
+   developers usually indistinguishable from an IPv4-only or an
+   IPv6-only endpoint.
+
+3.3.2.  Partial Blackholing, MTU, and Fragmentation Issues
+
+   When multiple address families are available, network packets may
+   traverse different paths depending on the address family.  Even when
+   the same path is traverse, the path can exhibit distinct behaviors,
+   e.g., dropping all or particular packets, especially in the presence
+   of middle-boxes.  In some cases, connectivity issues may only become
+   apparent late in the communication process, for example, after a
+   successful TCP handshake but before a TLS handshake succeeds.  In
+   such scenarios, clients restricted to a single address family—such as
+   true IPv6-only clients—may experience complete loss of connectivity
+   in these scenarios, while Dual-stack clients often mask such failures
+   by automatically falling back from one address family to another.
+
+   In addition to partial blackholing, MTU issues may only arise only on
+   one address family or behave differently with respect to MTU
+   available, dropping of fragmented packets or ICMP messages and due-to
+   on-path fragmentation in IPv4.
+
+   It advisable to test for partial blackholing and MTU issued during
+   deployment and integration testing by testing with IPv4only and True-
+   IPv6-only clients to detect such blackholes.  In case these issues
+   can happen outside the testers' circle of control, it is advisable to
+   simulate this kind of failures and make sure application behavior
+   supports detection and analysis of this kind of errors.
 
 3.4.  Testing Complex Cloud Applications and Applying Test Cases
 

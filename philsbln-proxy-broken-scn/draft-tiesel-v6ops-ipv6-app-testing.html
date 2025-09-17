@@ -1050,7 +1050,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tiesel</td>
-<td class="center">Expires 20 March 2026</td>
+<td class="center">Expires 21 March 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tiesel-v6ops-ipv6-app-testing-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-16" class="published">16 September 2025</time>
+<time datetime="2025-09-17" class="published">17 September 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-20">20 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-03-21">21 March 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1115,7 +1115,7 @@ and explains common regressions to avoid when deploying IPv6 support.<a href="#s
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1165,10 +1165,18 @@ and explains common regressions to avoid when deploying IPv6 support.<a href="#s
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-connectivity-scenarios" class="internal xref">Connectivity Scenarios</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-testing-with-intermediaries" class="internal xref">Testing with intermediaries (e.g., proxies)</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-testing-with-intermediaries" class="internal xref">Testing with Intermediaries (e.g., Proxies)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-testing-with-partially-brok" class="internal xref">Testing with partially broken connectivity</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-testing-with-partially-brok" class="internal xref">Testing with Partially Broken Connectivity</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.1">
+                    <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="auto internal xref">3.3.1</a>.  <a href="#name-missing-dns-records" class="internal xref">Missing DNS Records</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.2">
+                    <p id="section-toc.1-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="auto internal xref">3.3.2</a>.  <a href="#name-partial-blackholing-mtu-and" class="internal xref">Partial Blackholing, MTU, and Fragmentation Issues</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-testing-complex-cloud-appli" class="internal xref">Testing Complex Cloud Applications and Applying Test Cases</a></p>
@@ -1418,7 +1426,7 @@ For peer-to-peer applications and applications with complex connection handling 
 <div id="intermediaries">
 <section id="section-3.2">
         <h3 id="name-testing-with-intermediaries">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-testing-with-intermediaries" class="section-name selfRef">Testing with intermediaries (e.g., proxies)</a>
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-testing-with-intermediaries" class="section-name selfRef">Testing with Intermediaries (e.g., Proxies)</a>
         </h3>
 <p id="section-3.2-1">Many application protocols support communicating across intermediates, most commonly HTTP, HTTP-Connect, SOCKS or MASQ proxies.
 Peer-to-peer applications often support TURN <span>[<a href="#RFC5766" class="cite xref">RFC5766</a>]</span> as intermediary to traverse NAT and provide connectivity between IPv4-only and IPv6-only hosts.
@@ -1483,9 +1491,43 @@ should be considered for testing.<a href="#section-3.2-1" class="pilcrow">¶</a>
 <div id="testing-with-partially-broken-connectivity">
 <section id="section-3.3">
         <h3 id="name-testing-with-partially-brok">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-testing-with-partially-brok" class="section-name selfRef">Testing with partially broken connectivity</a>
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-testing-with-partially-brok" class="section-name selfRef">Testing with Partially Broken Connectivity</a>
         </h3>
-<p id="section-3.3-1">TODO: text<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">When deploying multiple address families, i.e, IPv4 and IPv6, in parallel,
+situations arise where communication is partially broken for one or more address families.
+This can mean that some communication endpoints that are expected to be reachable using both address families,
+some may only be reachable by one while others are only reachable by the other.
+Testing applications also against these scenarios can become a key enabler for users' acceptance of IPv6,
+especially during a transition phase where partially broken connectivity is expected more frequently.
+This section gives a short overview of a few common scenarios.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<div id="missing-dns-records">
+<section id="section-3.3.1">
+          <h4 id="name-missing-dns-records">
+<a href="#section-3.3.1" class="section-number selfRef">3.3.1. </a><a href="#name-missing-dns-records" class="section-name selfRef">Missing DNS Records</a>
+          </h4>
+<p id="section-3.3.1-1">While a server endpoint is intended to support dual-stack connectivity,
+the A or AAAA DNS records for the endpoint may be missing, e.g, though mis-configuration or broken tooling,
+or does not reach the client endpoint, e.g., because it got filtered out by a middle box or local resolver.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.1-2">While deployment and integration testing should try to test for this kind of broken connectivity,
+this scenario is for an application developers usually indistinguishable from an IPv4-only or an IPv6-only endpoint.<a href="#section-3.3.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="partial-blackholing-mtu-and-fragmentation-issues">
+<section id="section-3.3.2">
+          <h4 id="name-partial-blackholing-mtu-and">
+<a href="#section-3.3.2" class="section-number selfRef">3.3.2. </a><a href="#name-partial-blackholing-mtu-and" class="section-name selfRef">Partial Blackholing, MTU, and Fragmentation Issues</a>
+          </h4>
+<p id="section-3.3.2-1">When multiple address families are available, network packets may traverse different paths depending on the address family.
+Even when the same path is traverse, the path can exhibit distinct behaviors, e.g., dropping all or particular packets, especially in the presence of middle-boxes.
+In some cases, connectivity issues may only become apparent late in the communication process, for example, after a successful TCP handshake but before a TLS handshake succeeds.
+In such scenarios, clients restricted to a single address family—such as true IPv6-only clients—may experience complete loss of connectivity in these scenarios,
+while Dual-stack clients often mask such failures by automatically falling back from one address family to another.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.2-2">In addition to partial blackholing, MTU issues may only arise only on one address family or behave differently with respect to
+MTU available, dropping of fragmented packets or ICMP messages and due-to on-path fragmentation in IPv4.<a href="#section-3.3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.3.2-3">It advisable to test for partial blackholing and MTU issued during deployment and integration testing by testing with IPv4only and True-IPv6-only clients to detect such blackholes.
+In case these issues can happen outside the testers' circle of control, it is advisable to simulate this kind of failures and make sure application behavior supports detection and analysis of this kind of errors.<a href="#section-3.3.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="testing-complex-cloud-applications-and-applying-test-cases">
