@@ -136,7 +136,7 @@ For peer-to-peer applications and applications with complex connection handling 
 | True IPv6-only       | True IPv6-only       | extended       |
 {: #scn_combinations title="Scenario combinations to consider for IPv6 testing"}
 
-## Testing with intermediaries (e.g., proxies)  {#intermediaries}
+## Testing with Intermediaries (e.g., Proxies)  {#intermediaries}
 
 Many application protocols support communicating across intermediates, most commonly HTTP, HTTP-Connect, SOCKS or MASQ proxies.
 Peer-to-peer applications often support TURN {{?RFC5766}} as intermediary to traverse NAT and provide connectivity between IPv4-only and IPv6-only hosts.
@@ -156,9 +156,38 @@ should be considered for testing.
 | True IPv6-only       | Dual-Stack           | True IPv6-only |
 {: #scn_proxy title="Base scenario combinations including a proxy to consider for IPv6 testing"}
 
-## Testing with partially broken connectivity
+## Testing with Partially Broken Connectivity
 
-TODO: text
+When deploying multiple address families, i.e, IPv4 and IPv6, in parallel,
+situations arise where communication is partially broken for one or more address families.
+This can mean that some communication endpoints that are expected to be reachable using both address families,
+some may only be reachable by one while others are only reachable by the other.
+Testing applications also against these scenarios can become a key enabler for users' acceptance of IPv6,
+especially during a transition phase where partially broken connectivity is expected more frequently.
+This section gives a short overview of a few common scenarios.
+
+### Missing DNS Records
+
+While a server endpoint is intended to support dual-stack connectivity,
+the A or AAAA DNS records for the endpoint may be missing, e.g, though mis-configuration or broken tooling,
+or does not reach the client endpoint, e.g., because it got filtered out by a middle box or local resolver.
+
+While deployment and integration testing should try to test for this kind of broken connectivity,
+this scenario is for an application developers usually indistinguishable from an IPv4-only or an IPv6-only endpoint.
+
+### Partial Blackholing, MTU, and Fragmentation Issues
+
+When multiple address families are available, network packets may traverse different paths depending on the address family.
+Even when the same path is traverse, the path can exhibit distinct behaviors, e.g., dropping all or particular packets, especially in the presence of middle-boxes.
+In some cases, connectivity issues may only become apparent late in the communication process, for example, after a successful TCP handshake but before a TLS handshake succeeds.
+In such scenarios, clients restricted to a single address family—such as true IPv6-only clients—may experience complete loss of connectivity in these scenarios,
+while Dual-stack clients often mask such failures by automatically falling back from one address family to another.
+
+In addition to partial blackholing, MTU issues may only arise only on one address family or behave differently with respect to
+MTU available, dropping of fragmented packets or ICMP messages and due-to on-path fragmentation in IPv4.
+
+It advisable to test for partial blackholing and MTU issued during deployment and integration testing by testing with IPv4only and True-IPv6-only clients to detect such blackholes.
+In case these issues can happen outside the testers' circle of control, it is advisable to simulate this kind of failures and make sure application behavior supports detection and analysis of this kind of errors.
 
 ## Testing Complex Cloud Applications and Applying Test Cases
 
