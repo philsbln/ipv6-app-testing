@@ -29,7 +29,7 @@ author:
  -
     fullname: Ben Patton
     organization: University of New Hampshire InterOperability Laboratory
-    email: furry13@gmail.com, furry@google.com
+    email: bpatton@iol.unh.edu
 
 normative:
 
