@@ -25,10 +25,12 @@ author:
  -
     fullname: Kyle Ouellette
     organization: University of New Hampshire InterOperability Laboratory
+    abbrev: UNH-IOL
     email: kouellette@iol.unh.edu
  -
     fullname: Ben Patton
     organization: University of New Hampshire InterOperability Laboratory
+    abbrev: UNH-IOL
     email: bpatton@iol.unh.edu
 
 normative:
