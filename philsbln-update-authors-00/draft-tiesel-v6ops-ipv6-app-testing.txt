@@ -667,4 +667,4 @@ Authors' Addresses
 
    Ben Patton
    University of New Hampshire InterOperability Laboratory
-   Email: furry13@gmail.com, furry@google.com
+   Email: bpatton@iol.unh.edu
