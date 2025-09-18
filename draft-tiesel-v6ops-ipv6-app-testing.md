@@ -17,7 +17,19 @@ author:
  -
     fullname: Philipp S. Tiesel
     organization: SAP SE
-    email: philipp@tiesel.net
+    email: philipp@tiesel.net, philipp.tiesel@sap.com
+ -
+    fullname: Jen Linkova
+    organization: Google
+    email: furry13@gmail.com, furry@google.com
+ -
+    fullname: Kyle Ouellette
+    organization: University of New Hampshire InterOperability Laboratory
+    email: kouellette@iol.unh.edu
+ -
+    fullname: Ben Patton
+    organization: University of New Hampshire InterOperability Laboratory
+    email: furry13@gmail.com, furry@google.com
 
 normative:
 
@@ -324,4 +336,8 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+Thanks to
+Holger Füßler,
+and
+Michael Richardson
+for the discussions, the input, and all contribution.
