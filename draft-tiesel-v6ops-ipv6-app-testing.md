@@ -158,7 +158,7 @@ should be considered for testing.
 
 ## Testing with Partially Broken Connectivity
 
-When deploying multiple address families, i.e, IPv4 and IPv6, in parallel,
+In Dual-Stack deployments 
 situations arise where communication is partially broken for one or more address families:
 From the Communication endpoints that are expected to be reachable using both address families,
 some may only be reachable by one address family, while others may only be reachable by the other.
@@ -187,7 +187,7 @@ while dual-stack clients often mask such failures by automatically falling back 
 In addition to partial blackholing, MTU issues may only arise on one address family or behave differently with respect to
 MTU available, dropping of fragmented packets, ICMP messages, and due to on-path fragmentation in IPv4.
 
-It is advisable to test for partial blackholing and MTU issues during deployment and integration testing by testing with IPv4-only and True-IPv6-only clients to detect such blackholes.
+It is advisable to test for partial blackholing and MTU issues during deployment and integration testing by testing with IPv4-only and True IPv6-only clients to detect such blackholes.
 In case these issues can occur outside the testers' circle of control, it is advisable to simulate this type of failure and ensure that the application's behavior supports the detection and analysis of these errors.
 
 ## Testing Complex Cloud Applications and Applying Test Cases
