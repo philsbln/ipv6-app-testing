@@ -158,8 +158,7 @@ should be considered for testing.
 
 ## Testing with Partially Broken Connectivity
 
-In Dual-Stack deployments 
-situations arise where communication is partially broken for one or more address families:
+In Dual-Stack deployments situations where communication is partially broken for one or more address families may arise:
 From the Communication endpoints that are expected to be reachable using both address families,
 some may only be reachable by one address family, while others may only be reachable by the other.
 Testing applications against these scenarios can become a key enabler for users' acceptance of IPv6,
