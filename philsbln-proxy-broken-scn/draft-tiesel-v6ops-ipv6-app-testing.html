@@ -1050,7 +1050,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tiesel</td>
-<td class="center">Expires 22 March 2026</td>
+<td class="center">Expires 23 March 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tiesel-v6ops-ipv6-app-testing-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-18" class="published">18 September 2025</time>
+<time datetime="2025-09-19" class="published">19 September 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-22">22 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-03-23">23 March 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1115,7 +1115,7 @@ and explains common regressions to avoid when deploying IPv6 support.<a href="#s
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1493,8 +1493,7 @@ should be considered for testing.<a href="#section-3.2-1" class="pilcrow">¶</a>
         <h3 id="name-testing-with-partially-brok">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-testing-with-partially-brok" class="section-name selfRef">Testing with Partially Broken Connectivity</a>
         </h3>
-<p id="section-3.3-1">When deploying multiple address families, i.e, IPv4 and IPv6, in parallel,
-situations arise where communication is partially broken for one or more address families:
+<p id="section-3.3-1">In Dual-Stack deployments situations where communication is partially broken for one or more address families may arise:
 From the Communication endpoints that are expected to be reachable using both address families,
 some may only be reachable by one address family, while others may only be reachable by the other.
 Testing applications against these scenarios can become a key enabler for users' acceptance of IPv6,
@@ -1525,7 +1524,7 @@ In such scenarios, clients restricted to a single address family—such as True 
 while dual-stack clients often mask such failures by automatically falling back to another address family.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.3.2-2">In addition to partial blackholing, MTU issues may only arise on one address family or behave differently with respect to
 MTU available, dropping of fragmented packets, ICMP messages, and due to on-path fragmentation in IPv4.<a href="#section-3.3.2-2" class="pilcrow">¶</a></p>
-<p id="section-3.3.2-3">It is advisable to test for partial blackholing and MTU issues during deployment and integration testing by testing with IPv4-only and True-IPv6-only clients to detect such blackholes.
+<p id="section-3.3.2-3">It is advisable to test for partial blackholing and MTU issues during deployment and integration testing by testing with IPv4-only and True IPv6-only clients to detect such blackholes.
 In case these issues can occur outside the testers' circle of control, it is advisable to simulate this type of failure and ensure that the application's behavior supports the detection and analysis of these errors.<a href="#section-3.3.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>

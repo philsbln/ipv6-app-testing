@@ -4,8 +4,8 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                 18 September 2025
-Expires: 22 March 2026
+Intended status: Best Current Practice                 19 September 2025
+Expires: 23 March 2026
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 March 2026.
+   This Internet-Draft will expire on 23 March 2026.
 
 Copyright Notice
 
@@ -280,16 +280,15 @@ Table of Contents
 
 3.3.  Testing with Partially Broken Connectivity
 
-   When deploying multiple address families, i.e, IPv4 and IPv6, in
-   parallel, situations arise where communication is partially broken
-   for one or more address families: From the Communication endpoints
-   that are expected to be reachable using both address families, some
-   may only be reachable by one address family, while others may only be
-   reachable by the other.  Testing applications against these scenarios
-   can become a key enabler for users' acceptance of IPv6, especially
-   during a transition phase where partially broken connectivity is
-   expected more frequently.  This section provides a brief overview of
-   several common scenarios.
+   In Dual-Stack deployments situations where communication is partially
+   broken for one or more address families may arise: From the
+   Communication endpoints that are expected to be reachable using both
+   address families, some may only be reachable by one address family,
+   while others may only be reachable by the other.  Testing
+   applications against these scenarios can become a key enabler for
+   users' acceptance of IPv6, especially during a transition phase where
+   partially broken connectivity is expected more frequently.  This
+   section provides a brief overview of several common scenarios.
 
 3.3.1.  Missing DNS Records
 
@@ -324,12 +323,11 @@ Table of Contents
    fragmentation in IPv4.
 
    It is advisable to test for partial blackholing and MTU issues during
-   deployment and integration testing by testing with IPv4-only and
-   True-IPv6-only clients to detect such blackholes.  In case these
-   issues can occur outside the testers' circle of control, it is
-   advisable to simulate this type of failure and ensure that the
-   application's behavior supports the detection and analysis of these
-   errors.
+   deployment and integration testing by testing with IPv4-only and True
+   IPv6-only clients to detect such blackholes.  In case these issues
+   can occur outside the testers' circle of control, it is advisable to
+   simulate this type of failure and ensure that the application's
+   behavior supports the detection and analysis of these errors.
 
 3.4.  Testing Complex Cloud Applications and Applying Test Cases
 
