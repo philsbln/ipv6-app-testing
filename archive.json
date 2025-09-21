@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-18T00:58:02.495437+00:00",
+  "timestamp": "2025-09-21T01:04:44.355838+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -347,6 +347,38 @@
       "updatedAt": "2025-09-17T15:31:34Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 20,
+      "id": "I_kwDOPQtDQ87MeeAL",
+      "title": "Add section for lifecycle functions",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/20",
+      "state": "OPEN",
+      "author": "kouellette",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "[NIST.SP.500-267Ar1](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.500-267Ar1.pdf) section 4.1.1 defines product lifecycle functions. ",
+      "createdAt": "2025-09-18T14:03:50Z",
+      "updatedAt": "2025-09-18T14:03:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 21,
+      "id": "I_kwDOPQtDQ87MuwjS",
+      "title": "Discuss testing with DNS vs. with IPv4/IPv6 literals",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/21",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "@kouellette brought up whether it would be worthwhile to add a short sub-section either here or elsewhere in the document regarding the use of IP literals rather than FQDNs. \n\nWe should either add this to section 2.",
+      "createdAt": "2025-09-19T15:22:39Z",
+      "updatedAt": "2025-09-19T15:22:39Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -494,19 +526,263 @@
       "labels": [],
       "body": "closes #12 \r\ncloses #14  \r\ncloses #4\r\ncloses #16",
       "createdAt": "2025-09-16T15:53:06Z",
-      "updatedAt": "2025-09-17T15:32:04Z",
+      "updatedAt": "2025-09-19T15:35:47Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-proxy-broken-scn",
-      "headRefOid": "99b39c70857c602aced7e1256c42b1c780fbb5a1",
+      "headRefOid": "4755c08fce9b41dbe163ee393bd3060cda010e82",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87BIM_a",
+          "commit": {
+            "abbreviatedOid": "9d6cd67"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Some very minor nits",
+          "createdAt": "2025-09-18T14:33:55Z",
+          "updatedAt": "2025-09-18T14:46:50Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "Do you think it would be worthwhile to add a short sub-section either here or elsewhere in the document regarding the use of IP literals rather than FQDNs?  ",
+              "createdAt": "2025-09-18T14:33:55Z",
+              "updatedAt": "2025-09-18T14:46:50Z"
+            },
+            {
+              "originalPosition": 93,
+              "body": "\"True-IPv6-only\" -> \"True IPv6-only\" for consistency",
+              "createdAt": "2025-09-18T14:34:54Z",
+              "updatedAt": "2025-09-18T14:46:50Z"
+            },
+            {
+              "originalPosition": 64,
+              "body": "This could be condensed to \"When deploying Dual-Stack, ...\"",
+              "createdAt": "2025-09-18T14:40:49Z",
+              "updatedAt": "2025-09-18T14:46:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87BcY8a",
+          "commit": {
+            "abbreviatedOid": "9d6cd67"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-19T15:23:13Z",
+          "updatedAt": "2025-09-19T15:23:13Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "We should definitely do this\u2026 I created a new Issue #21 for that and would prefer to do it in a separate PR ",
+              "createdAt": "2025-09-19T15:23:13Z",
+              "updatedAt": "2025-09-19T15:23:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87BcdNU",
+          "commit": {
+            "abbreviatedOid": "9d6cd67"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-19T15:27:27Z",
+          "updatedAt": "2025-09-19T15:27:27Z",
+          "comments": [
+            {
+              "originalPosition": 93,
+              "body": "```suggestion\r\nIt is advisable to test for partial blackholing and MTU issues during deployment and integration testing by testing with IPv4-only and True IPv6-only clients to detect such blackholes.\r\n```",
+              "createdAt": "2025-09-19T15:27:27Z",
+              "updatedAt": "2025-09-19T15:27:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87Bch8g",
+          "commit": {
+            "abbreviatedOid": "9d6cd67"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-19T15:31:08Z",
+          "updatedAt": "2025-09-19T15:31:08Z",
+          "comments": [
+            {
+              "originalPosition": 64,
+              "body": "```suggestion\r\nIn Dual-Stack deployments \r\n```",
+              "createdAt": "2025-09-19T15:31:08Z",
+              "updatedAt": "2025-09-19T15:31:08Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOPQtDQ86pTE6e",
+      "title": "Add new authors and initial acknowledgments",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/19",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "furry13",
+        "kouellette"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-09-18T13:46:29Z",
+      "updatedAt": "2025-09-19T15:51:59Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "philsbln-update-authors-00",
+      "headRefOid": "77784759b673147d24cba73614366c1b2adb1204",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "body": "@furry13 also fine with you?",
+          "createdAt": "2025-09-19T15:51:59Z",
+          "updatedAt": "2025-09-19T15:51:59Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87BHP_f",
+          "commit": {
+            "abbreviatedOid": "cbfc449"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-18T13:53:22Z",
+          "updatedAt": "2025-09-18T13:53:23Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "This can be shortened to \"UNH-IOL\". Let me know if you'd rather me make these changes.",
+              "createdAt": "2025-09-18T13:53:22Z",
+              "updatedAt": "2025-09-18T13:54:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87BHR5X",
+          "commit": {
+            "abbreviatedOid": "cbfc449"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-18T13:54:52Z",
+          "updatedAt": "2025-09-18T13:54:52Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "Email should be \"bpatton@iol.unh.edu\"",
+              "createdAt": "2025-09-18T13:54:52Z",
+              "updatedAt": "2025-09-18T13:54:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87BHsb0",
+          "commit": {
+            "abbreviatedOid": "cbfc449"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-18T14:12:19Z",
+          "updatedAt": "2025-09-18T14:12:19Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\n    email: bpatton@iol.unh.edu\r\n```\r\nSorry, fixed",
+              "createdAt": "2025-09-18T14:12:19Z",
+              "updatedAt": "2025-09-18T14:12:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87BH5ht",
+          "commit": {
+            "abbreviatedOid": "cbfc449"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-18T14:20:53Z",
+          "updatedAt": "2025-09-18T14:20:54Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "As you like\u2026 there is a syntax for it ;-)",
+              "createdAt": "2025-09-18T14:20:53Z",
+              "updatedAt": "2025-09-18T14:20:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87BIjNK",
+          "commit": {
+            "abbreviatedOid": "7778475"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-18T14:48:28Z",
+          "updatedAt": "2025-09-18T14:48:29Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "How convenient! ",
+              "createdAt": "2025-09-18T14:48:29Z",
+              "updatedAt": "2025-09-18T14:48:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87BIjqp",
+          "commit": {
+            "abbreviatedOid": "7778475"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-18T14:48:56Z",
+          "updatedAt": "2025-09-18T14:48:56Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
