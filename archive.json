@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-30T01:00:21.164410+00:00",
+  "timestamp": "2025-10-02T00:58:24.793953+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -796,7 +796,7 @@
       "labels": [],
       "body": "closes #20 ",
       "createdAt": "2025-09-29T17:10:27Z",
-      "updatedAt": "2025-09-29T17:10:28Z",
+      "updatedAt": "2025-09-30T15:12:39Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
@@ -808,7 +808,40 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87D07Eo",
+          "commit": {
+            "abbreviatedOid": "3af789e"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "I would suggest to separate definition (moving them up to section 2) and recommendations (keeping them in section 3). Otherwise, I like the addition.",
+          "createdAt": "2025-09-30T14:55:18Z",
+          "updatedAt": "2025-09-30T15:12:39Z",
+          "comments": [
+            {
+              "originalPosition": 30,
+              "body": "We should consider moving these definitions as well as the Reference to Section 2 and only keep the Lifecycle Function Testing Considerations in Section 3",
+              "createdAt": "2025-09-30T14:55:18Z",
+              "updatedAt": "2025-09-30T15:12:39Z"
+            },
+            {
+              "originalPosition": 21,
+              "body": "I would like to separate definition and recommendation here\r\n```suggestion\r\nOrthogonal to the Base Scenarios, we define lifecycle functions, i.e., the phases in which an appllication is approached during a simplified lifecycle of the application, in accordance to [NIST.SP.500-267Ar1] as follows:\r\n```",
+              "createdAt": "2025-09-30T15:03:29Z",
+              "updatedAt": "2025-09-30T15:12:39Z"
+            },
+            {
+              "originalPosition": 35,
+              "body": "Text moved down and merged as suggested above\u2026\r\n```suggestion\r\n## Testing Lifecycle Function Considerations\r\n\r\nTo cover the whole lifecycle of an application including installation, user interface,\r\nmanagement, and update, it is recommended to test that the lifecycle functions defined in {{lifecycle-functions}} are operational within the connectivity scenarios defined in {{scn_combinations}}.\r\n\r\nIn particular keep the following considerations in mind:\r\n```",
+              "createdAt": "2025-09-30T15:10:34Z",
+              "updatedAt": "2025-09-30T15:12:39Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
