@@ -4,8 +4,8 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                 29 September 2025
-Expires: 2 April 2026
+Intended status: Best Current Practice                    3 October 2025
+Expires: 6 April 2026
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 April 2026.
+   This Internet-Draft will expire on 6 April 2026.
 
 Copyright Notice
 
@@ -72,9 +72,9 @@ Table of Contents
    3.  Testing Objectives
      3.1.  Connectivity Scenarios
      3.2.  Lifecycle Functions
-       3.2.1.  Lifecycle Function Testing Considerations
-     3.3.  Testing Complex Cloud Applications and Applying Test Cases
-     3.4.  Special considerations for Web-based Applications
+     3.3.  Testing Lifecycle Function Considerations
+     3.4.  Testing Complex Cloud Applications and Applying Test Cases
+     3.5.  Special considerations for Web-based Applications
    4.  Testing Strategies
      4.1.  True IPv6-only Clients
      4.2.  IPv6-only Servers
@@ -246,12 +246,10 @@ Table of Contents
 
 3.2.  Lifecycle Functions
 
-   [NIST.SP.500-267Ar1] defines a set of product lifecycle functions
-   comprised of installation, user interface, management, and update.
-   It is recommended to test that these lifecycle functions are
-   operational for the connectivity scenarios defined in Table 1.
-
-   An overview of the lifecycle functions are as follows:
+   Orthogonal to the Base Scenarios, we define lifecycle functions,
+   i.e., the phases in which an application is approached during a
+   simplified lifecycle of the application, in accordance to
+   [NIST.SP.500-267Ar1] as follows:
 
    *  Installation: The installation of the application including any
       initial configuration required for getting the application in a
@@ -266,10 +264,15 @@ Table of Contents
    *  Update: All forms of update functions, including both automatic
       and manual update mechanisms.
 
-3.2.1.  Lifecycle Function Testing Considerations
+3.3.  Testing Lifecycle Function Considerations
 
-   When testing the lifecycle functions defined in Section 3.2, there
-   are some considerations to keep in mind:
+   To cover the whole lifecycle of an application including
+   installation, user interface, management, and update, it is
+   recommended to test that the lifecycle functions defined in
+   Section 3.2 are operational within the connectivity scenarios defined
+   in Table 1.
+
+   In particular keep the following considerations in mind:
 
    *  Installation: Installation may require communications with remote
       first-party services (e.g., activation/license server) or remote
@@ -288,7 +291,7 @@ Table of Contents
       remote services, and those that handle network configuration
       parameters.  For example, a network configuration interface may
       only accept IPv4 address literals for certain parameters.  For
-      testing web-based user interfaces, see Section 3.4.
+      testing web-based user interfaces, see Section 3.5.
 
    *  Management: Depending on the application, management functions may
       be provided via the user interface.  However, the application may
@@ -300,7 +303,7 @@ Table of Contents
       additional update functions (e.g., automatic updates, manual
       update mechanisms, etc.) that should be tested.
 
-3.3.  Testing Complex Cloud Applications and Applying Test Cases
+3.4.  Testing Complex Cloud Applications and Applying Test Cases
 
    When testing complex applications, especially cloud applications,
    they typically involve countless data flows.  For some of these, the
@@ -342,7 +345,7 @@ Table of Contents
    always denying access over IPv6, or security issues, like not logging
    access from IPv6 clients.
 
-3.4.  Special considerations for Web-based Applications
+3.5.  Special considerations for Web-based Applications
 
    Web-based applications usually load resources from multiple parties,
    including CDNs and analytic tools, involving data flows to all these
