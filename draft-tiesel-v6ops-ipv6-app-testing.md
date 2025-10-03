@@ -143,11 +143,7 @@ In case of TURN, it is also recommended to test with and without TURN relay in t
 
 ## Lifecycle Functions {#lifecycle-functions}
 
-[NIST.SP.500-267Ar1] defines a set of product lifecycle functions comprised of installation, user interface,
-management, and update. It is recommended to test that these lifecycle functions are operational for the
-connectivity scenarios defined in {{scn_combinations}}.
-
-An overview of the lifecycle functions are as follows:
+Orthogonal to the Base Scenarios, we define lifecycle functions, i.e., the phases in which an application is approached during a simplified lifecycle of the application, in accordance to [NIST.SP.500-267Ar1] as follows:
 
 - Installation: The installation of the application including any initial configuration required for
   getting the application in a state where remote services are operational.
@@ -158,10 +154,12 @@ An overview of the lifecycle functions are as follows:
 
 - Update: All forms of update functions, including both automatic and manual update mechanisms.
 
-### Lifecycle Function Testing Considerations
+## Testing Lifecycle Function Considerations
 
-When testing the lifecycle functions defined in {{lifecycle-functions}}, there are some considerations
-to keep in mind:
+To cover the whole lifecycle of an application including installation, user interface,
+management, and update, it is recommended to test that the lifecycle functions defined in {{lifecycle-functions}} are operational within the connectivity scenarios defined in {{scn_combinations}}.
+
+In particular keep the following considerations in mind:
 
 - Installation: Installation may require communications with remote first-party services (e.g., activation/license server)
   or remote third-party services (e.g., package repositories). In these scenarios, the installer acts as
