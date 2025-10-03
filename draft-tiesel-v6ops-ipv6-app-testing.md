@@ -103,6 +103,18 @@ IPv6-only with NAT64:
 True IPv6-only:
 : A node or application that has native connectivity towards the IPv6 Internet and no connectivity towards the IPv4-only Internet.
 
+## Lifecycle Functions {#lifecycle-functions}
+
+Orthogonal to the Base Scenarios, we define lifecycle functions, i.e., the phases in which an application is approached during a simplified lifecycle of the application, in accordance to [NIST.SP.500-267Ar1] as follows:
+
+- Installation: The installation of the application including any initial configuration required for
+  getting the application in a state where remote services are operational.
+
+- User Interface: All forms of interactive access to the application (e.g., Web UI, API).
+
+- Management: All forms of remote management and monitoring functions.
+
+- Update: All forms of update functions, including both automatic and manual update mechanisms.
 
 # Testing Objectives {#objectives}
 
@@ -140,19 +152,6 @@ In case of TURN, it is also recommended to test with and without TURN relay in t
 | IPv6-only with NAT64 | True IPv6-only       | extended     |
 | True IPv6-only       | True IPv6-only       | extended     |
 {: #scn_combinations title="Scenario combinations to consider for IPv6 testing"}
-
-## Lifecycle Functions {#lifecycle-functions}
-
-Orthogonal to the Base Scenarios, we define lifecycle functions, i.e., the phases in which an application is approached during a simplified lifecycle of the application, in accordance to [NIST.SP.500-267Ar1] as follows:
-
-- Installation: The installation of the application including any initial configuration required for
-  getting the application in a state where remote services are operational.
-
-- User Interface: All forms of interactive access to the application (e.g., Web UI, API).
-
-- Management: All forms of remote management and monitoring functions.
-
-- Update: All forms of update functions, including both automatic and manual update mechanisms.
 
 ## Testing Lifecycle Function Considerations
 
