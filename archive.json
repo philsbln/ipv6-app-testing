@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-02T00:58:24.793953+00:00",
+  "timestamp": "2025-10-05T01:04:50.305997+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -357,10 +357,12 @@
       "author": "kouellette",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "has PR"
+      ],
       "body": "[NIST.SP.500-267Ar1](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.500-267Ar1.pdf) section 4.1.1 defines product lifecycle functions. ",
       "createdAt": "2025-09-18T14:03:50Z",
-      "updatedAt": "2025-09-18T14:03:50Z",
+      "updatedAt": "2025-10-03T13:34:15Z",
       "closedAt": null,
       "comments": []
     },
@@ -796,13 +798,13 @@
       "labels": [],
       "body": "closes #20 ",
       "createdAt": "2025-09-29T17:10:27Z",
-      "updatedAt": "2025-09-30T15:12:39Z",
+      "updatedAt": "2025-10-03T15:01:12Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "20-kouellette-lifecycle-functions",
-      "headRefOid": "3af789e2e3417cd0d74fbcfb9b939faccd90554e",
+      "headRefOid": "e7b668fbe491ed8f9294dcfd8f1708f4b2f6cc8b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -829,9 +831,9 @@
             },
             {
               "originalPosition": 21,
-              "body": "I would like to separate definition and recommendation here\r\n```suggestion\r\nOrthogonal to the Base Scenarios, we define lifecycle functions, i.e., the phases in which an appllication is approached during a simplified lifecycle of the application, in accordance to [NIST.SP.500-267Ar1] as follows:\r\n```",
+              "body": "I would like to separate definition and recommendation here\r\n```suggestion\r\nOrthogonal to the Base Scenarios, we define lifecycle functions, i.e., the phases in which an application is approached during a simplified lifecycle of the application, in accordance to [NIST.SP.500-267Ar1] as follows:\r\n```",
               "createdAt": "2025-09-30T15:03:29Z",
-              "updatedAt": "2025-09-30T15:12:39Z"
+              "updatedAt": "2025-10-03T13:08:34Z"
             },
             {
               "originalPosition": 35,
@@ -840,6 +842,19 @@
               "updatedAt": "2025-09-30T15:12:39Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87EqgFJ",
+          "commit": {
+            "abbreviatedOid": "e7b668f"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Awesome - LGTM",
+          "createdAt": "2025-10-03T15:01:12Z",
+          "updatedAt": "2025-10-03T15:01:12Z",
+          "comments": []
         }
       ]
     }
