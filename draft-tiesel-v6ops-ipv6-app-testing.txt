@@ -4,8 +4,8 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                      25 July 2025
-Expires: 26 January 2026
+Intended status: Best Current Practice                    6 October 2025
+Expires: 9 April 2026
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 January 2026.
+   This Internet-Draft will expire on 9 April 2026.
 
 Copyright Notice
 
@@ -69,10 +69,12 @@ Table of Contents
    2.  Conventions and Definitions
      2.1.  Requirements Language
      2.2.  Base Scenarios
+     2.3.  Lifecycle Functions
    3.  Testing Objectives
      3.1.  Connectivity Scenarios
-     3.2.  Testing Complex Cloud Applications and Applying Test Cases
-     3.3.  Special considerations for Web-based Applications
+     3.2.  Testing Lifecycle Function Considerations
+     3.3.  Testing Complex Cloud Applications and Applying Test Cases
+     3.4.  Special considerations for Web-based Applications
    4.  Testing Strategies
      4.1.  True IPv6-only Clients
      4.2.  IPv6-only Servers
@@ -170,6 +172,26 @@ Table of Contents
       towards the IPv6 Internet and no connectivity towards the
       IPv4-only Internet.
 
+2.3.  Lifecycle Functions
+
+   Orthogonal to the Base Scenarios, we define lifecycle functions,
+   i.e., the phases in which an application is approached during a
+   simplified lifecycle of the application, in accordance to
+   [NIST.SP.500-267Ar1] as follows:
+
+   *  Installation: The installation of the application including any
+      initial configuration required for getting the application in a
+      state where remote services are operational.
+
+   *  User Interface: All forms of interactive access to the application
+      (e.g., Web UI, API).
+
+   *  Management: All forms of remote management and monitoring
+      functions.
+
+   *  Update: All forms of update functions, including both automatic
+      and manual update mechanisms.
+
 3.  Testing Objectives
 
    As a basic principle, IPv6 application testing should always be
@@ -242,7 +264,46 @@ Table of Contents
 
        Table 1: Scenario combinations to consider for IPv6 testing
 
-3.2.  Testing Complex Cloud Applications and Applying Test Cases
+3.2.  Testing Lifecycle Function Considerations
+
+   To cover the whole lifecycle of an application including
+   installation, user interface, management, and update, it is
+   recommended to test that the lifecycle functions defined in
+   Section 2.3 are operational within the connectivity scenarios defined
+   in Table 1.
+
+   In particular keep the following considerations in mind:
+
+   *  Installation: Installation may require communications with remote
+      first-party services (e.g., activation/license server) or remote
+      third-party services (e.g., package repositories).  In these
+      scenarios, the installer acts as the client, and the remote
+      service acts as the server.  In cases of remote third-party
+      services, testing all server scenarios in Table 1 may not be
+      feasible, and impact the client scenarios that can be supported.
+      For example, if a third-party service is IPv4-only, then
+      supporting a True IPv6-only client is not feasible.
+
+   *  User Interface: User interfaces can be incredibly complex with
+      numerous contexts, views, API endpoints, CLI commands, etc.  When
+      testing non-web-based user interfaces, it is recommended to focus
+      on components of the interface that involve communications with
+      remote services, and those that handle network configuration
+      parameters.  For example, a network configuration interface may
+      only accept IPv4 address literals for certain parameters.  For
+      testing web-based user interfaces, see Section 3.4.
+
+   *  Management: Depending on the application, management functions may
+      be provided via the user interface.  However, the application may
+      have additional management functions (e.g., SNMP, syslog, etc.)
+      that should be tested.
+
+   *  Update: Depending on the application, update functions may be
+      exercised during installation.  However, the application may have
+      additional update functions (e.g., automatic updates, manual
+      update mechanisms, etc.) that should be tested.
+
+3.3.  Testing Complex Cloud Applications and Applying Test Cases
 
    When testing complex applications, especially cloud applications,
    they typically involve countless data flows.  For some of these, the
@@ -284,7 +345,7 @@ Table of Contents
    always denying access over IPv6, or security issues, like not logging
    access from IPv6 clients.
 
-3.3.  Special considerations for Web-based Applications
+3.4.  Special considerations for Web-based Applications
 
    Web-based applications usually load resources from multiple parties,
    including CDNs and analytic tools, involving data flows to all these
@@ -557,18 +618,19 @@ Table of Contents
    [C-ARES]   "C-ARES - a modern DNS (stub) resolver library, written in
               C", n.d., <https://c-ares.org/>.
 
-   [CLAT]     Linkova, J. and T. Jensen, "464XLAT Customer-side
-              Translator (CLAT): Node Recommendations", Work in
-              Progress, Internet-Draft, draft-ietf-v6ops-claton-05, 6
-              July 2025, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-v6ops-claton-05>.
+   [CLAT]     Colitti, L., Linkova, J., and T. Jensen, "464XLAT
+              Customer-side Translator (CLAT): Node Recommendations",
+              Work in Progress, Internet-Draft, draft-ietf-v6ops-claton-
+              08, 17 September 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
+              claton-08>.
 
    [I-D.draft-ietf-v6ops-6mops]
               Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
               Networks: Deployment and Operations Considerations", Work
-              in Progress, Internet-Draft, draft-ietf-v6ops-6mops-01, 3
-              March 2025, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-v6ops-6mops-01>.
+              in Progress, Internet-Draft, draft-ietf-v6ops-6mops-02, 26
+              August 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-v6ops-6mops-02>.
 
    [I-D.draft-winters-v6ops-rfc7084bis]
               Lencse, G., Martinez, J. P., Patton, B., and T. Winters,
@@ -593,6 +655,12 @@ Table of Contents
               Departments and Agencies, 19 November 2020,
               <https://www.whitehouse.gov/wp-content/uploads/2020/11/
               M-21-07.pdf>.
+
+   [NIST.SP.500-267Ar1]
+              "NIST Special Publication 500-267 Revision 1 - NIST IPv6
+              Profile", 23 November 2020,
+              <https://nvlpubs.nist.gov/nistpubs/specialpublications/
+              NIST.SP.500-267Ar1.pdf>.
 
    [RFC5389]  Rosenberg, J., Mahy, R., Matthews, P., and D. Wing,
               "Session Traversal Utilities for NAT (STUN)", RFC 5389,
