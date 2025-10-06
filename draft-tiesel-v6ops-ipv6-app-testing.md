@@ -32,6 +32,10 @@ informative:
     seriesinfo:
       United States of America Office of Management and Budget: Memorandum for Heads of Executive Departments and Agencies
     date: 2020-11-19
+  NIST.SP.500-267Ar1:
+    target: https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.500-267Ar1.pdf
+    title: NIST Special Publication 500-267 Revision 1 - NIST IPv6 Profile
+    date: 2020-11-23
   iCloud-Private-Relay:
     target: https://developer.apple.com/videos/play/wwdc2021/10096/
     title: Apple iCLoud Private Relay (WWDC2021)
@@ -99,6 +103,18 @@ IPv6-only with NAT64:
 True IPv6-only:
 : A node or application that has native connectivity towards the IPv6 Internet and no connectivity towards the IPv4-only Internet.
 
+## Lifecycle Functions {#lifecycle-functions}
+
+Orthogonal to the Base Scenarios, we define lifecycle functions, i.e., the phases in which an application is approached during a simplified lifecycle of the application, in accordance to [NIST.SP.500-267Ar1] as follows:
+
+- Installation: The installation of the application including any initial configuration required for
+  getting the application in a state where remote services are operational.
+
+- User Interface: All forms of interactive access to the application (e.g., Web UI, API).
+
+- Management: All forms of remote management and monitoring functions.
+
+- Update: All forms of update functions, including both automatic and manual update mechanisms.
 
 # Testing Objectives {#objectives}
 
@@ -189,6 +205,32 @@ MTU available, dropping of fragmented packets, ICMP messages, and due to on-path
 It is advisable to test for partial blackholing and MTU issues during deployment and integration testing by testing with IPv4-only and True IPv6-only clients to detect such blackholes.
 In case these issues can occur outside the testers' circle of control, it is advisable to simulate this type of failure and ensure that the application's behavior supports the detection and analysis of these errors.
 
+## Testing Lifecycle Function Considerations
+
+To cover the whole lifecycle of an application including installation, user interface,
+management, and update, it is recommended to test that the lifecycle functions defined in {{lifecycle-functions}} are operational within the connectivity scenarios defined in {{scn_combinations}}.
+
+In particular keep the following considerations in mind:
+
+- Installation: Installation may require communications with remote first-party services (e.g., activation/license server)
+  or remote third-party services (e.g., package repositories). In these scenarios, the installer acts as
+  the client, and the remote service acts as the server. In cases of remote third-party services, testing
+  all server scenarios in {{scn_combinations}} may not be feasible, and impact the client scenarios that
+  can be supported. For example, if a third-party service is IPv4-only, then supporting a True IPv6-only
+  client is not feasible.
+
+- User Interface: User interfaces can be incredibly complex with numerous contexts, views, API endpoints,
+  CLI commands, etc. When testing non-web-based user interfaces, it is recommended to focus on components
+  of the interface that involve communications with remote services, and those that handle network configuration parameters.
+  For example, a network configuration interface may only accept IPv4 address literals for certain parameters.
+  For testing web-based user interfaces, see {{web-app-considerations}}.
+
+- Management: Depending on the application, management functions may be provided via the user interface.
+  However, the application may have additional management functions (e.g., SNMP, syslog, etc.) that should be tested.
+
+- Update: Depending on the application, update functions may be exercised during installation. However, the application
+  may have additional update functions (e.g., automatic updates, manual update mechanisms, etc.) that should be tested.
+
 ## Testing Complex Cloud Applications and Applying Test Cases
 
 When testing complex applications, especially cloud applications, they typically involve countless data flows.
@@ -212,7 +254,7 @@ While the flows towards these backend systems themselves may be safe to ignore a
 the functional correctness of the backend systems for all kinds of IP address need to be verified as part of the test series.
 Ignoring IP addresses as data in the testing may result in malfunctions, like always denying access over IPv6, or security issues, like not logging access from IPv6 clients.
 
-## Special considerations for Web-based Applications
+## Special considerations for Web-based Applications {#web-app-considerations}
 
 Web-based applications usually load resources from multiple parties, including CDNs and analytic tools, involving data flows to all these parties.
 When facing the requirement to support True IPv6-only users, being unable to load some resources due to missing/defective IPv6 support at the respective parties can have any effect from missing analytics insights or ad revenue to severe functional defects rendering the application unusable.
