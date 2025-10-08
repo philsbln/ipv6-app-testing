@@ -136,7 +136,7 @@ In case of TURN, it is also recommended to test with and without TURN relay in t
 | IPv4-only            | IPv4-only            | extended     |
 | IPv6-only with NAT64 | True IPv6-only       | extended     |
 | True IPv6-only       | True IPv6-only       | extended     |
-{: #scn_combinations title="Scenario combinations to consider for IPv6 testing"}
+{: #scn_combinations title="Connectivity scenario combinations to consider"}
 
 
 ## Testing Complex Cloud Applications and Applying Test Cases
