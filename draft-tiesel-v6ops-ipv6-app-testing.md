@@ -98,7 +98,7 @@ IPv6-only with NAT64:
 : A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and connectivity towards IPv4 endpoints using a transition technology like NAT64, e.g., NAT64 in combination with CLAT, DNS64, or local address synthesis.
 
 True IPv6-only:
-: A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and no connectivity towards the IPv4 endpoints.
+: A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and no connectivity towards any relevant IPv4 endpoints.
 
 
 # Testing Objectives {#objectives}
