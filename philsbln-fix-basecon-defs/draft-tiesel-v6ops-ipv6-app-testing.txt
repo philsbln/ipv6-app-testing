@@ -244,7 +244,7 @@ Table of Contents
       | True IPv6-only       | True IPv6-only       |   extended   |
       +----------------------+----------------------+--------------+
 
-       Table 1: Scenario combinations to consider for IPv6 testing
+         Table 1: Connectivity scenario combinations to consider
 
 3.2.  Testing Complex Cloud Applications and Applying Test Cases
 
