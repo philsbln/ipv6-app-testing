@@ -5,11 +5,11 @@
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
 Intended status: Best Current Practice                        J. Linkova
-Expires: 22 March 2026                                            Google
+Expires: 11 April 2026                                            Google
                                                             K. Ouellette
                                                                B. Patton
                                                                  UNH-IOL
-                                                       18 September 2025
+                                                          8 October 2025
 
 
                    Testing Applications' IPv6 Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 March 2026.
+   This Internet-Draft will expire on 11 April 2026.
 
 Copyright Notice
 
@@ -564,9 +564,9 @@ Table of Contents
    [CLAT]     Colitti, L., Linkova, J., and T. Jensen, "464XLAT
               Customer-side Translator (CLAT): Node Recommendations",
               Work in Progress, Internet-Draft, draft-ietf-v6ops-claton-
-              08, 17 September 2025,
+              09, 7 October 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
-              claton-08>.
+              claton-09>.
 
    [I-D.draft-ietf-v6ops-6mops]
               Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
@@ -661,10 +661,10 @@ Authors' Addresses
 
 
    Kyle Ouellette
-   University of New Hampshire InterOperability Laboratory
+   University of New Hampshire Interoperability Labs
    Email: kouellette@iol.unh.edu
 
 
    Ben Patton
-   University of New Hampshire InterOperability Laboratory
+   University of New Hampshire Interoperability Labs
    Email: bpatton@iol.unh.edu
