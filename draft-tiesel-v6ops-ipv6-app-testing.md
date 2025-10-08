@@ -24,12 +24,12 @@ author:
     email: furry13@gmail.com, furry@google.com
  -
     fullname: Kyle Ouellette
-    organization: University of New Hampshire InterOperability Laboratory
+    organization: University of New Hampshire Interoperability Labs
     abbrev: UNH-IOL
     email: kouellette@iol.unh.edu
  -
     fullname: Ben Patton
-    organization: University of New Hampshire InterOperability Laboratory
+    organization: University of New Hampshire Interoperability Labs
     abbrev: UNH-IOL
     email: bpatton@iol.unh.edu
 
