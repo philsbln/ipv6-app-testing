@@ -4,8 +4,8 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                 15 September 2025
-Expires: 19 March 2026
+Intended status: Best Current Practice                    8 October 2025
+Expires: 11 April 2026
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 March 2026.
+   This Internet-Draft will expire on 11 April 2026.
 
 Copyright Notice
 
@@ -172,7 +172,7 @@ Table of Contents
 
    True IPv6-only:  A node or application that has native connectivity
       towards all endpoints relevant for the test scenario using IPv6
-      and no connectivity towards the IPv4 endpoints.
+      and no connectivity towards any relevant IPv4 endpoints.
 
 3.  Testing Objectives
 
@@ -561,11 +561,12 @@ Table of Contents
    [C-ARES]   "C-ARES - a modern DNS (stub) resolver library, written in
               C", n.d., <https://c-ares.org/>.
 
-   [CLAT]     Linkova, J. and T. Jensen, "464XLAT Customer-side
-              Translator (CLAT): Node Recommendations", Work in
-              Progress, Internet-Draft, draft-ietf-v6ops-claton-07, 25
-              August 2025, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-v6ops-claton-07>.
+   [CLAT]     Colitti, L., Linkova, J., and T. Jensen, "464XLAT
+              Customer-side Translator (CLAT): Node Recommendations",
+              Work in Progress, Internet-Draft, draft-ietf-v6ops-claton-
+              09, 7 October 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
+              claton-09>.
 
    [I-D.draft-ietf-v6ops-6mops]
               Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
