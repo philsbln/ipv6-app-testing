@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-07T00:59:24.139443+00:00",
+  "timestamp": "2025-10-09T01:00:01.032631+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -502,19 +502,40 @@
       "labels": [],
       "body": "this clairifies what \"connectivity\" means and closes #6",
       "createdAt": "2025-09-15T15:17:53Z",
-      "updatedAt": "2025-10-06T14:29:45Z",
+      "updatedAt": "2025-10-08T13:05:19Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-fix-basecon-defs",
-      "headRefOid": "f636cc017f74bd78186e71af257ca82a913e730c",
+      "headRefOid": "b03e4ffac03658e1d456ce20aafc3e84b5b67c13",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87FWs7X",
+          "commit": {
+            "abbreviatedOid": "f636cc0"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Minor suggestion to align the wording of IPv4-only and True IPv6-only.\r\n\r\nI can't leave a suggestion since it's not part of the diff, but maybe we should update the title of combinations table to something along the lines of \"Connectivity scenario combinations to consider\"?\r\n\r\nOther than those suggestions, looks good to me.",
+          "createdAt": "2025-10-07T17:07:59Z",
+          "updatedAt": "2025-10-07T17:16:53Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "```suggestion\r\n: A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and no connectivity towards any relevant IPv4 endpoints.\r\n```",
+              "createdAt": "2025-10-07T17:07:59Z",
+              "updatedAt": "2025-10-07T17:16:53Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 18,
@@ -650,13 +671,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-09-18T13:46:29Z",
-      "updatedAt": "2025-09-19T15:51:59Z",
+      "updatedAt": "2025-10-08T09:21:48Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-update-authors-00",
-      "headRefOid": "77784759b673147d24cba73614366c1b2adb1204",
+      "headRefOid": "68f2d493ba1de1568bed6b1eaf8edf2ac138ebd2",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -783,6 +804,32 @@
           "createdAt": "2025-09-18T14:48:56Z",
           "updatedAt": "2025-09-18T14:48:56Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87FWdoU",
+          "commit": {
+            "abbreviatedOid": "7778475"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "My company is rebranding...",
+          "createdAt": "2025-10-07T16:50:30Z",
+          "updatedAt": "2025-10-07T16:52:41Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\n    organization: University of New Hampshire Interoperability Labs\r\n```",
+              "createdAt": "2025-10-07T16:50:30Z",
+              "updatedAt": "2025-10-07T16:52:42Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\n    organization: University of New Hampshire Interoperability Labs\r\n```",
+              "createdAt": "2025-10-07T16:50:41Z",
+              "updatedAt": "2025-10-07T16:52:42Z"
+            }
+          ]
         }
       ]
     },
