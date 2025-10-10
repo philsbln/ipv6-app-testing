@@ -141,7 +141,7 @@ The following sections provide guidance on which connectivity scenarios to inclu
 ## Connectivity Scenarios {#scenarios}
 
 {{scn_combinations}} lists the combinations of connectivity scenarios that application testing should generally consider.
-Note, while the involved parties are listed here as "client" and "server" to reflect the most common case, the combinations can be used the same way when considering peer-to-peer applications, while NAT64 becomes replaceable with other network functions like TURN offering translation capabilities.
+Note, while the involved parties are listed here as "client" and "server" to reflect the most common case, the combinations can be used the same way when considering peer-to-peer applications – with "client" representing the initiating or first acting party.
 
 The first five scenarios marked as *base* should cover all major code paths and fallback conditions.
 These include Dual-Stack clients combined with IPv4-only and a True IPv6-only server, to test wither the additional address family confused the client.
@@ -152,21 +152,73 @@ For the IPv6-only datacenter case, where servers may be exposed to the IPv4-only
 
 The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in {{scn_combinations}}.
 For peer-to-peer applications and applications with complex connection handling like using STUN {{?RFC5389}} or TURN {{?RFC5766}}, skipping these scenarios is strongly discouraged.
-In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.
 
-| Client               | Server               | Verdict      |
-| :---                 | :---                 | :---:        |
-| Dual-Stack           | IPv4-only            | base         |
-| Dual-Stack           | True IPv6-only       | base         |
-| IPv4-only            | Dual-Stack           | base         |
-| IPv6-only with NAT64 | IPv4-only            | base         |
-| True IPv6-only       | Dual-Stack           | base         |
-| IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC |
-| Dual-Stack           | Dual-Stack           | extended     |
-| IPv4-only            | IPv4-only            | extended     |
-| IPv6-only with NAT64 | True IPv6-only       | extended     |
-| True IPv6-only       | True IPv6-only       | extended     |
+| Client               | Server               | Classification |
+| :---                 | :---                 | :---:          |
+| Dual-Stack           | IPv4-only            | base           |
+| Dual-Stack           | True IPv6-only       | base           |
+| IPv4-only            | Dual-Stack           | base           |
+| IPv6-only with NAT64 | IPv4-only            | base           |
+| True IPv6-only       | Dual-Stack           | base           |
+| IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC   |
+| Dual-Stack           | Dual-Stack           | extended       |
+| IPv4-only            | IPv4-only            | extended       |
+| IPv6-only with NAT64 | True IPv6-only       | extended       |
+| True IPv6-only       | True IPv6-only       | extended       |
 {: #scn_combinations title="Connectivity scenario combinations to consider"}
+
+## Testing with Intermediaries (e.g., Proxies)  {#intermediaries}
+
+Many application protocols support communicating across intermediates, most commonly HTTP, HTTP-Connect, SOCKS, or MASQ proxies.
+Peer-to-peer applications often support TURN {{?RFC5766}} as an intermediary to traverse NAT and provide connectivity between IPv4-only and IPv6-only hosts.
+When testing connectivity scenarios for an application, additional test cases including a proxy are recommended;
+As a proxy can convert between address families, all combinations shown in {{scn_proxy}},
+consisting of base scenarios towards the proxy and (assuming the same scenarios on both sides of the proxy) the respective base scenarios from the proxy to the server,
+should be considered for testing.
+
+| Client               | Proxy                | Server         |
+| :---                 | :---                 | :---:          |
+| Dual-Stack           | IPv4-only            | Dual-Stack     |
+| Dual-Stack           | True IPv6-only       | Dual-Stack     |
+| IPv4-only            | Dual-Stack           | IPv4-only      |
+| IPv4-only            | Dual-Stack           | True IPv6-only |
+| IPv6-only with NAT64 | IPv4-only            | Dual-Stack     |
+| True IPv6-only       | Dual-Stack           | IPv4-only      |
+| True IPv6-only       | Dual-Stack           | True IPv6-only |
+{: #scn_proxy title="Base scenario combinations including a proxy to consider for IPv6 testing"}
+
+## Testing with Partially Broken Connectivity
+
+In Dual-Stack deployments situations where communication is partially broken for one or more address families may arise:
+From the Communication endpoints that are expected to be reachable using both address families,
+some may only be reachable by one address family, while others may only be reachable by the other.
+Testing applications against these scenarios can become a key enabler for users' acceptance of IPv6,
+especially during a transition phase where partially broken connectivity is expected more frequently.
+This section provides a brief overview of several common scenarios.
+
+### Missing DNS Records
+
+While a server endpoint is intended to support dual-stack connectivity,
+the A or AAAA DNS records for the endpoint may be missing, e.g, due to misconfiguration or broken tooling,
+or does not reach the client endpoint, e.g., because it got filtered out by a middle box or local resolver.
+
+While deployment and integration testing should try to test for this kind of broken connectivity,
+this scenario is usually indistinguishable from an IPv4-only or an IPv6-only server endpoint,
+and therefore already addressed by testing the base scenarios above.
+
+### Partial Blackholing, MTU, and Fragmentation Issues
+
+When multiple address families are available, network packets may traverse different paths depending on the address family.
+Even when the same path is traversed, the path can exhibit distinct behaviors, e.g., dropping all or particular packets, especially in the presence of middle-boxes.
+In some cases, connectivity issues may only become apparent late in the communication process, for example, after a successful TCP handshake but before a TLS handshake succeeds.
+In such scenarios, clients restricted to a single address family—such as True IPv6-only clients—may experience complete loss of connectivity in these scenarios,
+while dual-stack clients often mask such failures by automatically falling back to another address family.
+
+In addition to partial blackholing, MTU issues may only arise on one address family or behave differently with respect to
+MTU available, dropping of fragmented packets, ICMP messages, and due to on-path fragmentation in IPv4.
+
+It is advisable to test for partial blackholing and MTU issues during deployment and integration testing by testing with IPv4-only and True IPv6-only clients to detect such blackholes.
+In case these issues can occur outside the testers' circle of control, it is advisable to simulate this type of failure and ensure that the application's behavior supports the detection and analysis of these errors.
 
 ## Testing Lifecycle Function Considerations
 
