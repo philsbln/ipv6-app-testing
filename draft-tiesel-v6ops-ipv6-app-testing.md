@@ -17,7 +17,21 @@ author:
  -
     fullname: Philipp S. Tiesel
     organization: SAP SE
-    email: philipp@tiesel.net
+    email: philipp@tiesel.net, philipp.tiesel@sap.com
+ -
+    fullname: Jen Linkova
+    organization: Google
+    email: furry13@gmail.com, furry@google.com
+ -
+    fullname: Kyle Ouellette
+    organization: University of New Hampshire Interoperability Labs
+    abbrev: UNH-IOL
+    email: kouellette@iol.unh.edu
+ -
+    fullname: Ben Patton
+    organization: University of New Hampshire Interoperability Labs
+    abbrev: UNH-IOL
+    email: bpatton@iol.unh.edu
 
 normative:
 
@@ -88,20 +102,21 @@ Enabling these applications to communicate over IPv6 requires careful analysis o
 ## Requirements Language
 {::boilerplate bcp14-tagged}
 
-## Base Scenarios
-Within this document, we define the following "base scenarios" in which applications ought to be verified for availability and functional correctness:
+## Base Connectivity Scenarios
+Within this document, we define the following four "base connectivity scenarios"
+in which applications ought to be verified for availability and functional correctness.
 
 IPv4-only:
-A node or application that has native connectivity towards the IPv4 Internet and no connectivity towards the IPv6-only Internet.
+: A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv4 and no connectivity towards any relevant IPv6 endpoints.
 
 Dual-Stack:
-: A node or application that has native connectivity towards the IPv4 as well as the IPv6 Internet.
+: A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv4 as well as using IPv6.
 
 IPv6-only with NAT64:
-: A node or application that has native connectivity towards the IPv6 Internet and connectivity towards the IPv4 Internet using a transition technology like NAT64.
+: A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and connectivity towards IPv4 endpoints using a transition technology like NAT64, e.g., NAT64 in combination with CLAT, DNS64, or local address synthesis.
 
 True IPv6-only:
-: A node or application that has native connectivity towards the IPv6 Internet and no connectivity towards the IPv4-only Internet.
+: A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and no connectivity towards any relevant IPv4 endpoints.
 
 ## Lifecycle Functions {#lifecycle-functions}
 
@@ -150,7 +165,7 @@ For peer-to-peer applications and applications with complex connection handling 
 | IPv4-only            | IPv4-only            | extended       |
 | IPv6-only with NAT64 | True IPv6-only       | extended       |
 | True IPv6-only       | True IPv6-only       | extended       |
-{: #scn_combinations title="Scenario combinations to consider for IPv6 testing"}
+{: #scn_combinations title="Connectivity scenario combinations to consider"}
 
 ## Testing with Intermediaries (e.g., Proxies)  {#intermediaries}
 
@@ -417,4 +432,8 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+Thanks to
+Holger Füßler,
+and
+Michael Richardson
+for the discussions, the input, and all contribution.
