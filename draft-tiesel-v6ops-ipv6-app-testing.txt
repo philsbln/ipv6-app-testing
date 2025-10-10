@@ -4,8 +4,12 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                    6 October 2025
-Expires: 9 April 2026
+Intended status: Best Current Practice                        J. Linkova
+Expires: 13 April 2026                                            Google
+                                                            K. Ouellette
+                                                               B. Patton
+                                                                 UNH-IOL
+                                                         10 October 2025
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 April 2026.
+   This Internet-Draft will expire on 13 April 2026.
 
 Copyright Notice
 
@@ -98,7 +102,7 @@ Table of Contents
      9.1.  Normative References
      9.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -621,9 +625,9 @@ Table of Contents
    [CLAT]     Colitti, L., Linkova, J., and T. Jensen, "464XLAT
               Customer-side Translator (CLAT): Node Recommendations",
               Work in Progress, Internet-Draft, draft-ietf-v6ops-claton-
-              08, 17 September 2025,
+              09, 7 October 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
-              claton-08>.
+              claton-09>.
 
    [I-D.draft-ietf-v6ops-6mops]
               Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
@@ -708,10 +712,26 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   Thanks to Holger Füßler, and Michael Richardson for the discussions,
+   the input, and all contribution.
 
-Author's Address
+Authors' Addresses
 
    Philipp S. Tiesel
    SAP SE
-   Email: philipp@tiesel.net
+   Email: philipp@tiesel.net, philipp.tiesel@sap.com
+
+
+   Jen Linkova
+   Google
+   Email: furry13@gmail.com, furry@google.com
+
+
+   Kyle Ouellette
+   University of New Hampshire Interoperability Labs
+   Email: kouellette@iol.unh.edu
+
+
+   Ben Patton
+   University of New Hampshire Interoperability Labs
+   Email: bpatton@iol.unh.edu
