@@ -1169,7 +1169,7 @@ and explains common regressions to avoid when deploying IPv6 support.<a href="#s
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-base-scenarios" class="internal xref">Base Scenarios</a></p>
+                <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-base-connectivity-scenarios" class="internal xref">Base Connectivity Scenarios</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-lifecycle-functions" class="internal xref">Lifecycle Functions</a></p>
@@ -1309,28 +1309,32 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="base-scenarios">
+<div id="base-connectivity-scenarios">
 <section id="section-2.2">
-        <h3 id="name-base-scenarios">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-base-scenarios" class="section-name selfRef">Base Scenarios</a>
+        <h3 id="name-base-connectivity-scenarios">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-base-connectivity-scenarios" class="section-name selfRef">Base Connectivity Scenarios</a>
         </h3>
-<p id="section-2.2-1">Within this document, we define the following "base scenarios" in which applications ought to be verified for availability and functional correctness:<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2">IPv4-only:
-A node or application that has native connectivity towards the IPv4 Internet and no connectivity towards the IPv6-only Internet.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-2.2-3">
-          <dt id="section-2.2-3.1">Dual-Stack:</dt>
-          <dd style="margin-left: 1.5em" id="section-2.2-3.2">
-            <p id="section-2.2-3.2.1">A node or application that has native connectivity towards the IPv4 as well as the IPv6 Internet.<a href="#section-2.2-3.2.1" class="pilcrow">¶</a></p>
+<p id="section-2.2-1">Within this document, we define the following four "base connectivity scenarios"
+in which applications ought to be verified for availability and functional correctness.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-2.2-2">
+          <dt id="section-2.2-2.1">IPv4-only:</dt>
+          <dd style="margin-left: 1.5em" id="section-2.2-2.2">
+            <p id="section-2.2-2.2.1">A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv4 and no connectivity towards any relevant IPv6 endpoints.<a href="#section-2.2-2.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.2-3.3">IPv6-only with NAT64:</dt>
-          <dd style="margin-left: 1.5em" id="section-2.2-3.4">
-            <p id="section-2.2-3.4.1">A node or application that has native connectivity towards the IPv6 Internet and connectivity towards the IPv4 Internet using a transition technology like NAT64.<a href="#section-2.2-3.4.1" class="pilcrow">¶</a></p>
+<dt id="section-2.2-2.3">Dual-Stack:</dt>
+          <dd style="margin-left: 1.5em" id="section-2.2-2.4">
+            <p id="section-2.2-2.4.1">A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv4 as well as using IPv6.<a href="#section-2.2-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.2-3.5">True IPv6-only:</dt>
-          <dd style="margin-left: 1.5em" id="section-2.2-3.6">
-            <p id="section-2.2-3.6.1">A node or application that has native connectivity towards the IPv6 Internet and no connectivity towards the IPv4-only Internet.<a href="#section-2.2-3.6.1" class="pilcrow">¶</a></p>
+<dt id="section-2.2-2.5">IPv6-only with NAT64:</dt>
+          <dd style="margin-left: 1.5em" id="section-2.2-2.6">
+            <p id="section-2.2-2.6.1">A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and connectivity towards IPv4 endpoints using a transition technology like NAT64, e.g., NAT64 in combination with CLAT, DNS64, or local address synthesis.<a href="#section-2.2-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-2.2-2.7">True IPv6-only:</dt>
+          <dd style="margin-left: 1.5em" id="section-2.2-2.8">
+            <p id="section-2.2-2.8.1">A node or application that has native connectivity towards all endpoints relevant for the test scenario using IPv6 and no connectivity towards any relevant IPv4 endpoints.<a href="#section-2.2-2.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1385,11 +1389,11 @@ We have no special scenarios for 464XLAT <span>[<a href="#RFC6877" class="cite x
 <p id="section-3.1-4">The other combinations are unlikely to exhibit additional problems for client-server-based applications and therefore are marked as extended in <a href="#scn_combinations" class="auto internal xref">Table 1</a>.
 For peer-to-peer applications and applications with complex connection handling like using STUN <span>[<a href="#RFC5389" class="cite xref">RFC5389</a>]</span> or TURN <span>[<a href="#RFC5766" class="cite xref">RFC5766</a>]</span>, skipping these scenarios is strongly discouraged.
 In case of TURN, it is also recommended to test with and without TURN relay in the path, essentially doubling the number or scenarios.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
-<span id="name-scenario-combinations-to-co"></span><div id="scn_combinations">
+<span id="name-connectivity-scenario-combi"></span><div id="scn_combinations">
 <table class="center" id="table-1">
           <caption>
 <a href="#table-1" class="selfRef">Table 1</a>:
-<a href="#name-scenario-combinations-to-co" class="selfRef">Scenario combinations to consider for IPv6 testing</a>
+<a href="#name-connectivity-scenario-combi" class="selfRef">Connectivity scenario combinations to consider</a>
           </caption>
 <thead>
             <tr>
