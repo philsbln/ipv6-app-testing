@@ -76,9 +76,13 @@ Table of Contents
      2.3.  Lifecycle Functions
    3.  Testing Objectives
      3.1.  Connectivity Scenarios
-     3.2.  Testing Lifecycle Function Considerations
-     3.3.  Testing Complex Cloud Applications and Applying Test Cases
-     3.4.  Special considerations for Web-based Applications
+     3.2.  Testing with Intermediaries (e.g., Proxies)
+     3.3.  Testing with Partially Broken Connectivity
+       3.3.1.  Missing DNS Records
+       3.3.2.  Partial Blackholing, MTU, and Fragmentation Issues
+     3.4.  Testing Lifecycle Function Considerations
+     3.5.  Testing Complex Cloud Applications and Applying Test Cases
+     3.6.  Special considerations for Web-based Applications
    4.  Testing Strategies
      4.1.  True IPv6-only Clients
      4.2.  IPv6-only Servers
@@ -217,9 +221,8 @@ Table of Contents
    application testing should generally consider.  Note, while the
    involved parties are listed here as "client" and "server" to reflect
    the most common case, the combinations can be used the same way when
-   considering peer-to-peer applications, while NAT64 becomes
-   replaceable with other network functions like TURN offering
-   translation capabilities.
+   considering peer-to-peer applications – with "client" representing
+   the initiating or first acting party.
 
    The first five scenarios marked as _base_ should cover all major code
    paths and fallback conditions.  These include Dual-Stack clients
@@ -242,37 +245,121 @@ Table of Contents
    for client-server-based applications and therefore are marked as
    extended in Table 1.  For peer-to-peer applications and applications
    with complex connection handling like using STUN [RFC5389] or TURN
-   [RFC5766], skipping these scenarios is strongly discouraged.  In case
-   of TURN, it is also recommended to test with and without TURN relay
-   in the path, essentially doubling the number or scenarios.
+   [RFC5766], skipping these scenarios is strongly discouraged.
 
-      +======================+======================+==============+
-      | Client               | Server               |   Verdict    |
-      +======================+======================+==============+
-      | Dual-Stack           | IPv4-only            |     base     |
-      +----------------------+----------------------+--------------+
-      | Dual-Stack           | True IPv6-only       |     base     |
-      +----------------------+----------------------+--------------+
-      | IPv4-only            | Dual-Stack           |     base     |
-      +----------------------+----------------------+--------------+
-      | IPv6-only with NAT64 | IPv4-only            |     base     |
-      +----------------------+----------------------+--------------+
-      | True IPv6-only       | Dual-Stack           |     base     |
-      +----------------------+----------------------+--------------+
-      | IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC |
-      +----------------------+----------------------+--------------+
-      | Dual-Stack           | Dual-Stack           |   extended   |
-      +----------------------+----------------------+--------------+
-      | IPv4-only            | IPv4-only            |   extended   |
-      +----------------------+----------------------+--------------+
-      | IPv6-only with NAT64 | True IPv6-only       |   extended   |
-      +----------------------+----------------------+--------------+
-      | True IPv6-only       | True IPv6-only       |   extended   |
-      +----------------------+----------------------+--------------+
+     +======================+======================+================+
+     | Client               | Server               | Classification |
+     +======================+======================+================+
+     | Dual-Stack           | IPv4-only            |      base      |
+     +----------------------+----------------------+----------------+
+     | Dual-Stack           | True IPv6-only       |      base      |
+     +----------------------+----------------------+----------------+
+     | IPv4-only            | Dual-Stack           |      base      |
+     +----------------------+----------------------+----------------+
+     | IPv6-only with NAT64 | IPv4-only            |      base      |
+     +----------------------+----------------------+----------------+
+     | True IPv6-only       | Dual-Stack           |      base      |
+     +----------------------+----------------------+----------------+
+     | IPv4-only            | IPv6-only with NAT64 |  IPv6-only-DC  |
+     +----------------------+----------------------+----------------+
+     | Dual-Stack           | Dual-Stack           |    extended    |
+     +----------------------+----------------------+----------------+
+     | IPv4-only            | IPv4-only            |    extended    |
+     +----------------------+----------------------+----------------+
+     | IPv6-only with NAT64 | True IPv6-only       |    extended    |
+     +----------------------+----------------------+----------------+
+     | True IPv6-only       | True IPv6-only       |    extended    |
+     +----------------------+----------------------+----------------+
 
          Table 1: Connectivity scenario combinations to consider
 
-3.2.  Testing Lifecycle Function Considerations
+3.2.  Testing with Intermediaries (e.g., Proxies)
+
+   Many application protocols support communicating across
+   intermediates, most commonly HTTP, HTTP-Connect, SOCKS, or MASQ
+   proxies.  Peer-to-peer applications often support TURN [RFC5766] as
+   an intermediary to traverse NAT and provide connectivity between
+   IPv4-only and IPv6-only hosts.  When testing connectivity scenarios
+   for an application, additional test cases including a proxy are
+   recommended; As a proxy can convert between address families, all
+   combinations shown in Table 2, consisting of base scenarios towards
+   the proxy and (assuming the same scenarios on both sides of the
+   proxy) the respective base scenarios from the proxy to the server,
+   should be considered for testing.
+
+        +======================+================+================+
+        | Client               | Proxy          |     Server     |
+        +======================+================+================+
+        | Dual-Stack           | IPv4-only      |   Dual-Stack   |
+        +----------------------+----------------+----------------+
+        | Dual-Stack           | True IPv6-only |   Dual-Stack   |
+        +----------------------+----------------+----------------+
+        | IPv4-only            | Dual-Stack     |   IPv4-only    |
+        +----------------------+----------------+----------------+
+        | IPv4-only            | Dual-Stack     | True IPv6-only |
+        +----------------------+----------------+----------------+
+        | IPv6-only with NAT64 | IPv4-only      |   Dual-Stack   |
+        +----------------------+----------------+----------------+
+        | True IPv6-only       | Dual-Stack     |   IPv4-only    |
+        +----------------------+----------------+----------------+
+        | True IPv6-only       | Dual-Stack     | True IPv6-only |
+        +----------------------+----------------+----------------+
+
+          Table 2: Base scenario combinations including a proxy
+                       to consider for IPv6 testing
+
+3.3.  Testing with Partially Broken Connectivity
+
+   In Dual-Stack deployments situations where communication is partially
+   broken for one or more address families may arise: From the
+   Communication endpoints that are expected to be reachable using both
+   address families, some may only be reachable by one address family,
+   while others may only be reachable by the other.  Testing
+   applications against these scenarios can become a key enabler for
+   users' acceptance of IPv6, especially during a transition phase where
+   partially broken connectivity is expected more frequently.  This
+   section provides a brief overview of several common scenarios.
+
+3.3.1.  Missing DNS Records
+
+   While a server endpoint is intended to support dual-stack
+   connectivity, the A or AAAA DNS records for the endpoint may be
+   missing, e.g, due to misconfiguration or broken tooling, or does not
+   reach the client endpoint, e.g., because it got filtered out by a
+   middle box or local resolver.
+
+   While deployment and integration testing should try to test for this
+   kind of broken connectivity, this scenario is usually
+   indistinguishable from an IPv4-only or an IPv6-only server endpoint,
+   and therefore already addressed by testing the base scenarios above.
+
+3.3.2.  Partial Blackholing, MTU, and Fragmentation Issues
+
+   When multiple address families are available, network packets may
+   traverse different paths depending on the address family.  Even when
+   the same path is traversed, the path can exhibit distinct behaviors,
+   e.g., dropping all or particular packets, especially in the presence
+   of middle-boxes.  In some cases, connectivity issues may only become
+   apparent late in the communication process, for example, after a
+   successful TCP handshake but before a TLS handshake succeeds.  In
+   such scenarios, clients restricted to a single address family—such as
+   True IPv6-only clients—may experience complete loss of connectivity
+   in these scenarios, while dual-stack clients often mask such failures
+   by automatically falling back to another address family.
+
+   In addition to partial blackholing, MTU issues may only arise on one
+   address family or behave differently with respect to MTU available,
+   dropping of fragmented packets, ICMP messages, and due to on-path
+   fragmentation in IPv4.
+
+   It is advisable to test for partial blackholing and MTU issues during
+   deployment and integration testing by testing with IPv4-only and True
+   IPv6-only clients to detect such blackholes.  In case these issues
+   can occur outside the testers' circle of control, it is advisable to
+   simulate this type of failure and ensure that the application's
+   behavior supports the detection and analysis of these errors.
+
+3.4.  Testing Lifecycle Function Considerations
 
    To cover the whole lifecycle of an application including
    installation, user interface, management, and update, it is
@@ -299,7 +386,7 @@ Table of Contents
       remote services, and those that handle network configuration
       parameters.  For example, a network configuration interface may
       only accept IPv4 address literals for certain parameters.  For
-      testing web-based user interfaces, see Section 3.4.
+      testing web-based user interfaces, see Section 3.6.
 
    *  Management: Depending on the application, management functions may
       be provided via the user interface.  However, the application may
@@ -311,7 +398,7 @@ Table of Contents
       additional update functions (e.g., automatic updates, manual
       update mechanisms, etc.) that should be tested.
 
-3.3.  Testing Complex Cloud Applications and Applying Test Cases
+3.5.  Testing Complex Cloud Applications and Applying Test Cases
 
    When testing complex applications, especially cloud applications,
    they typically involve countless data flows.  For some of these, the
@@ -353,7 +440,7 @@ Table of Contents
    always denying access over IPv6, or security issues, like not logging
    access from IPv6 clients.
 
-3.4.  Special considerations for Web-based Applications
+3.6.  Special considerations for Web-based Applications
 
    Web-based applications usually load resources from multiple parties,
    including CDNs and analytic tools, involving data flows to all these
