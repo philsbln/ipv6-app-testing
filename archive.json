@@ -1,11 +1,11 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-09T01:00:01.032631+00:00",
+  "timestamp": "2025-10-12T01:02:34.782584+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
-      "name": "bug",
-      "description": "Something isn't working",
+      "name": "blocking next",
+      "description": "Something that needs fixing before the next version",
       "color": "d73a4a"
     },
     {
@@ -138,7 +138,7 @@
       "id": "I_kwDOPQtDQ87CD1ZR",
       "title": "Explicitly mention MTU/fragmentation testing",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "furry13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -149,8 +149,8 @@
       ],
       "body": "as IPv4/IPv6/NAT64 networks might exhibit different behaviours, it would be nice to mention it ",
       "createdAt": "2025-07-23T10:18:13Z",
-      "updatedAt": "2025-09-17T15:30:55Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-10T12:16:37Z",
+      "closedAt": "2025-10-10T12:16:37Z",
       "comments": [
         {
           "author": "furry13",
@@ -182,7 +182,7 @@
       "id": "I_kwDOPQtDQ87CD3aF",
       "title": "Definition: \"IPv[46] Connectivity",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/6",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "furry13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -193,8 +193,8 @@
       ],
       "body": "As it was discussed at v6ops during Ondrej presentation, we might want to have a standard definition of \"connectivity\".\n\nDefault gateway? non-link-local IPs?",
       "createdAt": "2025-07-23T10:21:07Z",
-      "updatedAt": "2025-09-16T12:13:57Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-10T12:07:45Z",
+      "closedAt": "2025-10-10T12:07:45Z",
       "comments": [
         {
           "author": "philsbln",
@@ -236,11 +236,13 @@
       "state": "OPEN",
       "author": "philsbln",
       "authorAssociation": "OWNER",
-      "assignees": [],
+      "assignees": [
+        "furry13"
+      ],
       "labels": [],
       "body": "From Michael Richardson's early review on -00:\n> I think the introduction might want to say more about how this document might\ninteract with diagnosis of end-customer problems.  With the view to avoiding\nthe \"Just turn off IPv6\" that comes from many places, and which might just\nresult in confused tech-support when there winds up being no connectivity :-)",
       "createdAt": "2025-09-03T15:10:23Z",
-      "updatedAt": "2025-09-03T15:10:23Z",
+      "updatedAt": "2025-10-10T12:25:54Z",
       "closedAt": null,
       "comments": []
     },
@@ -249,7 +251,7 @@
       "id": "I_kwDOPQtDQ87Je1ku",
       "title": "Add considerations for proxies and other application layer mechanisms to Section 4",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/12",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -260,8 +262,8 @@
       ],
       "body": "We already have the Apple Private relay stuff in Sec. 4.1, but that needs more generalization & explanation\n\nFrom Michael Richardson's early review on -00:\n> When you write *proxy*, there are SOCKS and HTTP proxies and other\napplication layer mechanisms (ultimately: SMTP \"bridged\" by UUCP[%]...), which\nmight be reachable over one protocol, and then provide connectivity of a different\nkind.   The combinatorics here are large.   In particular, the connectivity\nof the proxy itself can go all through all the combinations Table 1!\n\n",
       "createdAt": "2025-09-03T15:28:41Z",
-      "updatedAt": "2025-09-17T15:30:40Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-10T12:16:37Z",
+      "closedAt": "2025-10-10T12:16:37Z",
       "comments": []
     },
     {
@@ -287,7 +289,7 @@
       "id": "I_kwDOPQtDQ87JfArD",
       "title": "Discuss broken DNS A/AAAA scenarios",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/14",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -298,8 +300,8 @@
       ],
       "body": "From Michael Richardson's early review on -00:\n> if prune the A RR is a method, then they\nmay also need to insert phony/broken AAAA RRs, and then one has to worry\nabout permutting the order of RR returned.\n\nThis can also happen through mis-configured DNS servers, \"DNS security appliances\u201d or miscommunication between DNS and LB teams\u2026 Maybe add as scenario for Section 5 ",
       "createdAt": "2025-09-03T15:44:23Z",
-      "updatedAt": "2025-09-17T15:28:18Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-10T12:16:37Z",
+      "closedAt": "2025-10-10T12:16:37Z",
       "comments": []
     },
     {
@@ -333,7 +335,7 @@
       "id": "I_kwDOPQtDQ87LtE05",
       "title": "Add Subsection on testing broken connectivity scenarios (DS with broken v4/v6, DNS filtering,\u2026)",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/16",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -344,8 +346,8 @@
       ],
       "body": "",
       "createdAt": "2025-09-15T11:44:25Z",
-      "updatedAt": "2025-09-17T15:31:34Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-10T12:16:38Z",
+      "closedAt": "2025-10-10T12:16:38Z",
       "comments": []
     },
     {
@@ -379,6 +381,22 @@
       "body": "@kouellette brought up whether it would be worthwhile to add a short sub-section either here or elsewhere in the document regarding the use of IP literals rather than FQDNs. \n\nWe should either add this to section 2.",
       "createdAt": "2025-09-19T15:22:39Z",
       "updatedAt": "2025-09-19T15:22:39Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 23,
+      "id": "I_kwDOPQtDQ87QxpN4",
+      "title": "Include VPN / DNS split-brain connectivity pronblem?",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/23",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Nick discussed a VPN / DNS split-brain problem in the latest episode of the IPv6 Buzz.\n\nIt's basically Partial v4/v6 connectivity (e.g., IPv6-only Internet with NAT64, but some IPv6 over VPN or the other way around).\nIn these cases, the resolver gets nuts and filters out everything of the address family despite it would have connectivity for a few endpoints.\n\nIs it to special?\nIt's nothing he application can do about it except implementing Happy Eyeballs and hope that irons out some of these cases.\n\nIf we decide to include it\u2026 rather put it in Section [3.3. Testing with Partially Broken Connectivity](https://philsbln.github.io/ipv6-app-testing/draft-tiesel-v6ops-ipv6-app-testing.html#name-testing-with-partially-brok) or [5.2 Destination Address Selection Preference and Address Filtering](https://philsbln.github.io/ipv6-app-testing/draft-tiesel-v6ops-ipv6-app-testing.html#name-destination-address-selecti)?\n",
+      "createdAt": "2025-10-10T12:25:30Z",
+      "updatedAt": "2025-10-10T12:25:30Z",
       "closedAt": null,
       "comments": []
     }
@@ -495,24 +513,26 @@
       "id": "PR_kwDOPQtDQ86oqYTl",
       "title": "Define Base Connectivity Scenarios in a less Internet-centric way",
       "url": "https://github.com/philsbln/ipv6-app-testing/pull/17",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "this clairifies what \"connectivity\" means and closes #6",
       "createdAt": "2025-09-15T15:17:53Z",
-      "updatedAt": "2025-10-08T13:05:19Z",
+      "updatedAt": "2025-10-10T12:07:44Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-fix-basecon-defs",
       "headRefOid": "b03e4ffac03658e1d456ce20aafc3e84b5b67c13",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-10-10T12:07:44Z",
+      "mergedAt": "2025-10-10T12:07:44Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "2a42c0810afa04b5ff7ffbaaab1f8ba4fe63c858"
+      },
       "comments": [],
       "reviews": [
         {
@@ -542,24 +562,26 @@
       "id": "PR_kwDOPQtDQ86o5Pnl",
       "title": "Update Section 2 to include proxy and broken connectivity scenarios",
       "url": "https://github.com/philsbln/ipv6-app-testing/pull/18",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "closes #12 \r\ncloses #14  \r\ncloses #4\r\ncloses #16",
       "createdAt": "2025-09-16T15:53:06Z",
-      "updatedAt": "2025-10-06T14:32:27Z",
+      "updatedAt": "2025-10-10T12:16:36Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
-      "baseRefOid": "72da25e45768f98b662bc101b77fa6432f06ecae",
+      "baseRefOid": "2a42c0810afa04b5ff7ffbaaab1f8ba4fe63c858",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-proxy-broken-scn",
-      "headRefOid": "64c7808a642d9b56368875e7c6d10fae9c5e7776",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "7a14e41582805cf1a70b9423354db6008e61f083",
+      "closedAt": "2025-10-10T12:16:36Z",
+      "mergedAt": "2025-10-10T12:16:36Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "2a408e387b0d071285c5ebecacdc2593b9f52aff"
+      },
       "comments": [],
       "reviews": [
         {
@@ -661,7 +683,7 @@
       "id": "PR_kwDOPQtDQ86pTE6e",
       "title": "Add new authors and initial acknowledgments",
       "url": "https://github.com/philsbln/ipv6-app-testing/pull/19",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -671,17 +693,19 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-09-18T13:46:29Z",
-      "updatedAt": "2025-10-08T09:21:48Z",
+      "updatedAt": "2025-10-10T12:06:16Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "9891fd823b901a839453fae08783e31c7d6f6619",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-update-authors-00",
       "headRefOid": "68f2d493ba1de1568bed6b1eaf8edf2ac138ebd2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-10-10T12:06:16Z",
+      "mergedAt": "2025-10-10T12:06:16Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "19893c5035090176f334977ed63a5eb807405357"
+      },
       "comments": [
         {
           "author": "philsbln",
