@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-12T01:02:34.782584+00:00",
+  "timestamp": "2025-10-16T01:00:58.875687+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -956,6 +956,115 @@
           "createdAt": "2025-10-06T14:03:25Z",
           "updatedAt": "2025-10-06T14:03:25Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "PR_kwDOPQtDQ86trRHH",
+      "title": "Collection of knits to fix for -01",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/24",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "blocking next"
+      ],
+      "body": "- Split-VPN resolver problem (closes #23)\r\n- Fixes one sentence in Section 3.3\r\n- Update ref I-D.draft-winters-v6ops-rfc7084bis -> I-D.draft-ietf-v6ops-rfc7084bis:",
+      "createdAt": "2025-10-14T13:57:03Z",
+      "updatedAt": "2025-10-15T20:38:38Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "2a408e387b0d071285c5ebecacdc2593b9f52aff",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "pre-01-knits",
+      "headRefOid": "50bbde41b8fb30b7080a53bcf345be36d3259c44",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87HETst",
+          "commit": {
+            "abbreviatedOid": "50bbde4"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-15T11:00:04Z",
+          "updatedAt": "2025-10-15T11:01:59Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\n- Some resolvers ignore address families for which no default route exists or where the default-route is pointing to an unsupported/ignored device.\r\n```",
+              "createdAt": "2025-10-15T11:00:04Z",
+              "updatedAt": "2025-10-15T11:01:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87HM2O_",
+          "commit": {
+            "abbreviatedOid": "50bbde4"
+          },
+          "author": "blp1004",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-15T19:59:27Z",
+          "updatedAt": "2025-10-15T19:59:27Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nWhile the IETF does not define compliance tests, best current practice exists for the behavior of general IPv6 nodes [RFC8504] and Customer Edge (CE) routers [I-D.draft-ietf-v6ops-rfc7084bis].\r\n```\r\nLooks like RFC8405 is more IGP related than general IPv6 node related :)",
+              "createdAt": "2025-10-15T19:59:27Z",
+              "updatedAt": "2025-10-15T19:59:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87HM2b9",
+          "commit": {
+            "abbreviatedOid": "50bbde4"
+          },
+          "author": "blp1004",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-15T19:59:45Z",
+          "updatedAt": "2025-10-15T19:59:45Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\n  RFC8504:\r\n```",
+              "createdAt": "2025-10-15T19:59:45Z",
+              "updatedAt": "2025-10-15T19:59:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87HNZNc",
+          "commit": {
+            "abbreviatedOid": "50bbde4"
+          },
+          "author": "blp1004",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-15T20:38:38Z",
+          "updatedAt": "2025-10-15T20:38:38Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Actually, since node requirements is also going through an update in 6man, do we want to link to that (I-D.draft-ietf-6man-rfc8504-bis) instead? I'm not sure what the standard practice is as far as referencing other ongoing drafts...",
+              "createdAt": "2025-10-15T20:38:38Z",
+              "updatedAt": "2025-10-15T20:38:38Z"
+            }
+          ]
         }
       ]
     }
