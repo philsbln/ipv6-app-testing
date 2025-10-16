@@ -5,11 +5,11 @@
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
 Intended status: Best Current Practice                        J. Linkova
-Expires: 17 April 2026                                            Google
+Expires: 19 April 2026                                            Google
                                                             K. Ouellette
                                                                B. Patton
                                                                  UNH-IOL
-                                                         14 October 2025
+                                                         16 October 2025
 
 
                    Testing Applications' IPv6 Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 April 2026.
+   This Internet-Draft will expire on 19 April 2026.
 
 Copyright Notice
 
@@ -128,7 +128,7 @@ Table of Contents
    compliance of network gear and operating systems has been documented
    extensively.  While the IETF does not define compliance tests, best
    current practice exists for the behavior of general IPv6 nodes
-   [RFC8405] and Customer Edge (CE) routers
+   [RFC8504] and Customer Edge (CE) routers
    [I-D.draft-ietf-v6ops-rfc7084bis].
 
    To fill that gap, this document provides guidance for application
@@ -602,7 +602,7 @@ Table of Contents
       is sent back to the client.
 
    *  Some resolvers ignore address families for which no default route
-      exists or where the default-route is pointing to unsupported/
+      exists or where the default-route is pointing to an unsupported/
       ignored device.  This becomes cumbersome especially in split-VPN
       use cases, e.g. when trying to contact IPv6-only endpoints via the
       VPN while having IPv4-only Internet connectivity.
@@ -794,11 +794,9 @@ Table of Contents
               DOI 10.17487/RFC8305, December 2017,
               <https://www.rfc-editor.org/rfc/rfc8305>.
 
-   [RFC8405]  Decraene, B., Litkowski, S., Gredler, H., Lindem, A.,
-              Francois, P., and C. Bowers, "Shortest Path First (SPF)
-              Back-Off Delay Algorithm for Link-State IGPs", RFC 8405,
-              DOI 10.17487/RFC8405, June 2018,
-              <https://www.rfc-editor.org/rfc/rfc8405>.
+   [RFC8504]  Chown, T., Loughney, J., and T. Winters, "IPv6 Node
+              Requirements", BCP 220, RFC 8504, DOI 10.17487/RFC8504,
+              January 2019, <https://www.rfc-editor.org/rfc/rfc8504>.
 
    [Selenium] "Selenium WebDriver", n.d., <https://www.selenium.dev/>.
 
