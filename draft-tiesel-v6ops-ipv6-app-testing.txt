@@ -5,11 +5,11 @@
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
 Intended status: Best Current Practice                        J. Linkova
-Expires: 13 April 2026                                            Google
+Expires: 19 April 2026                                            Google
                                                             K. Ouellette
                                                                B. Patton
                                                                  UNH-IOL
-                                                         10 October 2025
+                                                         16 October 2025
 
 
                    Testing Applications' IPv6 Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 April 2026.
+   This Internet-Draft will expire on 19 April 2026.
 
 Copyright Notice
 
@@ -128,8 +128,8 @@ Table of Contents
    compliance of network gear and operating systems has been documented
    extensively.  While the IETF does not define compliance tests, best
    current practice exists for the behavior of general IPv6 nodes
-   [RFC8405] and Customer Edge (CE) routers
-   [I-D.draft-winters-v6ops-rfc7084bis].
+   [RFC8504] and Customer Edge (CE) routers
+   [I-D.draft-ietf-v6ops-rfc7084bis].
 
    To fill that gap, this document provides guidance for application
    developers and cloud application providers on how to approach IPv6
@@ -310,8 +310,8 @@ Table of Contents
 
 3.3.  Testing with Partially Broken Connectivity
 
-   In Dual-Stack deployments situations where communication is partially
-   broken for one or more address families may arise: From the
+   In Dual-Stack deployments, situations may arise where communication
+   is partially broken for one or more address families: From the
    Communication endpoints that are expected to be reachable using both
    address families, some may only be reachable by one address family,
    while others may only be reachable by the other.  Testing
@@ -601,6 +601,12 @@ Table of Contents
       socket creation failure is not expected, an internal server error
       is sent back to the client.
 
+   *  Some resolvers ignore address families for which no default route
+      exists or where the default-route is pointing to an unsupported/
+      ignored device.  This becomes cumbersome especially in split-VPN
+      use cases, e.g. when trying to contact IPv6-only endpoints via the
+      VPN while having IPv4-only Internet connectivity.
+
 5.3.  Input Validation and Output Rendering
 
    While most libraries and application frameworks have decent IPv6
@@ -727,13 +733,12 @@ Table of Contents
               August 2025, <https://datatracker.ietf.org/doc/html/draft-
               ietf-v6ops-6mops-02>.
 
-   [I-D.draft-winters-v6ops-rfc7084bis]
+   [I-D.draft-ietf-v6ops-rfc7084bis]
               Lencse, G., Martinez, J. P., Patton, B., and T. Winters,
               "Basic Requirements for IPv6 Customer Edge Routers", Work
-              in Progress, Internet-Draft, draft-winters-v6ops-
-              rfc7084bis-03, 8 July 2024,
-              <https://datatracker.ietf.org/doc/html/draft-winters-
-              v6ops-rfc7084bis-03>.
+              in Progress, Internet-Draft, draft-ietf-v6ops-rfc7084bis-
+              03, 21 July 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-v6ops-rfc7084bis-03>.
 
    [iCloud-Private-Relay]
               "Apple iCLoud Private Relay (WWDC2021)", n.d.,
@@ -789,11 +794,9 @@ Table of Contents
               DOI 10.17487/RFC8305, December 2017,
               <https://www.rfc-editor.org/rfc/rfc8305>.
 
-   [RFC8405]  Decraene, B., Litkowski, S., Gredler, H., Lindem, A.,
-              Francois, P., and C. Bowers, "Shortest Path First (SPF)
-              Back-Off Delay Algorithm for Link-State IGPs", RFC 8405,
-              DOI 10.17487/RFC8405, June 2018,
-              <https://www.rfc-editor.org/rfc/rfc8405>.
+   [RFC8504]  Chown, T., Loughney, J., and T. Winters, "IPv6 Node
+              Requirements", BCP 220, RFC 8504, DOI 10.17487/RFC8504,
+              January 2019, <https://www.rfc-editor.org/rfc/rfc8504>.
 
    [Selenium] "Selenium WebDriver", n.d., <https://www.selenium.dev/>.
 
