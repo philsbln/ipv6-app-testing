@@ -39,7 +39,7 @@ informative:
   I-D.draft-ietf-v6ops-rfc7084bis:
   I-D.draft-ietf-v6ops-6mops:
   CLAT: I-D.draft-ietf-v6ops-claton
-  RFC8405:
+  RFC8504:
   M-21-07:
     target: https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf
     title: M-21-07 – Completing the Transition to Internet Protocol Version 6 (IPv6)
@@ -88,7 +88,7 @@ Therefore, today's applications are expected to function regardless of whether t
 While the availability of IPv6 support in applications has a considerable impact on the success of IPv6,
 there exists no documented best current practices how to do so.
 Testing IPv6 compliance of network gear and operating systems has been documented extensively.
-While the IETF does not define compliance tests, best current practice exists for the behavior of general IPv6 nodes [RFC8405] and Customer Edge (CE) routers [I-D.draft-ietf-v6ops-rfc7084bis].
+While the IETF does not define compliance tests, best current practice exists for the behavior of general IPv6 nodes [RFC8504] and Customer Edge (CE) routers [I-D.draft-ietf-v6ops-rfc7084bis].
 
 To fill that gap, this document provides guidance for application developers and cloud application providers on how to approach IPv6 testing.
 It described which scenarios they should consider validating against, and which common regressions to avoid when adding IPv6 support.
@@ -369,7 +369,7 @@ there are a number of notable and widely used implementations that implement som
   After having resolved a _AAAA_ record, it is trying to open an IPv6 socket, even when the IPv6 stack is disabled.
   As socket creation failure is not expected, an internal server error is sent back to the client.
 
-- Some resolvers ignore address families for which no default route exists or where the default-route is pointing to unsupported/ignored device.
+- Some resolvers ignore address families for which no default route exists or where the default-route is pointing to an unsupported/ignored device.
   This becomes cumbersome especially in split-VPN use cases, e.g. when trying to contact IPv6-only endpoints via the VPN while having IPv4-only Internet connectivity.
 
 ## Input Validation and Output Rendering
