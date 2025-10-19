@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-16T01:00:58.875687+00:00",
+  "timestamp": "2025-10-19T01:07:52.756629+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -389,15 +389,15 @@
       "id": "I_kwDOPQtDQ87QxpN4",
       "title": "Include VPN / DNS split-brain connectivity pronblem?",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/23",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Nick discussed a VPN / DNS split-brain problem in the latest episode of the IPv6 Buzz.\n\nIt's basically Partial v4/v6 connectivity (e.g., IPv6-only Internet with NAT64, but some IPv6 over VPN or the other way around).\nIn these cases, the resolver gets nuts and filters out everything of the address family despite it would have connectivity for a few endpoints.\n\nIs it to special?\nIt's nothing he application can do about it except implementing Happy Eyeballs and hope that irons out some of these cases.\n\nIf we decide to include it\u2026 rather put it in Section [3.3. Testing with Partially Broken Connectivity](https://philsbln.github.io/ipv6-app-testing/draft-tiesel-v6ops-ipv6-app-testing.html#name-testing-with-partially-brok) or [5.2 Destination Address Selection Preference and Address Filtering](https://philsbln.github.io/ipv6-app-testing/draft-tiesel-v6ops-ipv6-app-testing.html#name-destination-address-selecti)?\n",
       "createdAt": "2025-10-10T12:25:30Z",
-      "updatedAt": "2025-10-10T12:25:30Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-16T11:57:37Z",
+      "closedAt": "2025-10-16T11:57:37Z",
       "comments": []
     }
   ],
@@ -964,7 +964,7 @@
       "id": "PR_kwDOPQtDQ86trRHH",
       "title": "Collection of knits to fix for -01",
       "url": "https://github.com/philsbln/ipv6-app-testing/pull/24",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -973,17 +973,19 @@
       ],
       "body": "- Split-VPN resolver problem (closes #23)\r\n- Fixes one sentence in Section 3.3\r\n- Update ref I-D.draft-winters-v6ops-rfc7084bis -> I-D.draft-ietf-v6ops-rfc7084bis:",
       "createdAt": "2025-10-14T13:57:03Z",
-      "updatedAt": "2025-10-15T20:38:38Z",
+      "updatedAt": "2025-10-16T11:57:42Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "2a408e387b0d071285c5ebecacdc2593b9f52aff",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "pre-01-knits",
-      "headRefOid": "50bbde41b8fb30b7080a53bcf345be36d3259c44",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "476613b6b2f4079255ad17bbc5384c396a176594",
+      "closedAt": "2025-10-16T11:57:37Z",
+      "mergedAt": "2025-10-16T11:57:37Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "8faae9357874c9f8fbd24c17b590177a73724cc1"
+      },
       "comments": [],
       "reviews": [
         {
@@ -1063,6 +1065,26 @@
               "body": "Actually, since node requirements is also going through an update in 6man, do we want to link to that (I-D.draft-ietf-6man-rfc8504-bis) instead? I'm not sure what the standard practice is as far as referencing other ongoing drafts...",
               "createdAt": "2025-10-15T20:38:38Z",
               "updatedAt": "2025-10-15T20:38:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOPQtDQ87HRFZ-",
+          "commit": {
+            "abbreviatedOid": "50bbde4"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-16T05:46:57Z",
+          "updatedAt": "2025-10-16T05:46:57Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "good catch \u2013 thank you!",
+              "createdAt": "2025-10-16T05:46:57Z",
+              "updatedAt": "2025-10-16T05:46:57Z"
             }
           ]
         }
