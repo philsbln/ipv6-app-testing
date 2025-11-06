@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-19T01:07:52.756629+00:00",
+  "timestamp": "2025-11-06T01:03:57.507553+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -398,6 +398,46 @@
       "createdAt": "2025-10-10T12:25:30Z",
       "updatedAt": "2025-10-16T11:57:37Z",
       "closedAt": "2025-10-16T11:57:37Z",
+      "comments": []
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOPQtDQ87V3azD",
+      "title": "Discuss testing without 127.0.0.0/8 available",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/25",
+      "state": "OPEN",
+      "author": "spmzt",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I think we should test applications to work without the 127.0.0.0/8 range available.\nThis is a real problem for us in production. For example, in FreeBSD there is an option to assign IPv4 and IPv6 stacks in a jail and when operating in an IPv6-only environment you don't want to assign the IPv4 stack. For many basic services we use (for example, BIND or Nginx) we must change the default configuration to replace 127.0.0.1 with ::1 to make them work.",
+      "createdAt": "2025-11-04T20:34:01Z",
+      "updatedAt": "2025-11-04T20:37:45Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tojens-ietf",
+          "authorAssociation": "NONE",
+          "body": "+1, as I have seen apps using addresses across the 127.0.0.0/8 space (not just 127.0.0.1) as a presumed constantly-available resource to achieve inter-process communication between processes of the same \"app\"",
+          "createdAt": "2025-11-04T20:37:45Z",
+          "updatedAt": "2025-11-04T20:37:45Z"
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOPQtDQ87V3bo5",
+      "title": "Diversify the source of IPv6 mandates, market forces, and deployment requirements",
+      "url": "https://github.com/philsbln/ipv6-app-testing/issues/26",
+      "state": "OPEN",
+      "author": "tojens-ietf",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Right now the Introduction solely relies on U.S. OMB M-21-07, which is indeed a strong force driving IPv6 adoption and compat requirements in the U.S. but it's not globally inclusive, and the U.S. isn't the only source of similar mandates. It would be good to mention market forces also, like the unequal access to IPv4 space between developing versus developed countries, Global South versus Global North, etc. (not to say use these terms, just that aside from mandates there are many places where IPv6-only is a reality of life)",
+      "createdAt": "2025-11-04T20:35:35Z",
+      "updatedAt": "2025-11-04T20:35:35Z",
+      "closedAt": null,
       "comments": []
     }
   ],
