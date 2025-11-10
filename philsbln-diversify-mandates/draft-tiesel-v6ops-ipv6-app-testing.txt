@@ -4,8 +4,12 @@
 
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
-Intended status: Best Current Practice                    8 October 2025
-Expires: 11 April 2026
+Intended status: Best Current Practice                        J. Linkova
+Expires: 14 May 2026                                              Google
+                                                            K. Ouellette
+                                                               B. Patton
+                                                                 UNH-IOL
+                                                        10 November 2025
 
 
                    Testing Applications' IPv6 Support
@@ -47,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 April 2026.
+   This Internet-Draft will expire on 14 May 2026.
 
 Copyright Notice
 
@@ -69,10 +73,16 @@ Table of Contents
    2.  Conventions and Definitions
      2.1.  Requirements Language
      2.2.  Base Connectivity Scenarios
+     2.3.  Lifecycle Functions
    3.  Testing Objectives
      3.1.  Connectivity Scenarios
-     3.2.  Testing Complex Cloud Applications and Applying Test Cases
-     3.3.  Special considerations for Web-based Applications
+     3.2.  Testing with Intermediaries (e.g., Proxies)
+     3.3.  Testing with Partially Broken Connectivity
+       3.3.1.  Missing DNS Records
+       3.3.2.  Partial Blackholing, MTU, and Fragmentation Issues
+     3.4.  Testing Lifecycle Function Considerations
+     3.5.  Testing Complex Cloud Applications and Applying Test Cases
+     3.6.  Special considerations for Web-based Applications
    4.  Testing Strategies
      4.1.  True IPv6-only Clients
      4.2.  IPv6-only Servers
@@ -96,21 +106,24 @@ Table of Contents
      9.1.  Normative References
      9.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
    For the last 20 years, enabling applications for IPv6 has focused on
    coexistence with IPv4 and allowing traffic to shift towards IPv6
-   without breaking IPv4 operation.  With the US mandate to move all
-   governmental agencies to "IPv6-only" [M-21-07], this target for IPv6
-   support changed to being fully functional in the absence of IPv4 and
-   transition technologies providing connectivity to the IPv4 Internet.
-   Therefore, today's applications are expected to function regardless
-   of whether they are used in an IPv4-only environment, a Dual-Stack
-   environment, or an IPv6-only environment, with or without
-   connectivity to the IPv4 Internet.  To achieve this, applications
-   need to be verified against all these scenarios.
+   without breaking IPv4 operation.  Motivated by a series of national
+   regulations mandating state entities to proceed in the migration to
+   IPv6, e.g., in China [CAC-2023], the United States of America
+   [US-OMB-M-21-07], Germany [DE-BIT-2020-14], and the Czech Republic
+   [CZ-ENDv4], this target changed.  IPv6 support today means being
+   fully functional in the absence of IPv4 and transition technologies
+   providing connectivity to the IPv4 Internet.  Therefore, today's
+   applications are expected to function regardless of whether they are
+   used in an IPv4-only environment, a Dual-Stack environment, or an
+   IPv6-only environment, with or without connectivity to the IPv4
+   Internet.  To achieve this, applications need to be verified against
+   all these scenarios.
 
    While the availability of IPv6 support in applications has a
    considerable impact on the success of IPv6, there exists no
@@ -118,8 +131,8 @@ Table of Contents
    compliance of network gear and operating systems has been documented
    extensively.  While the IETF does not define compliance tests, best
    current practice exists for the behavior of general IPv6 nodes
-   [RFC8405] and Customer Edge (CE) routers
-   [I-D.draft-winters-v6ops-rfc7084bis].
+   [RFC8504] and Customer Edge (CE) routers
+   [I-D.draft-ietf-v6ops-rfc7084bis].
 
    To fill that gap, this document provides guidance for application
    developers and cloud application providers on how to approach IPv6
@@ -174,6 +187,26 @@ Table of Contents
       towards all endpoints relevant for the test scenario using IPv6
       and no connectivity towards any relevant IPv4 endpoints.
 
+2.3.  Lifecycle Functions
+
+   Orthogonal to the Base Scenarios, we define lifecycle functions,
+   i.e., the phases in which an application is approached during a
+   simplified lifecycle of the application, in accordance to
+   [NIST.SP.500-267Ar1] as follows:
+
+   *  Installation: The installation of the application including any
+      initial configuration required for getting the application in a
+      state where remote services are operational.
+
+   *  User Interface: All forms of interactive access to the application
+      (e.g., Web UI, API).
+
+   *  Management: All forms of remote management and monitoring
+      functions.
+
+   *  Update: All forms of update functions, including both automatic
+      and manual update mechanisms.
+
 3.  Testing Objectives
 
    As a basic principle, IPv6 application testing should always be
@@ -191,9 +224,8 @@ Table of Contents
    application testing should generally consider.  Note, while the
    involved parties are listed here as "client" and "server" to reflect
    the most common case, the combinations can be used the same way when
-   considering peer-to-peer applications, while NAT64 becomes
-   replaceable with other network functions like TURN offering
-   translation capabilities.
+   considering peer-to-peer applications – with "client" representing
+   the initiating or first acting party.
 
    The first five scenarios marked as _base_ should cover all major code
    paths and fallback conditions.  These include Dual-Stack clients
@@ -216,37 +248,160 @@ Table of Contents
    for client-server-based applications and therefore are marked as
    extended in Table 1.  For peer-to-peer applications and applications
    with complex connection handling like using STUN [RFC5389] or TURN
-   [RFC5766], skipping these scenarios is strongly discouraged.  In case
-   of TURN, it is also recommended to test with and without TURN relay
-   in the path, essentially doubling the number or scenarios.
+   [RFC5766], skipping these scenarios is strongly discouraged.
 
-      +======================+======================+==============+
-      | Client               | Server               |   Verdict    |
-      +======================+======================+==============+
-      | Dual-Stack           | IPv4-only            |     base     |
-      +----------------------+----------------------+--------------+
-      | Dual-Stack           | True IPv6-only       |     base     |
-      +----------------------+----------------------+--------------+
-      | IPv4-only            | Dual-Stack           |     base     |
-      +----------------------+----------------------+--------------+
-      | IPv6-only with NAT64 | IPv4-only            |     base     |
-      +----------------------+----------------------+--------------+
-      | True IPv6-only       | Dual-Stack           |     base     |
-      +----------------------+----------------------+--------------+
-      | IPv4-only            | IPv6-only with NAT64 | IPv6-only-DC |
-      +----------------------+----------------------+--------------+
-      | Dual-Stack           | Dual-Stack           |   extended   |
-      +----------------------+----------------------+--------------+
-      | IPv4-only            | IPv4-only            |   extended   |
-      +----------------------+----------------------+--------------+
-      | IPv6-only with NAT64 | True IPv6-only       |   extended   |
-      +----------------------+----------------------+--------------+
-      | True IPv6-only       | True IPv6-only       |   extended   |
-      +----------------------+----------------------+--------------+
+     +======================+======================+================+
+     | Client               | Server               | Classification |
+     +======================+======================+================+
+     | Dual-Stack           | IPv4-only            |      base      |
+     +----------------------+----------------------+----------------+
+     | Dual-Stack           | True IPv6-only       |      base      |
+     +----------------------+----------------------+----------------+
+     | IPv4-only            | Dual-Stack           |      base      |
+     +----------------------+----------------------+----------------+
+     | IPv6-only with NAT64 | IPv4-only            |      base      |
+     +----------------------+----------------------+----------------+
+     | True IPv6-only       | Dual-Stack           |      base      |
+     +----------------------+----------------------+----------------+
+     | IPv4-only            | IPv6-only with NAT64 |  IPv6-only-DC  |
+     +----------------------+----------------------+----------------+
+     | Dual-Stack           | Dual-Stack           |    extended    |
+     +----------------------+----------------------+----------------+
+     | IPv4-only            | IPv4-only            |    extended    |
+     +----------------------+----------------------+----------------+
+     | IPv6-only with NAT64 | True IPv6-only       |    extended    |
+     +----------------------+----------------------+----------------+
+     | True IPv6-only       | True IPv6-only       |    extended    |
+     +----------------------+----------------------+----------------+
 
          Table 1: Connectivity scenario combinations to consider
 
-3.2.  Testing Complex Cloud Applications and Applying Test Cases
+3.2.  Testing with Intermediaries (e.g., Proxies)
+
+   Many application protocols support communicating across
+   intermediates, most commonly HTTP, HTTP-Connect, SOCKS, or MASQ
+   proxies.  Peer-to-peer applications often support TURN [RFC5766] as
+   an intermediary to traverse NAT and provide connectivity between
+   IPv4-only and IPv6-only hosts.  When testing connectivity scenarios
+   for an application, additional test cases including a proxy are
+   recommended; As a proxy can convert between address families, all
+   combinations shown in Table 2, consisting of base scenarios towards
+   the proxy and (assuming the same scenarios on both sides of the
+   proxy) the respective base scenarios from the proxy to the server,
+   should be considered for testing.
+
+        +======================+================+================+
+        | Client               | Proxy          |     Server     |
+        +======================+================+================+
+        | Dual-Stack           | IPv4-only      |   Dual-Stack   |
+        +----------------------+----------------+----------------+
+        | Dual-Stack           | True IPv6-only |   Dual-Stack   |
+        +----------------------+----------------+----------------+
+        | IPv4-only            | Dual-Stack     |   IPv4-only    |
+        +----------------------+----------------+----------------+
+        | IPv4-only            | Dual-Stack     | True IPv6-only |
+        +----------------------+----------------+----------------+
+        | IPv6-only with NAT64 | IPv4-only      |   Dual-Stack   |
+        +----------------------+----------------+----------------+
+        | True IPv6-only       | Dual-Stack     |   IPv4-only    |
+        +----------------------+----------------+----------------+
+        | True IPv6-only       | Dual-Stack     | True IPv6-only |
+        +----------------------+----------------+----------------+
+
+          Table 2: Base scenario combinations including a proxy
+                       to consider for IPv6 testing
+
+3.3.  Testing with Partially Broken Connectivity
+
+   In Dual-Stack deployments, situations may arise where communication
+   is partially broken for one or more address families: From the
+   Communication endpoints that are expected to be reachable using both
+   address families, some may only be reachable by one address family,
+   while others may only be reachable by the other.  Testing
+   applications against these scenarios can become a key enabler for
+   users' acceptance of IPv6, especially during a transition phase where
+   partially broken connectivity is expected more frequently.  This
+   section provides a brief overview of several common scenarios.
+
+3.3.1.  Missing DNS Records
+
+   While a server endpoint is intended to support dual-stack
+   connectivity, the A or AAAA DNS records for the endpoint may be
+   missing, e.g, due to misconfiguration or broken tooling, or does not
+   reach the client endpoint, e.g., because it got filtered out by a
+   middle box or local resolver.
+
+   While deployment and integration testing should try to test for this
+   kind of broken connectivity, this scenario is usually
+   indistinguishable from an IPv4-only or an IPv6-only server endpoint,
+   and therefore already addressed by testing the base scenarios above.
+
+3.3.2.  Partial Blackholing, MTU, and Fragmentation Issues
+
+   When multiple address families are available, network packets may
+   traverse different paths depending on the address family.  Even when
+   the same path is traversed, the path can exhibit distinct behaviors,
+   e.g., dropping all or particular packets, especially in the presence
+   of middle-boxes.  In some cases, connectivity issues may only become
+   apparent late in the communication process, for example, after a
+   successful TCP handshake but before a TLS handshake succeeds.  In
+   such scenarios, clients restricted to a single address family—such as
+   True IPv6-only clients—may experience complete loss of connectivity
+   in these scenarios, while dual-stack clients often mask such failures
+   by automatically falling back to another address family.
+
+   In addition to partial blackholing, MTU issues may only arise on one
+   address family or behave differently with respect to MTU available,
+   dropping of fragmented packets, ICMP messages, and due to on-path
+   fragmentation in IPv4.
+
+   It is advisable to test for partial blackholing and MTU issues during
+   deployment and integration testing by testing with IPv4-only and True
+   IPv6-only clients to detect such blackholes.  In case these issues
+   can occur outside the testers' circle of control, it is advisable to
+   simulate this type of failure and ensure that the application's
+   behavior supports the detection and analysis of these errors.
+
+3.4.  Testing Lifecycle Function Considerations
+
+   To cover the whole lifecycle of an application including
+   installation, user interface, management, and update, it is
+   recommended to test that the lifecycle functions defined in
+   Section 2.3 are operational within the connectivity scenarios defined
+   in Table 1.
+
+   In particular keep the following considerations in mind:
+
+   *  Installation: Installation may require communications with remote
+      first-party services (e.g., activation/license server) or remote
+      third-party services (e.g., package repositories).  In these
+      scenarios, the installer acts as the client, and the remote
+      service acts as the server.  In cases of remote third-party
+      services, testing all server scenarios in Table 1 may not be
+      feasible, and impact the client scenarios that can be supported.
+      For example, if a third-party service is IPv4-only, then
+      supporting a True IPv6-only client is not feasible.
+
+   *  User Interface: User interfaces can be incredibly complex with
+      numerous contexts, views, API endpoints, CLI commands, etc.  When
+      testing non-web-based user interfaces, it is recommended to focus
+      on components of the interface that involve communications with
+      remote services, and those that handle network configuration
+      parameters.  For example, a network configuration interface may
+      only accept IPv4 address literals for certain parameters.  For
+      testing web-based user interfaces, see Section 3.6.
+
+   *  Management: Depending on the application, management functions may
+      be provided via the user interface.  However, the application may
+      have additional management functions (e.g., SNMP, syslog, etc.)
+      that should be tested.
+
+   *  Update: Depending on the application, update functions may be
+      exercised during installation.  However, the application may have
+      additional update functions (e.g., automatic updates, manual
+      update mechanisms, etc.) that should be tested.
+
+3.5.  Testing Complex Cloud Applications and Applying Test Cases
 
    When testing complex applications, especially cloud applications,
    they typically involve countless data flows.  For some of these, the
@@ -288,7 +443,7 @@ Table of Contents
    always denying access over IPv6, or security issues, like not logging
    access from IPv6 clients.
 
-3.3.  Special considerations for Web-based Applications
+3.6.  Special considerations for Web-based Applications
 
    Web-based applications usually load resources from multiple parties,
    including CDNs and analytic tools, involving data flows to all these
@@ -449,6 +604,12 @@ Table of Contents
       socket creation failure is not expected, an internal server error
       is sent back to the client.
 
+   *  Some resolvers ignore address families for which no default route
+      exists or where the default-route is pointing to an unsupported/
+      ignored device.  This becomes cumbersome especially in split-VPN
+      use cases, e.g. when trying to contact IPv6-only endpoints via the
+      VPN while having IPv4-only Internet connectivity.
+
 5.3.  Input Validation and Output Rendering
 
    While most libraries and application frameworks have decent IPv6
@@ -561,27 +722,42 @@ Table of Contents
    [C-ARES]   "C-ARES - a modern DNS (stub) resolver library, written in
               C", n.d., <https://c-ares.org/>.
 
+   [CAC-2023] "2023 Work Arrangement for Further Promoting Large-scale
+              IPv6 Deployment and Application", 27 April 2023,
+              <http://www.cac.gov.cn/2023-04/27/c_1684239012351367.htm>.
+
    [CLAT]     Colitti, L., Linkova, J., and T. Jensen, "464XLAT
-              Customer-side Translator (CLAT): Node Recommendations",
-              Work in Progress, Internet-Draft, draft-ietf-v6ops-claton-
-              09, 7 October 2025,
+              Customer-side Translator (CLAT): Node Behavior and
+              Recommendations", Work in Progress, Internet-Draft, draft-
+              ietf-v6ops-claton-12, 6 November 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
-              claton-09>.
+              claton-12>.
+
+   [CZ-ENDv4] "Czech Republic sets IPv4 end date", 17 January 2024,
+              <https://konecipv4.cz/>.
+
+   [DE-BIT-2020-14]
+              "Zukunftsfähige Netzinfrastrukturen auf Basis von
+              funktionsfähigem IPv6", IT-Steuerung Bund Beschluss
+              2020/14, 11 November 2020,
+              <https://www.cio.bund.de/SharedDocs/downloads/Webs/CIO/DE/
+              it-beirat/beschluesse/2020_14_Beschluss_Konferenz_IT-
+              Beauftragte.pdf>.
 
    [I-D.draft-ietf-v6ops-6mops]
               Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
               Networks: Deployment and Operations Considerations", Work
-              in Progress, Internet-Draft, draft-ietf-v6ops-6mops-02, 26
-              August 2025, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-v6ops-6mops-02>.
+              in Progress, Internet-Draft, draft-ietf-v6ops-6mops-04, 20
+              October 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-v6ops-6mops-04>.
 
-   [I-D.draft-winters-v6ops-rfc7084bis]
+   [I-D.draft-ietf-v6ops-rfc7084bis]
               Lencse, G., Martinez, J. P., Patton, B., and T. Winters,
               "Basic Requirements for IPv6 Customer Edge Routers", Work
-              in Progress, Internet-Draft, draft-winters-v6ops-
-              rfc7084bis-03, 8 July 2024,
-              <https://datatracker.ietf.org/doc/html/draft-winters-
-              v6ops-rfc7084bis-03>.
+              in Progress, Internet-Draft, draft-ietf-v6ops-rfc7084bis-
+              04, 20 October 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
+              rfc7084bis-04>.
 
    [iCloud-Private-Relay]
               "Apple iCLoud Private Relay (WWDC2021)", n.d.,
@@ -592,12 +768,11 @@ Table of Contents
               using IPv4 or IPv6.", n.d.,
               <https://github.com/pmarks-net/ipvfoo>.
 
-   [M-21-07]  "M-21-07 – Completing the Transition to Internet Protocol
-              Version 6 (IPv6)", United States of America Office of
-              Management and Budget Memorandum for Heads of Executive
-              Departments and Agencies, 19 November 2020,
-              <https://www.whitehouse.gov/wp-content/uploads/2020/11/
-              M-21-07.pdf>.
+   [NIST.SP.500-267Ar1]
+              "NIST Special Publication 500-267 Revision 1 - NIST IPv6
+              Profile", 23 November 2020,
+              <https://nvlpubs.nist.gov/nistpubs/specialpublications/
+              NIST.SP.500-267Ar1.pdf>.
 
    [RFC5389]  Rosenberg, J., Mahy, R., Matthews, P., and D. Wing,
               "Session Traversal Utilities for NAT (STUN)", RFC 5389,
@@ -631,13 +806,19 @@ Table of Contents
               DOI 10.17487/RFC8305, December 2017,
               <https://www.rfc-editor.org/rfc/rfc8305>.
 
-   [RFC8405]  Decraene, B., Litkowski, S., Gredler, H., Lindem, A.,
-              Francois, P., and C. Bowers, "Shortest Path First (SPF)
-              Back-Off Delay Algorithm for Link-State IGPs", RFC 8405,
-              DOI 10.17487/RFC8405, June 2018,
-              <https://www.rfc-editor.org/rfc/rfc8405>.
+   [RFC8504]  Chown, T., Loughney, J., and T. Winters, "IPv6 Node
+              Requirements", BCP 220, RFC 8504, DOI 10.17487/RFC8504,
+              January 2019, <https://www.rfc-editor.org/rfc/rfc8504>.
 
    [Selenium] "Selenium WebDriver", n.d., <https://www.selenium.dev/>.
+
+   [US-OMB-M-21-07]
+              "M-21-07 – Completing the Transition to Internet Protocol
+              Version 6 (IPv6)", United States of America Office of
+              Management and Budget Memorandum for Heads of Executive
+              Departments and Agencies, 19 November 2020,
+              <https://www.whitehouse.gov/wp-content/uploads/2020/11/
+              M-21-07.pdf>.
 
    [Wireshark]
               "Wireshark packet tracer", n.d.,
@@ -645,10 +826,26 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   Thanks to Holger Füßler, and Michael Richardson for the discussions,
+   the input, and all contribution.
 
-Author's Address
+Authors' Addresses
 
    Philipp S. Tiesel
    SAP SE
-   Email: philipp@tiesel.net
+   Email: philipp@tiesel.net, philipp.tiesel@sap.com
+
+
+   Jen Linkova
+   Google
+   Email: furry13@gmail.com, furry@google.com
+
+
+   Kyle Ouellette
+   University of New Hampshire Interoperability Labs
+   Email: kouellette@iol.unh.edu
+
+
+   Ben Patton
+   University of New Hampshire Interoperability Labs
+   Email: bpatton@iol.unh.edu
