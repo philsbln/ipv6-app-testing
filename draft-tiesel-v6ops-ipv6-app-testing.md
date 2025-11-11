@@ -96,9 +96,8 @@ and explains common regressions to avoid when deploying IPv6 support.
 # Introduction
 
 For the last 20 years, enabling applications for IPv6 has focused on coexistence with IPv4 and allowing traffic to shift towards IPv6 without breaking IPv4 operation.
-Motivated by a series of national regulations mandating state entities to proceed in the migration to IPv6, e.g., in
-China [CAC-2023], the United States of America [US-OMB-M-21-07], Germany [DE-BIT-2020-14], and the Czech Republic [CZ-ENDv4],
-this target changed.
+This target has changed in part due to a series of national regulations mandating state entities to proceed in the migration to IPv6, e.g., in
+China [CAC-2023], the United States of America [US-OMB-M-21-07], Germany [DE-BIT-2020-14], and the Czech Republic [CZ-ENDv4].
 IPv6 support today means being fully functional in the absence of IPv4 and transition technologies providing connectivity to the IPv4 Internet.
 Therefore, today's applications are expected to function regardless of whether they are used in an IPv4-only environment, a Dual-Stack environment, or an IPv6-only environment, with or without connectivity to the IPv4 Internet. To achieve this, applications need to be verified against all these scenarios.
 
