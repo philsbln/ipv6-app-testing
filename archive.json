@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-06T01:03:57.507553+00:00",
+  "timestamp": "2025-11-11T01:04:37.408161+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -432,11 +432,15 @@
       "state": "OPEN",
       "author": "tojens-ietf",
       "authorAssociation": "NONE",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "philsbln"
+      ],
+      "labels": [
+        "has PR"
+      ],
       "body": "Right now the Introduction solely relies on U.S. OMB M-21-07, which is indeed a strong force driving IPv6 adoption and compat requirements in the U.S. but it's not globally inclusive, and the U.S. isn't the only source of similar mandates. It would be good to mention market forces also, like the unequal access to IPv4 space between developing versus developed countries, Global South versus Global North, etc. (not to say use these terms, just that aside from mandates there are many places where IPv6-only is a reality of life)",
       "createdAt": "2025-11-04T20:35:35Z",
-      "updatedAt": "2025-11-04T20:35:35Z",
+      "updatedAt": "2025-11-10T09:15:33Z",
       "closedAt": null,
       "comments": []
     }
@@ -1129,6 +1133,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOPQtDQ86yegZm",
+      "title": "Diversify national mandate motivation",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/27",
+      "state": "OPEN",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #26 \r\n\r\n@tojens-ietf please have a look",
+      "createdAt": "2025-11-10T09:13:55Z",
+      "updatedAt": "2025-11-10T09:15:03Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "8faae9357874c9f8fbd24c17b590177a73724cc1",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "philsbln-diversify-mandates",
+      "headRefOid": "5ebcc999c4b74dfd2381e6f033032cba8d0230c1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
