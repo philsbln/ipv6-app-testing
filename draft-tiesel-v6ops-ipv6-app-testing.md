@@ -453,6 +453,6 @@ This document has no IANA actions.
 
 Thanks to
 Holger Füßler,
-and
-Michael Richardson
+Michael Richardson,
+Tommy Jensen,
 for the discussions, the input, and all contribution.
