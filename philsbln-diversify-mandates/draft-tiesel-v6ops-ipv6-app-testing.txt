@@ -826,8 +826,8 @@ Table of Contents
 
 Acknowledgments
 
-   Thanks to Holger Füßler, and Michael Richardson for the discussions,
-   the input, and all contribution.
+   Thanks to Holger Füßler, Michael Richardson, Tommy Jensen, for the
+   discussions, the input, and all contribution.
 
 Authors' Addresses
 
