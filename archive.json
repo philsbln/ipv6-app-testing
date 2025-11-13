@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-11T01:04:37.408161+00:00",
+  "timestamp": "2025-11-13T01:04:35.233026+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -1146,19 +1146,52 @@
       "labels": [],
       "body": "Closes #26 \r\n\r\n@tojens-ietf please have a look",
       "createdAt": "2025-11-10T09:13:55Z",
-      "updatedAt": "2025-11-10T09:15:03Z",
+      "updatedAt": "2025-11-11T17:02:13Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "8faae9357874c9f8fbd24c17b590177a73724cc1",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-diversify-mandates",
-      "headRefOid": "5ebcc999c4b74dfd2381e6f033032cba8d0230c1",
+      "headRefOid": "509ab5054ff54a99b06dfc341175d544f1a656f1",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87NaeoJ",
+          "commit": {
+            "abbreviatedOid": "5ebcc99"
+          },
+          "author": "tojens-ietf",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "Thank you for doing this! I suggested a sentence order change that makes sense to me, but it isn't blocking.",
+          "createdAt": "2025-11-11T05:09:16Z",
+          "updatedAt": "2025-11-11T05:11:06Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "```suggestion\r\nThis target has changed in part due to a series of national regulations mandating state entities to proceed in the migration to IPv6, e.g., in\r\n```\r\n\r\nSwapping the sentence structure made this easier to understand for me, YMMV.\r\n\r\nSorry for the three part edit. Making multiline suggestions on a touchscreen is interesting.",
+              "createdAt": "2025-11-11T05:09:17Z",
+              "updatedAt": "2025-11-11T05:11:29Z"
+            },
+            {
+              "originalPosition": 35,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-11-11T05:09:42Z",
+              "updatedAt": "2025-11-11T05:11:06Z"
+            },
+            {
+              "originalPosition": 34,
+              "body": "```suggestion\r\nChina [CAC-2023], the United States of America [US-OMB-M-21-07], Germany [DE-BIT-2020-14], and the Czech Republic [CZ-ENDv4].\r\n```",
+              "createdAt": "2025-11-11T05:09:58Z",
+              "updatedAt": "2025-11-11T05:11:06Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
