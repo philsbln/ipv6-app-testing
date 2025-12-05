@@ -40,12 +40,26 @@ informative:
   I-D.draft-ietf-v6ops-6mops:
   CLAT: I-D.draft-ietf-v6ops-claton
   RFC8504:
-  M-21-07:
+  CAC-2023:
+    target: http://www.cac.gov.cn/2023-04/27/c_1684239012351367.htm
+    title: 2023 Work Arrangement for Further Promoting Large-scale IPv6 Deployment and Application
+    date: 2023-04-27
+  US-OMB-M-21-07:
     target: https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf
     title: M-21-07 – Completing the Transition to Internet Protocol Version 6 (IPv6)
     seriesinfo:
       United States of America Office of Management and Budget: Memorandum for Heads of Executive Departments and Agencies
     date: 2020-11-19
+  DE-BIT-2020-14:
+    target: https://www.cio.bund.de/SharedDocs/downloads/Webs/CIO/DE/it-beirat/beschluesse/2020_14_Beschluss_Konferenz_IT-Beauftragte.pdf
+    title: Zukunftsfähige Netzinfrastrukturen auf Basis von funktionsfähigem IPv6
+    seriesinfo:
+      IT-Steuerung Bund: Beschluss 2020/14
+    date: 2020-11-11
+  CZ-ENDv4:
+    target: https://konecipv4.cz/
+    title: Czech Republic sets IPv4 end date
+    date: 2024-01-17
   NIST.SP.500-267Ar1:
     target: https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.500-267Ar1.pdf
     title: NIST Special Publication 500-267 Revision 1 - NIST IPv6 Profile
@@ -82,7 +96,9 @@ and explains common regressions to avoid when deploying IPv6 support.
 # Introduction
 
 For the last 20 years, enabling applications for IPv6 has focused on coexistence with IPv4 and allowing traffic to shift towards IPv6 without breaking IPv4 operation.
-With the US mandate to move all governmental agencies to "IPv6-only" [M-21-07], this target for IPv6 support changed to being fully functional in the absence of IPv4 and transition technologies providing connectivity to the IPv4 Internet.
+This target has changed in part due to a series of national regulations mandating state entities to proceed in the migration to IPv6, e.g., in
+China [CAC-2023], the United States of America [US-OMB-M-21-07], Germany [DE-BIT-2020-14], and the Czech Republic [CZ-ENDv4].
+IPv6 support today means being fully functional in the absence of IPv4 and transition technologies providing connectivity to the IPv4 Internet.
 Therefore, today's applications are expected to function regardless of whether they are used in an IPv4-only environment, a Dual-Stack environment, or an IPv6-only environment, with or without connectivity to the IPv4 Internet. To achieve this, applications need to be verified against all these scenarios.
 
 While the availability of IPv6 support in applications has a considerable impact on the success of IPv6,
@@ -437,6 +453,6 @@ This document has no IANA actions.
 
 Thanks to
 Holger Füßler,
-and
-Michael Richardson
+Michael Richardson,
+Tommy Jensen,
 for the discussions, the input, and all contribution.
