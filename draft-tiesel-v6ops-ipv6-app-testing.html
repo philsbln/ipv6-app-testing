@@ -14,22 +14,21 @@
 It discusses common misconceptions about the degree to which operating systems and libraries can abstract IPv6 issues away
 and explains common regressions to avoid when deploying IPv6 support. 
     ' name="description">
-<meta content="xml2rfc 3.30.2" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-tiesel-v6ops-ipv6-app-testing-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.2
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.1
-    platformdirs 4.4.0
+    platformdirs 4.5.0
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.5
-    setuptools 80.9.0
     wcwidth 0.2.14
 -->
 <link href="draft-tiesel-v6ops-ipv6-app-testing.xml" rel="alternate" type="application/rfc+xml">
@@ -1049,11 +1048,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">ipv6-app-testing</td>
-<td class="right">October 2025</td>
+<td class="right">December 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tiesel, et al.</td>
-<td class="center">Expires 19 April 2026</td>
+<td class="center">Expires 8 June 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tiesel-v6ops-ipv6-app-testing-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-10-16" class="published">16 October 2025</time>
+<time datetime="2025-12-05" class="published">5 December 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-04-19">19 April 2026</time></dd>
+<dd class="expires"><time datetime="2026-06-08">8 June 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1129,7 @@ and explains common regressions to avoid when deploying IPv6 support.<a href="#s
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 June 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1294,7 +1293,9 @@ and explains common regressions to avoid when deploying IPv6 support.<a href="#s
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">For the last 20 years, enabling applications for IPv6 has focused on coexistence with IPv4 and allowing traffic to shift towards IPv6 without breaking IPv4 operation.
-With the US mandate to move all governmental agencies to "IPv6-only" <span>[<a href="#M-21-07" class="cite xref">M-21-07</a>]</span>, this target for IPv6 support changed to being fully functional in the absence of IPv4 and transition technologies providing connectivity to the IPv4 Internet.
+This target has changed in part due to a series of national regulations mandating state entities to proceed in the migration to IPv6, e.g., in
+China <span>[<a href="#CAC-2023" class="cite xref">CAC-2023</a>]</span>, the United States of America <span>[<a href="#US-OMB-M-21-07" class="cite xref">US-OMB-M-21-07</a>]</span>, Germany <span>[<a href="#DE-BIT-2020-14" class="cite xref">DE-BIT-2020-14</a>]</span>, and the Czech Republic <span>[<a href="#CZ-ENDv4" class="cite xref">CZ-ENDv4</a>]</span>.
+IPv6 support today means being fully functional in the absence of IPv4 and transition technologies providing connectivity to the IPv4 Internet.
 Therefore, today's applications are expected to function regardless of whether they are used in an IPv4-only environment, a Dual-Stack environment, or an IPv6-only environment, with or without connectivity to the IPv4 Internet. To achieve this, applications need to be verified against all these scenarios.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">While the availability of IPv6 support in applications has a considerable impact on the success of IPv6,
 there exists no documented best current practices how to do so.
@@ -1911,17 +1912,29 @@ Be prepared for this and plan extra time or budget for updating or replacing the
         <dd>
 <span class="refTitle">"C-ARES - a modern DNS (stub) resolver library, written in C"</span>, <span>n.d.</span>, <span>&lt;<a href="https://c-ares.org/">https://c-ares.org/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="CAC-2023">[CAC-2023]</dt>
+        <dd>
+<span class="refTitle">"2023 Work Arrangement for Further Promoting Large-scale IPv6 Deployment and Application"</span>, <time datetime="2023-04-27" class="refDate">27 April 2023</time>, <span>&lt;<a href="http://www.cac.gov.cn/2023-04/27/c_1684239012351367.htm">http://www.cac.gov.cn/2023-04/27/c_1684239012351367.htm</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="CLAT">[CLAT]</dt>
         <dd>
-<span class="refAuthor">Colitti, L.</span>, <span class="refAuthor">Linkova, J.</span>, and <span class="refAuthor">T. Jensen</span>, <span class="refTitle">"464XLAT Customer-side Translator (CLAT): Node Recommendations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-claton-09</span>, <time datetime="2025-10-07" class="refDate">7 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-09">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-09</a>&gt;</span>. </dd>
+<span class="refAuthor">Colitti, L.</span>, <span class="refAuthor">Linkova, J.</span>, and <span class="refAuthor">T. Jensen</span>, <span class="refTitle">"464XLAT Customer-side Translator (CLAT): Node Behavior and Recommendations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-claton-13</span>, <time datetime="2025-11-25" class="refDate">25 November 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-13">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-13</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="CZ-ENDv4">[CZ-ENDv4]</dt>
+        <dd>
+<span class="refTitle">"Czech Republic sets IPv4 end date"</span>, <time datetime="2024-01-17" class="refDate">17 January 2024</time>, <span>&lt;<a href="https://konecipv4.cz/">https://konecipv4.cz/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="DE-BIT-2020-14">[DE-BIT-2020-14]</dt>
+        <dd>
+<span class="refTitle">"Zukunftsfähige Netzinfrastrukturen auf Basis von funktionsfähigem IPv6"</span>, <span class="seriesInfo">IT-Steuerung Bund Beschluss 2020/14</span>, <time datetime="2020-11-11" class="refDate">11 November 2020</time>, <span>&lt;<a href="https://www.cio.bund.de/SharedDocs/downloads/Webs/CIO/DE/it-beirat/beschluesse/2020_14_Beschluss_Konferenz_IT-Beauftragte.pdf">https://www.cio.bund.de/SharedDocs/downloads/Webs/CIO/DE/it-beirat/beschluesse/2020_14_Beschluss_Konferenz_IT-Beauftragte.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-ietf-v6ops-6mops">[I-D.draft-ietf-v6ops-6mops]</dt>
         <dd>
-<span class="refAuthor">Buraglio, N.</span>, <span class="refAuthor">Caletka, O.</span>, and <span class="refAuthor">J. Linkova</span>, <span class="refTitle">"IPv6-Mostly Networks: Deployment and Operations Considerations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-6mops-02</span>, <time datetime="2025-08-26" class="refDate">26 August 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-02">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Buraglio, N.</span>, <span class="refAuthor">Caletka, O.</span>, and <span class="refAuthor">J. Linkova</span>, <span class="refTitle">"IPv6-Mostly Networks: Deployment and Operations Considerations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-6mops-04</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-04">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-6mops-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-ietf-v6ops-rfc7084bis">[I-D.draft-ietf-v6ops-rfc7084bis]</dt>
         <dd>
-<span class="refAuthor">Lencse, G.</span>, <span class="refAuthor">Martinez, J. P.</span>, <span class="refAuthor">Patton, B.</span>, and <span class="refAuthor">T. Winters</span>, <span class="refTitle">"Basic Requirements for IPv6 Customer Edge Routers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-rfc7084bis-03</span>, <time datetime="2025-07-21" class="refDate">21 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-rfc7084bis-03">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-rfc7084bis-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Lencse, G.</span>, <span class="refAuthor">Martinez, J. P.</span>, <span class="refAuthor">Patton, B.</span>, and <span class="refAuthor">T. Winters</span>, <span class="refTitle">"Basic Requirements for IPv6 Customer Edge Routers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-rfc7084bis-04</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-rfc7084bis-04">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-rfc7084bis-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="iCloud-Private-Relay">[iCloud-Private-Relay]</dt>
         <dd>
@@ -1930,10 +1943,6 @@ Be prepared for this and plan extra time or budget for updating or replacing the
 <dt id="IPvFoo">[IPvFoo]</dt>
         <dd>
 <span class="refAuthor">Marks, P.</span>, <span class="refTitle">"IPvFoo - a Chrome/Firefox extension that adds an icon to indicate whether the current page was fetched using IPv4 or IPv6."</span>, <span>n.d.</span>, <span>&lt;<a href="https://github.com/pmarks-net/ipvfoo">https://github.com/pmarks-net/ipvfoo</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="M-21-07">[M-21-07]</dt>
-        <dd>
-<span class="refTitle">"M-21-07 – Completing the Transition to Internet Protocol Version 6 (IPv6)"</span>, <span class="seriesInfo">United States of America Office of Management and Budget Memorandum for Heads of Executive Departments and Agencies</span>, <time datetime="2020-11-19" class="refDate">19 November 2020</time>, <span>&lt;<a href="https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf">https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="NIST.SP.500-267Ar1">[NIST.SP.500-267Ar1]</dt>
         <dd>
@@ -1971,6 +1980,10 @@ Be prepared for this and plan extra time or budget for updating or replacing the
         <dd>
 <span class="refTitle">"Selenium WebDriver"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.selenium.dev/">https://www.selenium.dev/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="US-OMB-M-21-07">[US-OMB-M-21-07]</dt>
+        <dd>
+<span class="refTitle">"M-21-07 – Completing the Transition to Internet Protocol Version 6 (IPv6)"</span>, <span class="seriesInfo">United States of America Office of Management and Budget Memorandum for Heads of Executive Departments and Agencies</span>, <time datetime="2020-11-19" class="refDate">19 November 2020</time>, <span>&lt;<a href="https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf">https://www.whitehouse.gov/wp-content/uploads/2020/11/M-21-07.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="Wireshark">[Wireshark]</dt>
       <dd>
 <span class="refTitle">"Wireshark packet tracer"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.wireshark.org/">https://www.wireshark.org/</a>&gt;</span>. </dd>
@@ -1987,8 +2000,8 @@ Be prepared for this and plan extra time or budget for updating or replacing the
       </h2>
 <p id="appendix-A-1">Thanks to
 Holger Füßler,
-and
-Michael Richardson
+Michael Richardson,
+Tommy Jensen,
 for the discussions, the input, and all contribution.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>

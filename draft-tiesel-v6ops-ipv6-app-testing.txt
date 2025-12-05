@@ -5,11 +5,11 @@
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
 Intended status: Best Current Practice                        J. Linkova
-Expires: 19 April 2026                                            Google
+Expires: 8 June 2026                                              Google
                                                             K. Ouellette
                                                                B. Patton
                                                                  UNH-IOL
-                                                         16 October 2025
+                                                         5 December 2025
 
 
                    Testing Applications' IPv6 Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 April 2026.
+   This Internet-Draft will expire on 8 June 2026.
 
 Copyright Notice
 
@@ -112,15 +112,18 @@ Table of Contents
 
    For the last 20 years, enabling applications for IPv6 has focused on
    coexistence with IPv4 and allowing traffic to shift towards IPv6
-   without breaking IPv4 operation.  With the US mandate to move all
-   governmental agencies to "IPv6-only" [M-21-07], this target for IPv6
-   support changed to being fully functional in the absence of IPv4 and
-   transition technologies providing connectivity to the IPv4 Internet.
-   Therefore, today's applications are expected to function regardless
-   of whether they are used in an IPv4-only environment, a Dual-Stack
-   environment, or an IPv6-only environment, with or without
-   connectivity to the IPv4 Internet.  To achieve this, applications
-   need to be verified against all these scenarios.
+   without breaking IPv4 operation.  This target has changed in part due
+   to a series of national regulations mandating state entities to
+   proceed in the migration to IPv6, e.g., in China [CAC-2023], the
+   United States of America [US-OMB-M-21-07], Germany [DE-BIT-2020-14],
+   and the Czech Republic [CZ-ENDv4].  IPv6 support today means being
+   fully functional in the absence of IPv4 and transition technologies
+   providing connectivity to the IPv4 Internet.  Therefore, today's
+   applications are expected to function regardless of whether they are
+   used in an IPv4-only environment, a Dual-Stack environment, or an
+   IPv6-only environment, with or without connectivity to the IPv4
+   Internet.  To achieve this, applications need to be verified against
+   all these scenarios.
 
    While the availability of IPv6 support in applications has a
    considerable impact on the success of IPv6, there exists no
@@ -719,26 +722,42 @@ Table of Contents
    [C-ARES]   "C-ARES - a modern DNS (stub) resolver library, written in
               C", n.d., <https://c-ares.org/>.
 
+   [CAC-2023] "2023 Work Arrangement for Further Promoting Large-scale
+              IPv6 Deployment and Application", 27 April 2023,
+              <http://www.cac.gov.cn/2023-04/27/c_1684239012351367.htm>.
+
    [CLAT]     Colitti, L., Linkova, J., and T. Jensen, "464XLAT
-              Customer-side Translator (CLAT): Node Recommendations",
-              Work in Progress, Internet-Draft, draft-ietf-v6ops-claton-
-              09, 7 October 2025,
+              Customer-side Translator (CLAT): Node Behavior and
+              Recommendations", Work in Progress, Internet-Draft, draft-
+              ietf-v6ops-claton-13, 25 November 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
-              claton-09>.
+              claton-13>.
+
+   [CZ-ENDv4] "Czech Republic sets IPv4 end date", 17 January 2024,
+              <https://konecipv4.cz/>.
+
+   [DE-BIT-2020-14]
+              "Zukunftsfähige Netzinfrastrukturen auf Basis von
+              funktionsfähigem IPv6", IT-Steuerung Bund Beschluss
+              2020/14, 11 November 2020,
+              <https://www.cio.bund.de/SharedDocs/downloads/Webs/CIO/DE/
+              it-beirat/beschluesse/2020_14_Beschluss_Konferenz_IT-
+              Beauftragte.pdf>.
 
    [I-D.draft-ietf-v6ops-6mops]
               Buraglio, N., Caletka, O., and J. Linkova, "IPv6-Mostly
               Networks: Deployment and Operations Considerations", Work
-              in Progress, Internet-Draft, draft-ietf-v6ops-6mops-02, 26
-              August 2025, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-v6ops-6mops-02>.
+              in Progress, Internet-Draft, draft-ietf-v6ops-6mops-04, 20
+              October 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-v6ops-6mops-04>.
 
    [I-D.draft-ietf-v6ops-rfc7084bis]
               Lencse, G., Martinez, J. P., Patton, B., and T. Winters,
               "Basic Requirements for IPv6 Customer Edge Routers", Work
               in Progress, Internet-Draft, draft-ietf-v6ops-rfc7084bis-
-              03, 21 July 2025, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-v6ops-rfc7084bis-03>.
+              04, 20 October 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-
+              rfc7084bis-04>.
 
    [iCloud-Private-Relay]
               "Apple iCLoud Private Relay (WWDC2021)", n.d.,
@@ -748,13 +767,6 @@ Table of Contents
               an icon to indicate whether the current page was fetched
               using IPv4 or IPv6.", n.d.,
               <https://github.com/pmarks-net/ipvfoo>.
-
-   [M-21-07]  "M-21-07 – Completing the Transition to Internet Protocol
-              Version 6 (IPv6)", United States of America Office of
-              Management and Budget Memorandum for Heads of Executive
-              Departments and Agencies, 19 November 2020,
-              <https://www.whitehouse.gov/wp-content/uploads/2020/11/
-              M-21-07.pdf>.
 
    [NIST.SP.500-267Ar1]
               "NIST Special Publication 500-267 Revision 1 - NIST IPv6
@@ -800,14 +812,22 @@ Table of Contents
 
    [Selenium] "Selenium WebDriver", n.d., <https://www.selenium.dev/>.
 
+   [US-OMB-M-21-07]
+              "M-21-07 – Completing the Transition to Internet Protocol
+              Version 6 (IPv6)", United States of America Office of
+              Management and Budget Memorandum for Heads of Executive
+              Departments and Agencies, 19 November 2020,
+              <https://www.whitehouse.gov/wp-content/uploads/2020/11/
+              M-21-07.pdf>.
+
    [Wireshark]
               "Wireshark packet tracer", n.d.,
               <https://www.wireshark.org/>.
 
 Acknowledgments
 
-   Thanks to Holger Füßler, and Michael Richardson for the discussions,
-   the input, and all contribution.
+   Thanks to Holger Füßler, Michael Richardson, Tommy Jensen, for the
+   discussions, the input, and all contribution.
 
 Authors' Addresses
 
