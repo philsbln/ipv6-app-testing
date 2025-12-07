@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-13T01:04:35.233026+00:00",
+  "timestamp": "2025-12-07T01:12:21.174137+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -429,7 +429,7 @@
       "id": "I_kwDOPQtDQ87V3bo5",
       "title": "Diversify the source of IPv6 mandates, market forces, and deployment requirements",
       "url": "https://github.com/philsbln/ipv6-app-testing/issues/26",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tojens-ietf",
       "authorAssociation": "NONE",
       "assignees": [
@@ -440,8 +440,8 @@
       ],
       "body": "Right now the Introduction solely relies on U.S. OMB M-21-07, which is indeed a strong force driving IPv6 adoption and compat requirements in the U.S. but it's not globally inclusive, and the U.S. isn't the only source of similar mandates. It would be good to mention market forces also, like the unequal access to IPv4 space between developing versus developed countries, Global South versus Global North, etc. (not to say use these terms, just that aside from mandates there are many places where IPv6-only is a reality of life)",
       "createdAt": "2025-11-04T20:35:35Z",
-      "updatedAt": "2025-11-10T09:15:33Z",
-      "closedAt": null,
+      "updatedAt": "2025-12-05T09:23:16Z",
+      "closedAt": "2025-12-05T09:23:16Z",
       "comments": []
     }
   ],
@@ -1139,24 +1139,26 @@
       "id": "PR_kwDOPQtDQ86yegZm",
       "title": "Diversify national mandate motivation",
       "url": "https://github.com/philsbln/ipv6-app-testing/pull/27",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "philsbln",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Closes #26 \r\n\r\n@tojens-ietf please have a look",
       "createdAt": "2025-11-10T09:13:55Z",
-      "updatedAt": "2025-11-11T17:02:13Z",
+      "updatedAt": "2025-12-05T09:23:15Z",
       "baseRepository": "philsbln/ipv6-app-testing",
       "baseRefName": "main",
       "baseRefOid": "8faae9357874c9f8fbd24c17b590177a73724cc1",
       "headRepository": "philsbln/ipv6-app-testing",
       "headRefName": "philsbln-diversify-mandates",
       "headRefOid": "509ab5054ff54a99b06dfc341175d544f1a656f1",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-12-05T09:23:15Z",
+      "mergedAt": "2025-12-05T09:23:15Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "5f6460eeec701a165024aca28494be5f2e0503b9"
+      },
       "comments": [],
       "reviews": [
         {
