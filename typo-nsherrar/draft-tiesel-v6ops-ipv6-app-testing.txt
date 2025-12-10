@@ -351,7 +351,7 @@ Table of Contents
    such failures by automatically falling back to another address
    family.
 
-   In addition to partial blackholing, MTU issues may me limited to one
+   In addition to partial blackholing, MTU issues may be limited to one
    address family or behave differently with respect to aspects like MTU
    available, dropping of fragmented packets, and ICMP messages
    generated.  As only IPv4 supports on-path fragmentation, IPv6 is more
@@ -614,7 +614,7 @@ Table of Contents
 5.3.  Input Validation and Output Rendering
 
    While most libraries and application frameworks have decent IPv6
-   support, there often is still application logic preventing to take
+   support, there often is still application logic that prevents taking
    advantage of the IPv6 support by the underlying components.  Checking
    whether user input is a valid IPv4 address or rendering output under
    the assumption that an address is always an IPv4 address are typical
