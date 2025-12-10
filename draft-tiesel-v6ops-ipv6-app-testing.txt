@@ -5,11 +5,11 @@
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
 Intended status: Best Current Practice                        J. Linkova
-Expires: 8 June 2026                                              Google
+Expires: 13 June 2026                                             Google
                                                             K. Ouellette
                                                                B. Patton
                                                                  UNH-IOL
-                                                         5 December 2025
+                                                        10 December 2025
 
 
                    Testing Applications' IPv6 Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 June 2026.
+   This Internet-Draft will expire on 13 June 2026.
 
 Copyright Notice
 
@@ -229,13 +229,13 @@ Table of Contents
 
    The first five scenarios marked as _base_ should cover all major code
    paths and fallback conditions.  These include Dual-Stack clients
-   combined with IPv4-only and a True IPv6-only server, to test wither
+   combined with IPv4-only and a True IPv6-only server, to test whether
    the additional address family confused the client.  We also include
-   then cases with Dual-Stack Server and Single-Stack clients, to test
+   the cases with Dual-Stack Server and Single-Stack clients, to test
    whether a single address family at client side works as anticipated
    and look at the transition case using NAT64.  We have no special
    scenarios for 464XLAT [RFC6877] and IPv6-Mostly
-   [I-D.draft-ietf-v6ops-6mops], as these architectures are from then
+   [I-D.draft-ietf-v6ops-6mops], as these architectures are from the
    client side indistinguishable from the Dual-Stack (464XLAT or
    IPv6-Mostly with CLAT) or IPv6-only with NAT64 (IPv6-Mostly without
    CLAT).
@@ -279,12 +279,12 @@ Table of Contents
 3.2.  Testing with Intermediaries (e.g., Proxies)
 
    Many application protocols support communicating across
-   intermediates, most commonly HTTP, HTTP-Connect, SOCKS, or MASQ
+   intermediates, most commonly HTTP, HTTP-Connect, SOCKS, or MASQUE
    proxies.  Peer-to-peer applications often support TURN [RFC5766] as
    an intermediary to traverse NAT and provide connectivity between
    IPv4-only and IPv6-only hosts.  When testing connectivity scenarios
    for an application, additional test cases including a proxy are
-   recommended; As a proxy can convert between address families, all
+   recommended.  As a proxy can convert between address families, all
    combinations shown in Table 2, consisting of base scenarios towards
    the proxy and (assuming the same scenarios on both sides of the
    proxy) the respective base scenarios from the proxy to the server,
@@ -315,7 +315,7 @@ Table of Contents
 
    In Dual-Stack deployments, situations may arise where communication
    is partially broken for one or more address families: From the
-   Communication endpoints that are expected to be reachable using both
+   communication endpoints that are expected to be reachable using both
    address families, some may only be reachable by one address family,
    while others may only be reachable by the other.  Testing
    applications against these scenarios can become a key enabler for
@@ -327,7 +327,7 @@ Table of Contents
 
    While a server endpoint is intended to support dual-stack
    connectivity, the A or AAAA DNS records for the endpoint may be
-   missing, e.g, due to misconfiguration or broken tooling, or does not
+   missing, e.g., due to misconfiguration or broken tooling, or does not
    reach the client endpoint, e.g., because it got filtered out by a
    middle box or local resolver.
 
@@ -345,15 +345,17 @@ Table of Contents
    of middle-boxes.  In some cases, connectivity issues may only become
    apparent late in the communication process, for example, after a
    successful TCP handshake but before a TLS handshake succeeds.  In
-   such scenarios, clients restricted to a single address family—such as
-   True IPv6-only clients—may experience complete loss of connectivity
-   in these scenarios, while dual-stack clients often mask such failures
-   by automatically falling back to another address family.
+   such scenarios, clients restricted to a single address family — such
+   as True IPv6-only clients — may experience complete loss of
+   connectivity in these scenarios, while dual-stack clients often mask
+   such failures by automatically falling back to another address
+   family.
 
-   In addition to partial blackholing, MTU issues may only arise on one
-   address family or behave differently with respect to MTU available,
-   dropping of fragmented packets, ICMP messages, and due to on-path
-   fragmentation in IPv4.
+   In addition to partial blackholing, MTU issues may be limited to one
+   address family or behave differently with respect to aspects like MTU
+   available, dropping of fragmented packets, and ICMP messages
+   generated.  As only IPv4 supports on-path fragmentation, IPv6 is more
+   dependent on working ICMP _packet too big_ reporting.
 
    It is advisable to test for partial blackholing and MTU issues during
    deployment and integration testing by testing with IPv4-only and True
@@ -404,9 +406,9 @@ Table of Contents
 3.5.  Testing Complex Cloud Applications and Applying Test Cases
 
    When testing complex applications, especially cloud applications,
-   they typically involve countless data flows.  For some of these, the
-   application may be considered as server, while being a client in
-   others.  Therefore, test cases need to cover each data flow in all
+   they typically involve many data flows.  An application or component
+   may be considered as a server for some of these, while being a client
+   in others.  Therefore, test cases need to cover each data flow in all
    relevant scenarios.
 
    As functional and integration tests are often defined as end-to-end
@@ -416,7 +418,7 @@ Table of Contents
    protocols between the components.  Therefore, an end-to-end test case
    breaks down to a series of flows between components, and for each of
    these flows, we need to determine whether we need to apply the
-   connectivity scenarios from Table 1 to it, of whether the
+   connectivity scenarios from Table 1 to it, or whether the
    connectivity scenarios are only controlled by the deployment of the
    application.
 
@@ -449,8 +451,8 @@ Table of Contents
    including CDNs and analytic tools, involving data flows to all these
    parties.  When facing the requirement to support True IPv6-only
    users, being unable to load some resources due to missing/defective
-   IPv6 support at the respective parties can have any effect from
-   missing analytics insights or ad revenue to severe functional defects
+   IPv6 support at the respective parties can have effects from missing
+   analytics insights or ad revenue to severe functional defects
    rendering the application unusable.  When testing such applications,
    it is not sufficient to only focus on the initial/main interactions,
    but it is necessary to consider all resources and parties providing
@@ -466,15 +468,13 @@ Table of Contents
    various connectivity scenarios.  In certain environments, setting up
    test cases for all scenarios can become forbiddingly expensive,
    especially for complex cloud applications, application platforms, or
-   when dealing with corporate IT environments.  While in today's
-   environment getting Dual-Stack connectivity is possible in most
-   cases,
+   when dealing with corporate IT environments.
 
    In this section, we give recommendations how to set up scenarios
    defined in Section 3.1 and present strategies to meet the relevant
-   testing objective by modifying the client or using Dual-Stack clients
-   and servers to conclude the results for other scenario combinations,
-   e.g., by tracing whether the right address family is used.
+   testing objective by modifying Dual-Stack clients and servers to
+   conclude the results for other scenario combinations, e.g., by
+   tracing whether the right address family is used.
 
 4.1.  True IPv6-only Clients
 
@@ -545,8 +545,9 @@ Table of Contents
 
    If the communication pattern of an application is known well enough,
    a packet tracer as [Wireshark] allows to verify that an application
-   uses IPv6 for all flows in a Dual-Stack environment.  If this can be
-   verified, failures in True IPv6-only environments are unlikely.
+   in a Dual-Stack environment uses IPv6 for all of its flows.  If this
+   can be verified, failures in True IPv6-only environments are
+   unlikely.
 
    While this is the least invasive method of testing True IPv6
    scenarios in a Dual-Stack setup, it is the most error-prone as it
@@ -613,10 +614,11 @@ Table of Contents
 5.3.  Input Validation and Output Rendering
 
    While most libraries and application frameworks have decent IPv6
-   support, there often is still application logic checking whether user
-   input is a valid IPv4 address or rendering output under the
-   assumption that an address is always an IPv4 address, preventing to
-   take advantage of the IPv6 support by the underlying components.
+   support, there often is still application logic that prevents taking
+   advantage of the IPv6 support by the underlying components.  Checking
+   whether user input is a valid IPv4 address or rendering output under
+   the assumption that an address is always an IPv4 address are typical
+   examples for this class of limitations.
 
 5.4.  Misbehaving Middle-Boxes
 
@@ -677,7 +679,7 @@ Table of Contents
    need to be checked whether IPv6 enablement of the services also
    affects the flows of these.  Additional end-to-end tests, including
    the reusing parties, are recommended.  This is often a recursive
-   process…
+   process.
 
 6.4.  Ownership of Software Components
 
@@ -826,8 +828,8 @@ Table of Contents
 
 Acknowledgments
 
-   Thanks to Holger Füßler, Michael Richardson, Tommy Jensen, for the
-   discussions, the input, and all contribution.
+   Thanks to Holger Füßler, Michael Richardson, Tommy Jensen, Nathan
+   Sherrard, for the discussions, the input, and all contribution.
 
 Authors' Addresses
 
