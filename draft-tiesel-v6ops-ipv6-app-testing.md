@@ -107,7 +107,7 @@ Testing IPv6 compliance of network gear and operating systems has been documente
 While the IETF does not define compliance tests, best current practice exists for the behavior of general IPv6 nodes [RFC8504] and Customer Edge (CE) routers [I-D.draft-ietf-v6ops-rfc7084bis].
 
 To fill that gap, this document provides guidance for application developers and cloud application providers on how to approach IPv6 testing.
-It described which scenarios they should consider validating against, and which common regressions to avoid when adding IPv6 support.
+It describes which scenarios they should consider validating against, and which common regressions to avoid when adding IPv6 support.
 While many application developers assume that the network abstractions of the operating system (OS), communication libraries, and application frameworks will handle the transition towards IPv6 transparently, leaky abstractions within these frameworks will make it difficult for an application developer to write address family-independent code for features such as allow/deny lists and logging.
 In addition to that challenge, modern cloud applications are typically composed of hundreds to thousands of micro- and macro-services, forming a complex distributed system that requires intricate communication and orchestration infrastructure to operate.
 Enabling these applications to communicate over IPv6 requires careful analysis of data flows within all services and proper IPv6 support in all components that may require IPv6 traffic, as well as IPv6 addresses as metadata.
@@ -241,7 +241,7 @@ In case these issues can occur outside the testers' circle of control, it is adv
 To cover the whole lifecycle of an application including installation, user interface,
 management, and update, it is recommended to test that the lifecycle functions defined in {{lifecycle-functions}} are operational within the connectivity scenarios defined in {{scn_combinations}}.
 
-In particular keep the following considerations in mind:
+In particular, keep the following considerations in mind:
 
 - Installation: Installation may require communications with remote first-party services (e.g., activation/license server)
   or remote third-party services (e.g., package repositories). In these scenarios, the installer acts as
