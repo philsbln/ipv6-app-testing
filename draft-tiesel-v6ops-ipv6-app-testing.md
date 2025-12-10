@@ -234,7 +234,7 @@ In some cases, connectivity issues may only become apparent late in the communic
 In such scenarios, clients restricted to a single address family — such as True IPv6-only clients — may experience complete loss of connectivity in these scenarios,
 while dual-stack clients often mask such failures by automatically falling back to another address family.
 
-In addition to partial blackholing, MTU issues may me limited to one address family or behave differently with respect to aspects like
+In addition to partial blackholing, MTU issues may be limited to one address family or behave differently with respect to aspects like
 MTU available, dropping of fragmented packets, and ICMP messages generated.
 As only IPv4 supports on-path fragmentation, IPv6 is more dependent on working ICMP *packet too big* reporting.
 
@@ -395,7 +395,7 @@ there are a number of notable and widely used implementations that implement som
 ## Input Validation and Output Rendering
 
 While most libraries and application frameworks have decent IPv6 support,
-there often is still application logic preventing to take advantage of the IPv6 support by the underlying components.
+there often is still application logic that prevents taking advantage of the IPv6 support by the underlying components.
 Checking whether user input is a valid IPv4 address or rendering output under the assumption that an address is always an IPv4 address are typical examples for this class of limitations.
 
 ## Misbehaving Middle-Boxes
