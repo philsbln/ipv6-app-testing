@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-07T01:12:21.174137+00:00",
+  "timestamp": "2025-12-11T01:08:19.257498+00:00",
   "repo": "philsbln/ipv6-app-testing",
   "labels": [
     {
@@ -1192,6 +1192,101 @@
               "updatedAt": "2025-11-11T05:11:06Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "PR_kwDOPQtDQ864HgHl",
+      "title": "Typos & suggestions by Nathan Sherrard @nsherrar",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/28",
+      "state": "MERGED",
+      "author": "philsbln",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-12-10T11:19:31Z",
+      "updatedAt": "2025-12-10T15:14:56Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "5f6460eeec701a165024aca28494be5f2e0503b9",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "typo-nsherrar",
+      "headRefOid": "d51f709a776901a0de74edffb38e6ef539d0412a",
+      "closedAt": "2025-12-10T15:14:29Z",
+      "mergedAt": "2025-12-10T15:14:29Z",
+      "mergedBy": "philsbln",
+      "mergeCommit": {
+        "oid": "f89b6cfebd8227555cd547c71393ea25d39267b6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87UW8dJ",
+          "commit": {
+            "abbreviatedOid": "14f8408"
+          },
+          "author": "kouellette",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "Two minor spelling/grammar tweaks. Other than those, this looks good to me!",
+          "createdAt": "2025-12-10T14:18:35Z",
+          "updatedAt": "2025-12-10T14:23:15Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "```suggestion\r\nIn addition to partial blackholing, MTU issues may be limited to one address family or behave differently with respect to aspects like\r\n```",
+              "createdAt": "2025-12-10T14:18:35Z",
+              "updatedAt": "2025-12-10T14:23:15Z"
+            },
+            {
+              "originalPosition": 139,
+              "body": "```suggestion\r\nthere often is still application logic that prevents taking advantage of the IPv6 support by the underlying components.\r\n```",
+              "createdAt": "2025-12-10T14:20:59Z",
+              "updatedAt": "2025-12-10T14:23:15Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOPQtDQ864KX3Z",
+      "title": "Spelling and grammar fixes",
+      "url": "https://github.com/philsbln/ipv6-app-testing/pull/29",
+      "state": "OPEN",
+      "author": "kouellette",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-12-10T15:08:41Z",
+      "updatedAt": "2025-12-10T15:13:19Z",
+      "baseRepository": "philsbln/ipv6-app-testing",
+      "baseRefName": "main",
+      "baseRefOid": "5f6460eeec701a165024aca28494be5f2e0503b9",
+      "headRepository": "philsbln/ipv6-app-testing",
+      "headRefName": "ko-typos",
+      "headRefOid": "9a7e51c78d90928d50416e02cc1b1ef0203e99b3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOPQtDQ87UYBD7",
+          "commit": {
+            "abbreviatedOid": "9a7e51c"
+          },
+          "author": "philsbln",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2025-12-10T15:13:19Z",
+          "updatedAt": "2025-12-10T15:13:19Z",
+          "comments": []
         }
       ]
     }
