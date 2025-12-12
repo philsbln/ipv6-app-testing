@@ -5,11 +5,11 @@
 v6ops Working Group                                         P. S. Tiesel
 Internet-Draft                                                    SAP SE
 Intended status: Best Current Practice                        J. Linkova
-Expires: 13 June 2026                                             Google
+Expires: 15 June 2026                                             Google
                                                             K. Ouellette
                                                                B. Patton
                                                                  UNH-IOL
-                                                        10 December 2025
+                                                        12 December 2025
 
 
                    Testing Applications' IPv6 Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 June 2026.
+   This Internet-Draft will expire on 15 June 2026.
 
 Copyright Notice
 
@@ -136,7 +136,7 @@ Table of Contents
 
    To fill that gap, this document provides guidance for application
    developers and cloud application providers on how to approach IPv6
-   testing.  It described which scenarios they should consider
+   testing.  It describes which scenarios they should consider
    validating against, and which common regressions to avoid when adding
    IPv6 support.  While many application developers assume that the
    network abstractions of the operating system (OS), communication
@@ -372,7 +372,7 @@ Table of Contents
    Section 2.3 are operational within the connectivity scenarios defined
    in Table 1.
 
-   In particular keep the following considerations in mind:
+   In particular, keep the following considerations in mind:
 
    *  Installation: Installation may require communications with remote
       first-party services (e.g., activation/license server) or remote
